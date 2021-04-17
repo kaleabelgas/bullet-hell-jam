@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody2D))]
+public class PlayerController : MonoBehaviour
+{
+    [SerializeField] private int playerSpeed;
+
+    private Vector2 direction;
+    private Vector2 mousePosition;
+    private Rigidbody2D playerRB2D;
+
+    private void Start()
+    {
+        playerRB2D = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        direction.x = Input.GetAxisRaw("Horizontal");
+        direction.y = Input.GetAxisRaw("Vertical");
+        direction.Normalize();
+
+    }
+
+    private void FixedUpdate()
+    {
+        playerRB2D.MovePosition(playerRB2D.position + direction * playerSpeed * Time.deltaTime);
+    }
+}
