@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float chanceToSpawnEnemy = 1;
     [SerializeField] private float chanceToPickSpawnPoint = 1;
 
-    private float timePerLevel = 1;
+    [SerializeField] private float timePerLevel = 1;
     private float timeRemaining;
 
     public int Level { get; private set; } = 0;
@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         timeRemaining = timePerLevel;
+        SpawnEnemies();
     }
 
     // Update is called once per frame
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
             Level++;
             Debug.Log("Current Level: " + Level);
             ClearEnemies();
+            ClearBullets();
             SpawnEnemies();
         }
     }
@@ -96,6 +98,16 @@ public class GameManager : MonoBehaviour
         for(int i = 0; i < enemyObjects.Length; i++)
         {
             Destroy(enemyObjects[i]);
+        }
+    }
+
+    private void ClearBullets()
+    {
+        GameObject[] bulletObjects = GameObject.FindGameObjectsWithTag("Bullet");
+
+        for (int i = 0; i < bulletObjects.Length; i++)
+        {
+            bulletObjects[i].SetActive(false);
         }
     }
 }

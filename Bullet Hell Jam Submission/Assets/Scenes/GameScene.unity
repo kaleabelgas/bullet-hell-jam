@@ -208,7 +208,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &442627683
 Transform:
@@ -306,14 +306,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - tag: normal bullet
+  - tag: default bullet
     objectPrefab: {fileID: 3646535366457579801, guid: be8d6c258e393104bb6edd880b3b8617, type: 3}
-    poolSize: 100
-  - tag: normal enemy
-    objectPrefab: {fileID: 820460646642010933, guid: eb6e1ed96027c0944830b3a81080c9b4, type: 3}
     poolSize: 100
   - tag: homing bullet
     objectPrefab: {fileID: 3646535366457579801, guid: 7388bfdf8cdd9ae4f8fbe030035336d7, type: 3}
+    poolSize: 100
+  - tag: normal enemy
+    objectPrefab: {fileID: 820460646642010933, guid: eb6e1ed96027c0944830b3a81080c9b4, type: 3}
     poolSize: 100
 --- !u!4 &659574834
 Transform:
@@ -356,6 +356,7 @@ MonoBehaviour:
   - {fileID: 820460646642010933, guid: eb6e1ed96027c0944830b3a81080c9b4, type: 3}
   chanceToSpawnEnemy: 100
   chanceToPickSpawnPoint: 20
+  timePerLevel: 10
 --- !u!1 &1141279634
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,6 +371,7 @@ GameObject:
   - component: {fileID: 1141279635}
   - component: {fileID: 1141279640}
   - component: {fileID: 1141279639}
+  - component: {fileID: 1141279641}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -490,7 +492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 20
   attackSpeed: 0.1
-  bulletUsed: normal bullet
+  bulletUsed: default bullet
 --- !u!114 &1141279640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,6 +505,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2701d6ff070855b4db09ceec661b33e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1141279641
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141279634}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1385766744
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,7 +546,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1385766745
 Transform:
@@ -683,7 +711,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1630485301
 Transform:
@@ -765,7 +793,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!212 &1682871982
 SpriteRenderer:
@@ -847,7 +875,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1715202739
 Transform:

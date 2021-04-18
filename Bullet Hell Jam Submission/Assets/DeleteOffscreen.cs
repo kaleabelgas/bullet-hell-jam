@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class DeleteOffscreen : MonoBehaviour
 {
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnBecameInvisible()
     {
-        Debug.Log(other);
-        other.gameObject.SetActive(false);
+        
     }
 }

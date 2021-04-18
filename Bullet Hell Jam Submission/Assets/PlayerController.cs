@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour, ITakeDamage
     //private Vector2 mousePosition;
     private Rigidbody2D playerRB2D;
 
-    public int Health { get; private set; }
+    public int Health { get; private set; } = 100;
 
     private void Start()
     {
@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour, ITakeDamage
         direction.y = Input.GetAxisRaw("Vertical");
         direction.Normalize();
 
+
     }
 
     private void FixedUpdate()
@@ -34,6 +35,6 @@ public class PlayerController : MonoBehaviour, ITakeDamage
     public void GetDamaged(int amount)
     {
         Health -= amount;
-        Debug.Log(Health);
+        Debug.Log("Health: " + Health);
     }
 }
