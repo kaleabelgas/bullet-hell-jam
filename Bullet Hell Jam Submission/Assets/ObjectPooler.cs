@@ -58,7 +58,7 @@ public class ObjectPooler : MonoBehaviour
 
         poolDictionary[tag].Enqueue(objectToSpawn);
 
-        Debug.Log("Pooler Used");
+        //Debug.Log("Pooler Used");
 
         return objectToSpawn;
     }

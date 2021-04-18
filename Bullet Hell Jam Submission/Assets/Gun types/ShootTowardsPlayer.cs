@@ -30,9 +30,9 @@ public class ShootTowardsPlayer : BaseGun
             if (bullet == null)
                 return;
             bullet.GetComponent<BaseBullet>().SetDirection((playerPosition - (Vector2)transform.position).normalized, bulletSpeed);
-            Debug.Log((playerPosition - (Vector2)transform.position).normalized);
+            //Debug.Log((playerPosition - (Vector2)transform.position).normalized);
             bulletTimer = Time.time + attackSpeed;
-            Debug.Log("GO");
+            //Debug.Log("GO");
         }
 
 
