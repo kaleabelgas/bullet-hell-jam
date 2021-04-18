@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletScript : MonoBehaviour
+public class DefaultBulletScript : BaseBullet
 {
     private Vector2 direction;
     private float speed;
-    public void SetDirection(Vector2 direction, float speed)
+    public override void SetDirection(Vector2 direction, float speed)
     {
         this.direction = direction;
         this.speed = speed;
@@ -15,7 +15,6 @@ public class BulletScript : MonoBehaviour
     private void Update()
     {
         transform.Translate(direction * speed * Time.deltaTime);
-        
     }
 
 }

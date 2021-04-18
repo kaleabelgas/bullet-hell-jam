@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootTowardsPlayer : MonoBehaviour, IShootBullets
+public class ShootTowardsPlayer : BaseGun
 {
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float attackSpeed;
@@ -18,7 +18,7 @@ public class ShootTowardsPlayer : MonoBehaviour, IShootBullets
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    public void Shoot()
+    public override void Shoot()
     {
         //Debug.Log("Called!");
         playerPosition = player.transform.position;
@@ -29,7 +29,7 @@ public class ShootTowardsPlayer : MonoBehaviour, IShootBullets
             GameObject bullet = ObjectPooler.Instance.SpawnFromPool(bulletUsed, transform.position, transform.rotation);
             if (bullet == null)
                 return;
-            bullet.GetComponent<BulletScript>().SetDirection((playerPosition - (Vector2)transform.position).normalized, bulletSpeed);
+            bullet.GetComponent<BaseBullet>().SetDirection((playerPosition - (Vector2)transform.position).normalized, bulletSpeed);
             Debug.Log((playerPosition - (Vector2)transform.position).normalized);
             bulletTimer = Time.time + attackSpeed;
             Debug.Log("GO");

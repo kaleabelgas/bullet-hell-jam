@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - tag: Default bullet
+  - tag: normal bullet
     objectPrefab: {fileID: 3646535366457579801, guid: be8d6c258e393104bb6edd880b3b8617, type: 3}
     poolSize: 100
 --- !u!4 &659574834
@@ -481,4 +481,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 10
   attackSpeed: 0.5
-  bulletUsed: Default bullet
+  bulletUsed: normal bullet
