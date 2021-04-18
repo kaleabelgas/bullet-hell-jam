@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class HomingBulletScript : BaseBullet
 {
-    private Vector2 direction;
+    private Vector2 lastDirection;
     private Vector2 playerDirection;
     private float speed;
 
-    [SerializeField] private float homingSpeed;
-    [SerializeField] private float timeBeforeFollow = 2;
+    [SerializeField] private float timeFollowing = 2;
 
     private GameObject player;
 
@@ -20,7 +19,6 @@ public class HomingBulletScript : BaseBullet
 
     public override void SetDirection(Vector2 direction, float speed)
     {
-        this.direction = direction;
         this.speed = speed;
     }
 
@@ -29,15 +27,15 @@ public class HomingBulletScript : BaseBullet
         playerDirection = player.transform.position - transform.position;
         playerDirection.Normalize();
 
-        timeBeforeFollow -= Time.deltaTime;
-        if (timeBeforeFollow > 0)
+        timeFollowing -= Time.deltaTime;
+        if (timeFollowing > 0)
         {
-            transform.Translate(direction * speed * Time.deltaTime);
+            transform.Translate(playerDirection * speed * Time.deltaTime);
+            lastDirection = playerDirection;
         }
         else
         {
-            speed = homingSpeed;
-            transform.Translate(playerDirection * speed * Time.deltaTime);
+            transform.Translate(lastDirection * speed * Time.deltaTime);
         }
     }
 

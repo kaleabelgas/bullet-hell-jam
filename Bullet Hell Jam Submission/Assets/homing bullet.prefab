@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 2742709866133406970}
   - component: {fileID: 1613076055413235044}
   - component: {fileID: -3615995243048711394}
+  - component: {fileID: 6446377180705755189}
   m_Layer: 0
-  m_Name: Bullet 2
+  m_Name: homing bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,6 +96,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a9a55ac4fa92e45999cfca199cd976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  homingSpeed: 10
-  timeBeforeDespawn: 1
-  timeBeforeFollow: 1.5
+  timeFollowing: 1
+--- !u!58 &6446377180705755189
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3646535366457579801}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
