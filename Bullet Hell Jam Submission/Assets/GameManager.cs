@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,14 +11,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float chanceToPickSpawnPoint = 1;
 
     [SerializeField] private float timePerLevel = 1;
+
+    [SerializeField] private ControllerUI controllerUI;
     private float timeRemaining;
 
-    public int Level { get; private set; } = 0;
+    public event Action NextLevel;
+
+    public int Level { get; private set; } = 1;
 
     
     void Start()
     {
         timeRemaining = timePerLevel;
+        NextLevel += controllerUI.UpdateCurrentLevel;
         SpawnEnemies();
     }
 
@@ -35,6 +41,7 @@ public class GameManager : MonoBehaviour
             timeRemaining = timePerLevel;
             Level++;
             Debug.Log("Current Level: " + Level);
+            NextLevel.Invoke();
             ClearEnemies();
             ClearBullets();
             SpawnEnemies();
@@ -48,7 +55,7 @@ public class GameManager : MonoBehaviour
         for(int i = 0; i < enemiesToChooseFrom.Count; i++)
         {
             // RNG
-            float randomNumber = Random.Range(1f, 100f);
+            float randomNumber = UnityEngine.Random.Range(1f, 100f);
             if (randomNumber < chanceToSpawnEnemy)
             {
                 chosenEnemy = enemiesToChooseFrom[i];
@@ -64,11 +71,11 @@ public class GameManager : MonoBehaviour
         List<Transform> chosenSpawnPoints = new List<Transform>();
 
         // spawn in at least 1
-        chosenSpawnPoints.Add(spawnPointsToChooseFrom[Random.Range(1, spawnPointsToChooseFrom.Count)]);
+        chosenSpawnPoints.Add(spawnPointsToChooseFrom[UnityEngine.Random.Range(1, spawnPointsToChooseFrom.Count)]);
 
         for(int i = 0; i < spawnPointsToChooseFrom.Count; i++)
         {
-            float randomNumber = Random.Range(1f, 100f);
+            float randomNumber = UnityEngine.Random.Range(1f, 100f);
             if (randomNumber < chanceToPickSpawnPoint)
             {
                 chosenSpawnPoints.Add(spawnPointsToChooseFrom[i]);

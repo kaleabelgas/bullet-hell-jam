@@ -19,7 +19,9 @@ public abstract class BaseBullet : MonoBehaviour
         if (toDamage != null)
         {
             toDamage.GetDamaged(damageAmount, Owner);
-            gameObject.SetActive(false);
+
+            if(!other.CompareTag("Player"))
+                gameObject.SetActive(false);
         }
     }
 
