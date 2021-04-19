@@ -135,6 +135,6 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         dreamloLeaderBoard.AddScore(PlayerPrefs.GetString("Name"), PlayerPrefs.GetInt("highscore"));
-        //SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0);
     }
 }
