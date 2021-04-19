@@ -740,7 +740,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1166,7 +1166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4523558256386118409, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -5.35
       objectReference: {fileID: 0}
     - target: {fileID: 4523558256386118409, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1200,6 +1200,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 659574835}
     - target: {fileID: 4523558256386118413, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
       propertyPath: m_Name
       value: Player

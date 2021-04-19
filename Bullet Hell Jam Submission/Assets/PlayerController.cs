@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,15 +7,17 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour, ITakeDamage
 {
     [SerializeField] private int playerSpeed;
+    [SerializeField] private GameManager gameManager;
 
+    public event Action OnPlayerDeath;
     private Vector2 direction;
-    //private Vector2 mousePosition;
     private Rigidbody2D playerRB2D;
 
     public int Health { get; private set; } = 100;
 
-    private void Start()
+    private void Awake()
     {
+        OnPlayerDeath += gameManager.GameOver;
         playerRB2D = GetComponent<Rigidbody2D>();
     }
 
@@ -38,5 +41,13 @@ public class PlayerController : MonoBehaviour, ITakeDamage
             return;
         Health -= amount;
         Debug.Log("Health: " + Health);
+        if (Health <= 0)
+            Die();
+    }
+
+    public void Die()
+    {
+        OnPlayerDeath?.Invoke();
+        gameObject.SetActive(false);
     }
 }

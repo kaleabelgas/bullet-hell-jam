@@ -18,10 +18,8 @@ public abstract class BaseBullet : MonoBehaviour
 
         if (toDamage != null)
         {
-            toDamage.GetDamaged(damageAmount, Owner);
-
-            if(!other.CompareTag("Player"))
-                gameObject.SetActive(false);
+            toDamage.GetDamaged(damageAmount, Owner);            
+            gameObject.SetActive(false);
         }
     }
 
