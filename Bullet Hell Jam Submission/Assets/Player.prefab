@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 20
-  attackSpeed: 0.2
+  attackSpeed: 0.1
   bulletUsed: default bullet
   firePoint: {fileID: 4523558255318955318}
 --- !u!61 &4523558256386118406
