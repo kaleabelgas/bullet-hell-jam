@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ControllerUI controllerUI;
 
     [SerializeField] private dreamloLeaderBoard dreamloLeaderBoard;
+
+    [SerializeField] private GameObject EndScreen;
     private float timeRemaining;
 
     public event Action NextLevel;
@@ -26,6 +28,7 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
+        EndScreen.SetActive(false);
         timeRemaining = timePerLevel;
         NextLevel += controllerUI.UpdateCurrentLevel;
         highScore = PlayerPrefs.GetInt("highscore");
@@ -135,6 +138,8 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         dreamloLeaderBoard.AddScore(PlayerPrefs.GetString("Name"), PlayerPrefs.GetInt("highscore"));
-        SceneManager.LoadScene(0);
+        Time.timeScale = 0;
+        EndScreen.SetActive(true);
+        //SceneManager.LoadScene(0);
     }
 }

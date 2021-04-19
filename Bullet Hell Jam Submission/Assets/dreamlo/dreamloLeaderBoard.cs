@@ -49,8 +49,13 @@ public class dreamloLeaderBoard : MonoBehaviour {
 
 		this.highScores = "";
 	}
-	
-	public static dreamloLeaderBoard GetSceneDreamloLeaderboard()
+
+    private void Update()
+    {
+		//Debug.Log(highScores);
+    }
+
+    public static dreamloLeaderBoard GetSceneDreamloLeaderboard()
 	{
 		var go = GameObject.Find("dreamloPrefab");
 		
@@ -99,7 +104,7 @@ public class dreamloLeaderBoard : MonoBehaviour {
 		StartCoroutine(GetRequest(dreamloWebserviceURL + privateCode + "/add-pipe/" + UnityWebRequest.EscapeURL(playerName) + "/" + totalScore.ToString() + "/" + totalSeconds.ToString()+ "/" + shortText));
 	}
 	
-	void GetScores()
+	public void GetScores()
 	{
 		highScores = "";
 		StartCoroutine(GetRequest(dreamloWebserviceURL +  publicCode  + "/pipe"));
@@ -113,21 +118,38 @@ public class dreamloLeaderBoard : MonoBehaviour {
 
 	IEnumerator GetRequest(string url)
 	{
-		// Something not working? Try copying/pasting the url into your web browser and see if it works.
-		// Debug.Log(url);
+        //Something not working? Try copying / pasting the url into your web browser and see if it works.
+               //Debug.Log(url);
 
-		using (UnityWebRequest www = UnityWebRequest.Get(url))
-		{
-			yield return www.SendWebRequest();
-			highScores = www.downloadHandler.text;
-		}
-	}
+        using UnityWebRequest www = UnityWebRequest.Get(url);
+        yield return www.SendWebRequest();
+        highScores = www.downloadHandler.text;
+        Debug.Log(highScores);
+
+        //Debug.Log()
+
+        //WWW www = new WWW(url);
+        //yield return www;
+
+        //      if (string.IsNullOrEmpty(www.error))
+        //      {
+        //	highScores = www.text;
+        //      }
+        //      else
+        //      {
+        //	Debug.Log("Error!");
+        //      }
+    }
 	
 	
 	public string[] ToStringArray()
 	{
-		if (this.highScores == null) return null;
-		if (this.highScores == "") return null;
+		if (highScores == null) return null;
+		if (highScores == "")
+		{
+			Debug.Log("No highscores");
+			return null;
+		}
 		
 		var rows = this.highScores.Split(new char[] {'\n'}, System.StringSplitOptions.RemoveEmptyEntries);
 		return rows;
@@ -148,6 +170,8 @@ public class dreamloLeaderBoard : MonoBehaviour {
 	
 	public List<Score> ToListHighToLow()
 	{
+		Debug.Log("TLHTL used");
+
 		var scoreList = this.ToScoreArray();
 		
 		if (scoreList == null) return new List<Score>();
@@ -155,6 +179,9 @@ public class dreamloLeaderBoard : MonoBehaviour {
 		List<Score> genericList = new List<Score>(scoreList);
 			
 		genericList.Sort((x, y) => y.score.CompareTo(x.score));
+
+		Debug.Log(genericList[0].score);
+
 		
 		return genericList;
 	}
