@@ -26,4 +26,9 @@ public class StartGame : MonoBehaviour
         PlayerPrefs.SetString("Name", playerName);
         Debug.Log(playerName);
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
