@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private float timeRemaining;
 
     public event Action NextLevel;
+    private int highScore = 1;
 
     public int Level { get; private set; } = 1;
 
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
     {
         timeRemaining = timePerLevel;
         NextLevel += controllerUI.UpdateCurrentLevel;
+        highScore = PlayerPrefs.GetInt("highscore");
         SpawnEnemies();
     }
 
@@ -41,6 +43,15 @@ public class GameManager : MonoBehaviour
         {
             timeRemaining = timePerLevel;
             Level++;
+            if(Level > highScore)
+            {
+                highScore = Level;
+                PlayerPrefs.SetInt("highscore", highScore);
+            }
+
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
+                GameOver();
+
             Debug.Log("Current Level: " + Level);
             NextLevel.Invoke();
             ClearEnemies();

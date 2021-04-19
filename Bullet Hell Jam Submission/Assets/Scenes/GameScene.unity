@@ -285,7 +285,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 820460646642010933, guid: eb6e1ed96027c0944830b3a81080c9b4, type: 3}
   chanceToSpawnEnemy: 100
-  chanceToPickSpawnPoint: 20
+  chanceToPickSpawnPoint: 50
   timePerLevel: 10
   controllerUI: {fileID: 1664965851}
 --- !u!1 &768466176
