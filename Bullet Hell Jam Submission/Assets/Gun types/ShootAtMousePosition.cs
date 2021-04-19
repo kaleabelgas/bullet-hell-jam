@@ -17,6 +17,13 @@ public class ShootAtMousePosition : BaseGun
     {
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+        Vector2 lookDir = mousePosition - (Vector2)firePoint.position;
+        lookDir.Normalize();
+        Debug.Log(lookDir);
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
+
+        transform.rotation = Quaternion.Euler(firePoint.rotation.x, firePoint.rotation.y, angle);
+
         if (Time.time >= bulletTimer)
         {
             GameObject bullet = ObjectPooler.Instance.SpawnFromPool(bulletUsed, firePoint.position, transform.rotation);
@@ -24,7 +31,7 @@ public class ShootAtMousePosition : BaseGun
                 return;
             BaseBullet bulletScript = bullet.GetComponent<BaseBullet>();
             bulletScript.Owner = gameObject;
-            bulletScript.SetDirection((mousePosition -(Vector2)firePoint.position).normalized, bulletSpeed);
+            bulletScript.SetDirection(Vector2.up, bulletSpeed);
             bulletTimer = Time.time + attackSpeed;
         }
     }

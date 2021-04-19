@@ -6,11 +6,22 @@ public class EnemyController : MonoBehaviour, ITakeDamage
 {
     public int EnemyHealth { get; private set; }
     [SerializeField] float speed;
-    [SerializeField] Transform target;
+    [SerializeField] private GameObject target;
+
+    private void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("Player");
+    }
 
     private void Update()
     {
+
+        Vector2 lookDir = target.transform.position - transform.position;
+        lookDir.Normalize();
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 270;
+
         transform.Translate(Vector2.down * speed * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, angle);
         //transform.right = target.position - transform.position;
     }
 
