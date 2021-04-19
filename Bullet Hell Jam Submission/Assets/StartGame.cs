@@ -7,6 +7,10 @@ using TMPro;
 public class StartGame : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI highScore;
+
+    [SerializeField] private GameObject playerInput;
+
+    private string playerName = "";
     private void Start()
     {
         highScore.text = "High Score: Level " + PlayerPrefs.GetInt("highscore").ToString();
@@ -14,5 +18,12 @@ public class StartGame : MonoBehaviour
     public void StartLevel()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void SetPlayerName()
+    {
+        playerName = playerInput.GetComponent<TMP_InputField>().text;
+        PlayerPrefs.SetString("Name", playerName);
+        Debug.Log(playerName);
     }
 }
