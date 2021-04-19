@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ITakeDamage
 {
-    void GetDamaged(int amount);
+    void GetDamaged(int amount, GameObject owner);
 }

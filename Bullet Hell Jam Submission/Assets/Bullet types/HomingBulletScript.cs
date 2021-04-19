@@ -7,13 +7,15 @@ public class HomingBulletScript : BaseBullet
     private Vector2 lastDirection;
     private Vector2 playerDirection;
     private float speed;
+    private float timeFollowing;
 
-    [SerializeField] private float timeFollowing = 2;
+    [SerializeField] private float defaultTimeFollowing = 2;
 
     private GameObject player;
 
     private void OnEnable()
     {
+        timeFollowing = defaultTimeFollowing;
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -38,5 +40,11 @@ public class HomingBulletScript : BaseBullet
             transform.Translate(lastDirection * speed * Time.deltaTime);
         }
     }
-
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        player = null;
+        lastDirection = Vector2.zero;
+        timeFollowing = 0;
+    }
 }

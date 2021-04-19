@@ -32,8 +32,10 @@ public class PlayerController : MonoBehaviour, ITakeDamage
         playerRB2D.MovePosition(playerRB2D.position + direction * playerSpeed * Time.deltaTime);
     }
 
-    public void GetDamaged(int amount)
+    public void GetDamaged(int amount, GameObject owner)
     {
+        if (owner.Equals(this.gameObject))
+            return;
         Health -= amount;
         Debug.Log("Health: " + Health);
     }

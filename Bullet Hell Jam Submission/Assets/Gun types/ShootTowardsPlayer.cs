@@ -7,6 +7,7 @@ public class ShootTowardsPlayer : BaseGun
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float attackSpeed;
     [SerializeField] private string bulletUsed;
+    [SerializeField] private Transform firePoint;
 
     private float bulletTimer;
 
@@ -26,15 +27,13 @@ public class ShootTowardsPlayer : BaseGun
 
         if (Time.time >= bulletTimer)
         {
-            GameObject bullet = ObjectPooler.Instance.SpawnFromPool(bulletUsed, transform.position, transform.rotation);
+            GameObject bullet = ObjectPooler.Instance.SpawnFromPool(bulletUsed, firePoint.position, transform.rotation);
             if (bullet == null)
                 return;
-            bullet.GetComponent<BaseBullet>().SetDirection((playerPosition - (Vector2)transform.position).normalized, bulletSpeed);
-            //Debug.Log((playerPosition - (Vector2)transform.position).normalized);
+            BaseBullet bulletScript = bullet.GetComponent<BaseBullet>();
+            bulletScript.Owner = gameObject;
+            bulletScript.SetDirection((playerPosition - (Vector2)transform.position).normalized, bulletSpeed);
             bulletTimer = Time.time + attackSpeed;
-            //Debug.Log("GO");
         }
-
-
     }
 }
