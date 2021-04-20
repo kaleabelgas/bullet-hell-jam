@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private dreamloLeaderBoard dreamloLeaderBoard;
 
+    PulseScript pulseScript;
+
     [SerializeField] private GameObject EndScreen;
     private float timeRemaining;
 
@@ -28,6 +30,8 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
+        Time.timeScale = 1;
+        pulseScript = GetComponent<PulseScript>();
         if (string.IsNullOrEmpty(PlayerPrefs.GetString("Name"))){
             PlayerPrefs.SetString("Name", "AAA");
         }
@@ -62,10 +66,13 @@ public class GameManager : MonoBehaviour
                 GameOver();
 
             Debug.Log("Current Level: " + Level);
+            pulseScript.DoPulse();
             NextLevel.Invoke();
             ClearEnemies();
             ClearBullets();
-            SpawnEnemies();
+
+            if(pulseScript.PulseDone)
+                SpawnEnemies();
         }
     }
 
