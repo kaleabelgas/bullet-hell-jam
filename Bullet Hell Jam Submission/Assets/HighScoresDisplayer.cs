@@ -11,26 +11,26 @@ public class HighScoresDisplayer : MonoBehaviour
 
     [SerializeField] dreamloLeaderBoard dl;
 
+    [SerializeField] TextMeshProUGUI gameOverText;
+
     List<dreamloLeaderBoard.Score> HighScoresList;
-    //List<dreamloLeaderBoard.Score> HighScoresList;
-    // Start is called before the first frame update
+
+    [SerializeField] Color gold = new Color(252, 186, 3);
+
     void OnEnable()
     {
-        //dl.AddScore(PlayerPrefs.GetString("Name"), PlayerPrefs.GetInt("highscore"));
-
         dl = FindObjectOfType<dreamloLeaderBoard>();
-        //dl.GetScores();
-        //dl.GetScores();
-        //HighScoresList = dl.ToListHighToLow();
-        //Debug.Log("count " + HighScoresList.Count);
-        //StartCoroutine(GetScoresOnline());
-        //dreamloLeaderBoard.AddScore("me", 10);
-
+        dl.AddScore(PlayerPrefs.GetString("Name"), PlayerPrefs.GetInt("highscore"));
         for (int i = 0; i < highScoreTexts.Length; i++)
 
         {
             highScoreTexts[i].text = i + 1 + ". Fetching...";
             
+        }
+
+        if(PlayerPrefs.GetString("Name").Equals("Playerten"))
+        {
+            gameOverText.color = gold;
         }
     }
 
@@ -48,50 +48,4 @@ public class HighScoresDisplayer : MonoBehaviour
             }
         }
     }
-
-    //private IEnumerator GetScoresOnline()
-    //{
-    //    //while (true)
-    //    //{
-    //    //    //dl.GetScores();
-    //    //    Debug.Log("Used");
-
-    //    //    List<dreamloLeaderBoard.Score> HighScoresList = dl.ToListHighToLow();
-    //    //    Debug.Log("count " + HighScoresList.Count);
-    //    //    //dreamloLeaderBoard.AddScore("me", 10);
-
-    //    //    for (int i = 0; i < highScoreTexts.Length; i++)
-
-    //    //    {
-    //    //        highScoreTexts[i].text = i + 1 + ". Fetching...";
-    //    //        if (HighScoresList.Count > i)
-    //    //        {
-    //    //            Debug.Log("yes");
-    //    //            highScoreTexts[i].text += HighScoresList[i].playerName;
-    //    //        }
-    //    //    }
-
-    //    Debug.Log("running");
-    //    while (true)
-    //    {
-    //        HighScoresList = dl.ToListHighToLow();
-    //        for (int i = 0; i < highScoreTexts.Length; i++)
-
-    //        {
-    //            highScoreTexts[i].text = i + 1 + ". Fetching...";
-    //            if (HighScoresList.Count > i)
-    //            {
-    //                Debug.Log("yes");
-    //                highScoreTexts[i].text += HighScoresList[i].playerName;
-    //            }
-    //        }
-    //        yield return new WaitForSeconds(1); 
-    //    }
-
-
-
-
-    //    //}
-    //}
-
 }

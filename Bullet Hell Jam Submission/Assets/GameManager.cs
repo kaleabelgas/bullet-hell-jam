@@ -28,6 +28,10 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
+        if (string.IsNullOrEmpty(PlayerPrefs.GetString("Name"))){
+            PlayerPrefs.SetString("Name", "AAA");
+        }
+
         EndScreen.SetActive(false);
         timeRemaining = timePerLevel;
         NextLevel += controllerUI.UpdateCurrentLevel;
@@ -137,9 +141,14 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        dreamloLeaderBoard.AddScore(PlayerPrefs.GetString("Name"), PlayerPrefs.GetInt("highscore"));
+        //dreamloLeaderBoard.AddScore(PlayerPrefs.GetString("Name"), PlayerPrefs.GetInt("highscore"));
         Time.timeScale = 0;
         EndScreen.SetActive(true);
         //SceneManager.LoadScene(0);
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

@@ -27,6 +27,7 @@ public class ControllerUI : MonoBehaviour
         currentLevel.text = "LEVEL " + level.ToString();
     }
 
+
     // Update is called once per frame
     void Update()
     {
