@@ -49,7 +49,7 @@ public class HighScoresDisplayer : MonoBehaviour
             highScoreTexts[i].text = i + 1 + ". N/A...";
             if (HighScoresList.Count > i)
             {
-                Debug.Log("yes");
+                //Debug.Log("yes");
                 highScoreTexts[i].text = i + 1 + ". " + HighScoresList[i].playerName + " - " + HighScoresList[i].score;
             }
         }

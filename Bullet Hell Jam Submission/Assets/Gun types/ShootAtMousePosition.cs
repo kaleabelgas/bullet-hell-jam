@@ -19,7 +19,7 @@ public class ShootAtMousePosition : BaseGun
 
         Vector2 lookDir = mousePosition - (Vector2)firePoint.position;
         lookDir.Normalize();
-        Debug.Log(lookDir);
+        //Debug.Log(lookDir);
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
 
         transform.rotation = Quaternion.Euler(firePoint.rotation.x, firePoint.rotation.y, angle);

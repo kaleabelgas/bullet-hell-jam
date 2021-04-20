@@ -38,6 +38,13 @@ public class StartGame : MonoBehaviour
         playerInput.GetComponent<TMP_InputField>().placeholder.GetComponent<TextMeshProUGUI>().text = "Enter Name";
     }
 
+    public void ResetScore()
+    {
+        PlayerPrefs.SetInt("highscore", 1);
+        highScore.text = "High Score: Level " + PlayerPrefs.GetInt("highscore").ToString();
+        //Debug.Log("reset");
+    }
+
     public void OpenDiscord()
     {
         Application.OpenURL("https://discord.gg/JkF6BJEAeC");
@@ -50,6 +57,7 @@ public class StartGame : MonoBehaviour
 
     public void ExitGame()
     {
+        //Debug.Log("reset");
         Application.Quit();
     }
 }

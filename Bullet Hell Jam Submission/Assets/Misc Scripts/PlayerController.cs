@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour, ITakeDamage
         if (owner.Equals(this.gameObject))
             return;
         Health -= amount;
-        Debug.Log("Health: " + Health);
+        //Debug.Log("Health: " + Health);
         controllerUI.SetHealthBar(Health);
         if (Health <= 0)
             Die();

@@ -14,7 +14,7 @@ public abstract class BaseBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         ITakeDamage toDamage = other.GetComponent<ITakeDamage>();
-        Debug.Log("Hit " + other);
+        //Debug.Log("Hit " + other);
 
         if (toDamage != null)
         {

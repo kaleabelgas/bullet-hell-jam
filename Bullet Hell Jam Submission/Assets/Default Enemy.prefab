@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72cb90e485a51b145b398e99c8b52af6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 15
+  bulletSpeed: 10
   attackSpeed: 0.2
   bulletUsed: default bullet
   firePoint: {fileID: 5872392702283852024}

@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviour, ITakeDamage
         if (owner.Equals(gameObject))
             return;
         EnemyHealth -= amount;
-        Debug.Log("Enemy Health: " + EnemyHealth);
+        //Debug.Log("Enemy Health: " + EnemyHealth);
         if (EnemyHealth <= 0)
             Die();
     }

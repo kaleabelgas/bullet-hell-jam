@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Current Level: " + Level);
+            //Debug.Log("Current Level: " + Level);
 
             NextLevel.Invoke();
 
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
             pulseScript.DoPulse();
 
             ClearEnemies();
-            ClearBullets();
+            //ClearBullets();
             StartCoroutine(SpawnEnemies());
 
             timeRemaining = timePerLevel;
@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
             if (randomNumber < chanceToSpawnEnemy)
             {
                 chosenEnemy = enemiesToChooseFrom[i];
-                Debug.Log(chosenEnemy);
+                //Debug.Log(chosenEnemy);
                 return chosenEnemy;
             }
         }
@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
             {
                 chosenSpawnPoints.Add(spawnPointsToChooseFrom[i]);
             }
-            Debug.Log(chosenSpawnPoints.Count);
+            //Debug.Log(chosenSpawnPoints.Count);
         }
         return chosenSpawnPoints;
     }
