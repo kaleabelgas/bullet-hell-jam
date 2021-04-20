@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour, ITakeDamage
 {
     [SerializeField] private int playerSpeed;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private int playerHealth;
 
     public event Action OnPlayerDeath;
     private Vector2 direction;
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour, ITakeDamage
     {
         OnPlayerDeath += gameManager.GameOver;
         playerRB2D = GetComponent<Rigidbody2D>();
+        Health = playerHealth;
     }
 
     private void Update()

@@ -7,10 +7,12 @@ public class EnemyController : MonoBehaviour, ITakeDamage
     public int EnemyHealth { get; private set; }
     [SerializeField] float speed;
     [SerializeField] private GameObject target;
+    [SerializeField] private int health;
 
-    private void Start()
+    private void OnEnable()
     {
         target = GameObject.FindGameObjectWithTag("Player");
+        EnemyHealth = health;
     }
 
     private void Update()

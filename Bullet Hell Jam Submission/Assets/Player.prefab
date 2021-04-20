@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 15
   gameManager: {fileID: 0}
+  playerHealth: 150
 --- !u!114 &4523558256386118407
 MonoBehaviour:
   m_ObjectHideFlags: 0

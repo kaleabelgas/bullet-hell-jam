@@ -7,6 +7,7 @@ public class ControllerUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI currentLevel;
     [SerializeField] TextMeshProUGUI timer;
+    [SerializeField] GameObject tutorial;
 
 
     private float timeRemaining = 10;
@@ -14,7 +15,7 @@ public class ControllerUI : MonoBehaviour
 
     private float timeToDisplay;
 
-    private int level = 1;
+    private int level = 0;
 
     private void Start()
     {
@@ -25,6 +26,11 @@ public class ControllerUI : MonoBehaviour
     {
         level++;
         currentLevel.text = "LEVEL " + level.ToString();
+    }
+
+    public void DeleteTutorial()
+    {
+        tutorial.SetActive(false);
     }
 
 

@@ -24,8 +24,9 @@ public class GameManager : MonoBehaviour
 
     public event Action NextLevel;
     private int highScore = 1;
+    private bool tutorialDone = false;
 
-    public int Level { get; private set; } = 1;
+    public int Level { get; private set; } = 0;
 
     
     void Start()
@@ -40,7 +41,7 @@ public class GameManager : MonoBehaviour
         timeRemaining = timePerLevel;
         NextLevel += controllerUI.UpdateCurrentLevel;
         highScore = PlayerPrefs.GetInt("highscore");
-        SpawnEnemies();
+        //SpawnEnemies();
     }
 
     // Update is called once per frame
@@ -54,9 +55,27 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("Current Level: " + Level);
+
+            NextLevel.Invoke();
+
+            if (!tutorialDone)
+            {
+                controllerUI.DeleteTutorial();
+                tutorialDone = true;
+            }
+
+            pulseScript.DoPulse();
+
+            ClearEnemies();
+            ClearBullets();
+            StartCoroutine(SpawnEnemies());
+
             timeRemaining = timePerLevel;
+
             Level++;
-            if(Level > highScore)
+
+            if (Level > highScore)
             {
                 highScore = Level;
                 PlayerPrefs.SetInt("highscore", highScore);
@@ -64,15 +83,6 @@ public class GameManager : MonoBehaviour
 
             if (GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
                 GameOver();
-
-            Debug.Log("Current Level: " + Level);
-            pulseScript.DoPulse();
-            NextLevel.Invoke();
-            ClearEnemies();
-            ClearBullets();
-
-            if(pulseScript.PulseDone)
-                SpawnEnemies();
         }
     }
 
@@ -113,8 +123,9 @@ public class GameManager : MonoBehaviour
         return chosenSpawnPoints;
     }
 
-    private void SpawnEnemies()
+    private IEnumerator SpawnEnemies()
     {
+        yield return new WaitForSeconds(.5f);
         List<Transform> spawnPointsLocal = SpawnPointsChosen(spawnPoints);
 
         GameObject enemyLocal = EnemyChosen(enemies);
