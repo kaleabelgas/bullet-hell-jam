@@ -38,6 +38,16 @@ public class StartGame : MonoBehaviour
         playerInput.GetComponent<TMP_InputField>().placeholder.GetComponent<TextMeshProUGUI>().text = "Enter Name";
     }
 
+    public void OpenDiscord()
+    {
+        Application.OpenURL("https://discord.gg/JkF6BJEAeC");
+    }
+
+    public void OpenBMAC()
+    {
+        Application.OpenURL("https://www.buymeacoffee.com/kaleandpearl");
+    }
+
     public void ExitGame()
     {
         Application.Quit();
