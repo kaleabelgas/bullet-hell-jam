@@ -17,6 +17,8 @@ public class HighScoresDisplayer : MonoBehaviour
 
     [SerializeField] Color gold = new Color(252, 186, 3);
 
+    [SerializeField] List<string> easterEggNames = new List<string>();
+
     void OnEnable()
     {
         dl = FindObjectOfType<dreamloLeaderBoard>();
@@ -28,9 +30,13 @@ public class HighScoresDisplayer : MonoBehaviour
             
         }
 
-        if(PlayerPrefs.GetString("Name").Equals("Playerten"))
+        foreach(string name in easterEggNames)
         {
-            gameOverText.color = gold;
+
+            if(PlayerPrefs.GetString("Name").Equals(name))
+            {
+                gameOverText.color = gold;
+            }
         }
     }
 

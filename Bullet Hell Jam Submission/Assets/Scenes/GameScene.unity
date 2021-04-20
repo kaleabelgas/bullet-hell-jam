@@ -2209,6 +2209,10 @@ MonoBehaviour:
   dl: {fileID: 1853038484}
   gameOverText: {fileID: 1040815417}
   gold: {r: 0.7490196, g: 0.5529412, b: 0.011764706, a: 1}
+  easterEggNames:
+  - pearl
+  - kale
+  - playerten
 --- !u!1 &1380983899
 GameObject:
   m_ObjectHideFlags: 0
