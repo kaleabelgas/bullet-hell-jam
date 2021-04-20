@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour, ITakeDamage
     [SerializeField] private int playerSpeed;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private int playerHealth;
+    private ControllerUI controllerUI;
 
     public event Action OnPlayerDeath;
     private Vector2 direction;
@@ -18,9 +19,12 @@ public class PlayerController : MonoBehaviour, ITakeDamage
 
     private void Awake()
     {
+        controllerUI = FindObjectOfType<ControllerUI>();
         OnPlayerDeath += gameManager.GameOver;
         playerRB2D = GetComponent<Rigidbody2D>();
         Health = playerHealth;
+
+        controllerUI.SetHealthBarMax(playerHealth);
     }
 
     private void Update()
@@ -43,6 +47,7 @@ public class PlayerController : MonoBehaviour, ITakeDamage
             return;
         Health -= amount;
         Debug.Log("Health: " + Health);
+        controllerUI.SetHealthBar(Health);
         if (Health <= 0)
             Die();
     }
