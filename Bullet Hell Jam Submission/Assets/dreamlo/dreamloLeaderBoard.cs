@@ -170,7 +170,7 @@ public class dreamloLeaderBoard : MonoBehaviour {
 	
 	public List<Score> ToListHighToLow()
 	{
-		Debug.Log("TLHTL used");
+		//Debug.Log("TLHTL used");
 
 		var scoreList = this.ToScoreArray();
 		
