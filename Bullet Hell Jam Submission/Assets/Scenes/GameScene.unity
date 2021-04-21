@@ -1608,6 +1608,8 @@ MonoBehaviour:
   timePerLevel: 10
   controllerUI: {fileID: 1664965851}
   dreamloLeaderBoard: {fileID: 1853038484}
+  ScriptableRendererData: {fileID: 11400000, guid: a86e8e94c548e1c45a082908185b8f2a, type: 2}
+  rippleMaterial: {fileID: 2100000, guid: 8e12b493c7bc8914aa50f1cf0b9b8eac, type: 2}
   EndScreen: {fileID: 1319810176}
 --- !u!114 &659574836
 MonoBehaviour:

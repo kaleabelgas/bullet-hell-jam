@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private dreamloLeaderBoard dreamloLeaderBoard;
 
+    [SerializeField] private ScriptableRendererData ScriptableRendererData;
+
+    [SerializeField] private Material rippleMaterial;
+
+    private List<ScriptableRendererFeature> ScriptableRendererFeature;
+
     PulseScript pulseScript;
 
     [SerializeField] private GameObject EndScreen;
@@ -26,11 +33,20 @@ public class GameManager : MonoBehaviour
     private int highScore = 1;
     private bool tutorialDone = false;
 
+    Blit blit;
+
     public int Level { get; private set; } = 0;
 
     
     void Start()
     {
+        ScriptableRendererFeature = ScriptableRendererData.rendererFeatures;
+
+        blit = (Blit)ScriptableRendererFeature[0];
+
+        blit.settings.blitMaterial = rippleMaterial;
+
+
         Time.timeScale = 1;
         pulseScript = GetComponent<PulseScript>();
         if (string.IsNullOrEmpty(PlayerPrefs.GetString("Name"))){
@@ -159,6 +175,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         //dreamloLeaderBoard.AddScore(PlayerPrefs.GetString("Name"), PlayerPrefs.GetInt("highscore"));
+        blit.ClearTexture();
         Time.timeScale = 0;
         EndScreen.SetActive(true);
         //SceneManager.LoadScene(0);

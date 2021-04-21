@@ -95,6 +95,11 @@ public class Blit : ScriptableRendererFeature
 
     BlitPass blitPass;
 
+    public void ClearTexture()
+    {
+        settings.blitMaterial = settings.defaultMaterial;
+    }
+
     public override void Create()
     {
         var passIndex = settings.blitMaterial != null ? settings.blitMaterial.passCount - 1 : 1;

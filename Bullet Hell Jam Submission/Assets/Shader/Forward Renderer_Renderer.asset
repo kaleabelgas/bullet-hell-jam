@@ -58,7 +58,8 @@ MonoBehaviour:
   m_Active: 1
   settings:
     Event: 500
-    blitMaterial: {fileID: 2100000, guid: 8e12b493c7bc8914aa50f1cf0b9b8eac, type: 2}
+    blitMaterial: {fileID: 0}
+    defaultMaterial: {fileID: 0}
     blitMaterialPassIndex: 0
     destination: 0
     textureId: _BlitPassTexture
