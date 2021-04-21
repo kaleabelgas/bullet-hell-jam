@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour, ITakeDamage
         if (owner.Equals(this.gameObject))
             return;
         Health -= amount;
+        CameraShake.Trauma = 0.4f;
         //Debug.Log("Health: " + Health);
         controllerUI.SetHealthBar(Health);
         if (Health <= 0)
@@ -54,6 +55,7 @@ public class PlayerController : MonoBehaviour, ITakeDamage
 
     public void Die()
     {
+        ObjectPooler.Instance.SpawnFromPool("death effect", transform.position, transform.rotation);
         OnPlayerDeath?.Invoke();
         gameObject.SetActive(false);
     }

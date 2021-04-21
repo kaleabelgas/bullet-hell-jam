@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
         blit = (Blit)ScriptableRendererFeature[0];
 
         blit.settings.blitMaterial = rippleMaterial;
+        CameraShake.TargetPos = transform.position;
 
 
         Time.timeScale = 1;

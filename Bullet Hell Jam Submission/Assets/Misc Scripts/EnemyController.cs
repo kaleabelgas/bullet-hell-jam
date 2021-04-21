@@ -32,13 +32,15 @@ public class EnemyController : MonoBehaviour, ITakeDamage
         if (owner.Equals(gameObject))
             return;
         EnemyHealth -= amount;
-        //Debug.Log("Enemy Health: " + EnemyHealth);
+        CameraShake.Trauma = 0.2f;
         if (EnemyHealth <= 0)
             Die();
     }
 
     private void Die()
     {
+        ObjectPooler.Instance.SpawnFromPool("death effect", transform.position, transform.rotation);
+        CameraShake.Trauma = 0.5f;
         Destroy(gameObject);
     }
 }
