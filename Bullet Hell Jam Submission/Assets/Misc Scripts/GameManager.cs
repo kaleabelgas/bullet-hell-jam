@@ -81,6 +81,8 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.SetInt("highscore", highScore);
             }
 
+            FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
+
             if (GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
                 GameOver();
         }

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Glow Material
+  m_Name: Glow Red
   m_Shader: {fileID: -6465566751694194690, guid: 99fd0dec7df351e41a335653185b4f6a, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -37,5 +37,5 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - Color_cdbe02ac7aeb4cdcbff13562c3f6a4cc: {r: 11.313708, g: 11.313708, b: 11.313708, a: 0}
+    - Color_cdbe02ac7aeb4cdcbff13562c3f6a4cc: {r: 5.3403134, g: 0.07557034, b: 0.07557034, a: 0}
   m_BuildTextureStacks: []

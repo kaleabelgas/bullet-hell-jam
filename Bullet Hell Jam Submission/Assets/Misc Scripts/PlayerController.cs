@@ -55,6 +55,6 @@ public class PlayerController : MonoBehaviour, ITakeDamage
     public void Die()
     {
         OnPlayerDeath?.Invoke();
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

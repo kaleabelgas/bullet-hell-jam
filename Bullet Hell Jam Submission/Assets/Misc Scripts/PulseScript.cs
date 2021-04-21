@@ -9,12 +9,15 @@ public class PulseScript : MonoBehaviour
     [SerializeField] private float pulseSpeed;
     [SerializeField] private float minSize;
 
+    //private RippleEffect rippleEffect;
+
     private float currentRange;
 
     private List<Collider2D> hitEntities;
 
     private void Awake()
     {
+        //rippleEffect = Camera.main.GetComponent<RippleEffect>();
         hitEntities = new List<Collider2D>();
     }
 
@@ -25,7 +28,7 @@ public class PulseScript : MonoBehaviour
             currentRange += pulseSpeed * Time.deltaTime;
             pulse.localScale = new Vector3(currentRange, currentRange);
 
-            RaycastHit2D[] raycastHit2DArray = Physics2D.CircleCastAll(transform.position, currentRange / 2f, Vector2.zero);
+            RaycastHit2D[] raycastHit2DArray = Physics2D.CircleCastAll(transform.position, currentRange, Vector2.zero);
             foreach(RaycastHit2D raycastHit2D in raycastHit2DArray)
             {
                 if(raycastHit2D.collider != null)

@@ -180,7 +180,7 @@ public class dreamloLeaderBoard : MonoBehaviour {
 			
 		genericList.Sort((x, y) => y.score.CompareTo(x.score));
 
-		Debug.Log(genericList[0].score);
+		//Debug.Log(genericList[0].score);
 
 		
 		return genericList;
