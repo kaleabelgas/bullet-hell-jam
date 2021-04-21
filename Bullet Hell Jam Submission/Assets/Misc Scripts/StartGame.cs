@@ -14,7 +14,7 @@ public class StartGame : MonoBehaviour
     private string playerName = "";
     private void Start()
     {
-        highScore.text = "High Score: Level " + PlayerPrefs.GetInt("highscore").ToString();
+        highScore.text = "High Score: <color=#FF0D0D>Level " + PlayerPrefs.GetInt("highscore").ToString() + "</color>";
         if (!string.IsNullOrEmpty(PlayerPrefs.GetString("Name")))
         {
             playerInput.GetComponent<TMP_InputField>().placeholder.GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetString("Name");
@@ -41,7 +41,7 @@ public class StartGame : MonoBehaviour
     public void ResetScore()
     {
         PlayerPrefs.SetInt("highscore", 1);
-        highScore.text = "High Score: Level " + PlayerPrefs.GetInt("highscore").ToString();
+        highScore.text = "High Score: <color=#FF0D0D>Level" + PlayerPrefs.GetInt("highscore").ToString() + "</color>";
         //Debug.Log("reset");
     }
 
