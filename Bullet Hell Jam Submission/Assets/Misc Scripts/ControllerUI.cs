@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
 
 public class ControllerUI : MonoBehaviour
 {
@@ -10,6 +12,11 @@ public class ControllerUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI timer;
     [SerializeField] GameObject tutorial;
     [SerializeField] Slider slider;
+
+    ColorAdjustments colorAdjustments;
+    Volume volume;
+
+    private bool paused = false;
 
     private float timeRemaining = 10;
     private float timePerLevel = 10;
@@ -20,6 +27,9 @@ public class ControllerUI : MonoBehaviour
 
     private void Start()
     {
+        volume = FindObjectOfType<Volume>();
+        volume.profile.TryGet(out colorAdjustments);
+
         currentLevel.text = "LEVEL " + level.ToString();
     }
 
@@ -45,6 +55,18 @@ public class ControllerUI : MonoBehaviour
         slider.value = health;
     }
 
+    public void Pause()
+    {
+        colorAdjustments.active = !colorAdjustments.active;
+        paused = !paused;
+        if (paused)
+        {
+            Time.timeScale = 0;
+            Debug.Log("Paused");
+        }
+        else
+            Time.timeScale = 1;
+    }
 
     // Update is called once per frame
     void Update()

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     private List<ScriptableRendererFeature> ScriptableRendererFeature;
 
+
     PulseScript pulseScript;
 
     [SerializeField] private GameObject EndScreen;
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         ScriptableRendererFeature = ScriptableRendererData.rendererFeatures;
+
 
         blit = (Blit)ScriptableRendererFeature[0];
 
@@ -73,6 +76,9 @@ public class GameManager : MonoBehaviour
         else
         {
             //Debug.Log("Current Level: " + Level);
+
+            Time.timeScale = 0.5f;
+            AudioManager.instance.Play("next level");
 
             NextLevel.Invoke();
 
@@ -143,7 +149,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(.5f);
         List<Transform> spawnPointsLocal = SpawnPointsChosen(spawnPoints);
-
+        Time.timeScale = 1;
         GameObject enemyLocal = EnemyChosen(enemies);
 
         for(int i = 0; i < spawnPointsLocal.Count; i++)

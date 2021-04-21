@@ -5,7 +5,9 @@ using UnityEngine;
 public abstract class BaseBullet : MonoBehaviour
 {
     [SerializeField] protected int damageAmount;
+    [SerializeField] AudioSource bulletHit;
     public GameObject Owner;
+
     public virtual void SetDirection(Vector2 direction, float speed)
     {
 
@@ -14,10 +16,10 @@ public abstract class BaseBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         ITakeDamage toDamage = other.GetComponent<ITakeDamage>();
-        //Debug.Log("Hit " + other);
 
         if (toDamage != null)
         {
+            AudioManager.instance.Play("hit");
             toDamage.GetDamaged(damageAmount, Owner);            
             gameObject.SetActive(false);
         }
@@ -30,6 +32,7 @@ public abstract class BaseBullet : MonoBehaviour
 
     public virtual void OnDisable()
     {
+        ObjectPooler.Instance.SpawnFromPool("hit effect", transform.position, transform.rotation);
         Owner = gameObject;
     }
 }
