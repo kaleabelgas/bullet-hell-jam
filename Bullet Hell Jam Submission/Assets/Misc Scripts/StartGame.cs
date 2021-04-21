@@ -41,7 +41,7 @@ public class StartGame : MonoBehaviour
     public void ResetScore()
     {
         PlayerPrefs.SetInt("highscore", 1);
-        highScore.text = "High Score: <color=#FF0D0D>Level" + PlayerPrefs.GetInt("highscore").ToString() + "</color>";
+        highScore.text = "High Score: <color=#FF0D0D>Level " + PlayerPrefs.GetInt("highscore").ToString() + "</color>";
         //Debug.Log("reset");
     }
 

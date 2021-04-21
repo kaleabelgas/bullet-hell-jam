@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         {
             //Debug.Log("Current Level: " + Level);
 
-            Time.timeScale = 0.5f;
+            Time.timeScale = 0.3f;
             AudioManager.instance.Play("next level");
 
             NextLevel.Invoke();
@@ -91,7 +91,6 @@ public class GameManager : MonoBehaviour
             pulseScript.DoPulse();
 
             ClearEnemies();
-            //ClearBullets();
             StartCoroutine(SpawnEnemies());
 
             timeRemaining = timePerLevel;
@@ -103,6 +102,7 @@ public class GameManager : MonoBehaviour
                 highScore = Level;
                 PlayerPrefs.SetInt("highscore", highScore);
             }
+
             if (GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
                 GameOver();
         }
@@ -148,6 +148,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator SpawnEnemies()
     {
         yield return new WaitForSeconds(.5f);
+
         List<Transform> spawnPointsLocal = SpawnPointsChosen(spawnPoints);
         Time.timeScale = 1;
         GameObject enemyLocal = EnemyChosen(enemies);
