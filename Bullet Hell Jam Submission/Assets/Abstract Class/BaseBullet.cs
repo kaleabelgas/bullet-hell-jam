@@ -20,7 +20,7 @@ public abstract class BaseBullet : MonoBehaviour
         if (toDamage != null)
         {
             AudioManager.instance.Play("hit");
-            toDamage.GetDamaged(damageAmount, Owner);            
+            toDamage.GetDamaged(damageAmount, Owner);
             gameObject.SetActive(false);
         }
     }

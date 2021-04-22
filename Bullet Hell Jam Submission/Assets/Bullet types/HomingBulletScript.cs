@@ -5,18 +5,17 @@ using UnityEngine;
 public class HomingBulletScript : BaseBullet
 {
     private Vector2 lastDirection;
-    private Vector2 playerDirection;
+    private Vector2 targetDirection;
     private float speed;
     private float timeFollowing;
 
+    [SerializeField] private Transform bulletTarget;
+
     [SerializeField] private float defaultTimeFollowing = 2;
-
-    private GameObject player;
-
+    
     private void OnEnable()
     {
         timeFollowing = defaultTimeFollowing;
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public override void SetDirection(Vector2 direction, float speed)
@@ -26,14 +25,14 @@ public class HomingBulletScript : BaseBullet
 
     private void Update()
     {
-        playerDirection = player.transform.position - transform.position;
-        playerDirection.Normalize();
+        targetDirection = bulletTarget.transform.position - transform.position;
+        targetDirection.Normalize();
 
         timeFollowing -= Time.deltaTime;
         if (timeFollowing > 0)
         {
-            transform.Translate(playerDirection * speed * Time.deltaTime);
-            lastDirection = playerDirection;
+            transform.Translate(targetDirection * speed * Time.deltaTime);
+            lastDirection = targetDirection;
         }
         else
         {
@@ -43,7 +42,7 @@ public class HomingBulletScript : BaseBullet
     public override void OnDisable()
     {
         base.OnDisable();
-        player = null;
+        bulletTarget = null;
         lastDirection = Vector2.zero;
         timeFollowing = 0;
     }

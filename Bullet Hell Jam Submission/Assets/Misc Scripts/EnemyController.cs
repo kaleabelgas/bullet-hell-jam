@@ -42,6 +42,6 @@ public class EnemyController : MonoBehaviour, ITakeDamage
         AudioManager.instance.Play("enemy ded");
         ObjectPooler.Instance.SpawnFromPool("death effect", transform.position, transform.rotation);
         CameraShake.Trauma = 0.65f;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

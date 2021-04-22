@@ -15,7 +15,7 @@ public class HighScoresDisplayer : MonoBehaviour
 
     List<dreamloLeaderBoard.Score> HighScoresList;
 
-    [SerializeField] Color gold = new Color(252, 186, 3);
+    [SerializeField] Color specialColor = new Color(252, 186, 3);
 
     [SerializeField] List<string> easterEggNames = new List<string>();
 
@@ -35,7 +35,7 @@ public class HighScoresDisplayer : MonoBehaviour
 
             if(PlayerPrefs.GetString("Name").Equals(name))
             {
-                gameOverText.color = gold;
+                gameOverText.color = specialColor;
             }
         }
     }

@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.Universal;
-using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private List<Transform> spawnPoints;
-    [SerializeField] private List<GameObject> enemies;
+    [SerializeField] private List<string> enemies;
     [SerializeField] private float chanceToSpawnEnemy = 1;
     [SerializeField] private float chanceToPickSpawnPoint = 1;
 
@@ -40,7 +39,7 @@ public class GameManager : MonoBehaviour
     public int Level { get; private set; } = 0;
 
     
-    void Start()
+    void Awake()
     {
         ScriptableRendererFeature = ScriptableRendererData.rendererFeatures;
 
@@ -89,8 +88,6 @@ public class GameManager : MonoBehaviour
             }
 
             pulseScript.DoPulse();
-
-            ClearEnemies();
             StartCoroutine(SpawnEnemies());
 
             timeRemaining = timePerLevel;
@@ -100,7 +97,6 @@ public class GameManager : MonoBehaviour
             if (Level > highScore)
             {
                 highScore = Level;
-                PlayerPrefs.SetInt("highscore", highScore);
             }
 
             if (GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
@@ -108,9 +104,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    GameObject EnemyChosen(List<GameObject> enemiesToChooseFrom)
+    string EnemyChosen(List<string> enemiesToChooseFrom)
     {
-        GameObject chosenEnemy = enemiesToChooseFrom[0];
+        string chosenEnemy = enemiesToChooseFrom[0];
 
         for(int i = 0; i < enemiesToChooseFrom.Count; i++)
         {
@@ -151,41 +147,20 @@ public class GameManager : MonoBehaviour
 
         List<Transform> spawnPointsLocal = SpawnPointsChosen(spawnPoints);
         Time.timeScale = 1;
-        GameObject enemyLocal = EnemyChosen(enemies);
+        string enemyLocal = EnemyChosen(enemies);
 
         for(int i = 0; i < spawnPointsLocal.Count; i++)
         {
-            Instantiate(enemyLocal, spawnPointsLocal[i].position, Quaternion.identity);
-
+            ObjectPooler.Instance.SpawnFromPool(enemyLocal, spawnPointsLocal[i].position, Quaternion.identity);
         }
     }
-
-    private void ClearEnemies()
-    {
-        GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
-
-        for(int i = 0; i < enemyObjects.Length; i++)
-        {
-            Destroy(enemyObjects[i]);
-        }
-    }
-
-    private void ClearBullets()
-    {
-        GameObject[] bulletObjects = GameObject.FindGameObjectsWithTag("Bullet");
-
-        for (int i = 0; i < bulletObjects.Length; i++)
-        {
-            bulletObjects[i].SetActive(false);
-        }
-    }
-
     public void GameOver()
     {
-        //dreamloLeaderBoard.AddScore(PlayerPrefs.GetString("Name"), PlayerPrefs.GetInt("highscore"));
-        blit.ClearTexture();
+        PlayerPrefs.SetInt("highscore", highScore);
+        blit.settings.blitMaterial = null;
         Time.timeScale = 0;
         EndScreen.SetActive(true);
+        PlayerPrefs.Save();
         //SceneManager.LoadScene(0);
     }
 

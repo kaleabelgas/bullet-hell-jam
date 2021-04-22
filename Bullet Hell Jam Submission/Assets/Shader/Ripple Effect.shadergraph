@@ -145,9 +145,6 @@
     "m_GroupDatas": [
         {
             "m_Id": "eb487206e47048498c4feaa70998967b"
-        },
-        {
-            "m_Id": "64f90e8acd3e4870bb0b360cd971c09b"
         }
     ],
     "m_StickyNoteDatas": [],
@@ -988,7 +985,7 @@
     "m_ShaderOutputName": "B",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": 5.300000190734863,
+        "x": 5.099999904632568,
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
@@ -1094,7 +1091,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": -0.20000000298023225,
+    "m_Value": -0.30000001192092898,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -1561,7 +1558,7 @@
     "m_Type": "UnityEditor.ShaderGraph.TimeNode",
     "m_ObjectId": "282717cbdb1943168ea034b8eeb93eeb",
     "m_Group": {
-        "m_Id": "64f90e8acd3e4870bb0b360cd971c09b"
+        "m_Id": ""
     },
     "m_Name": "Time",
     "m_DrawState": {
@@ -1884,7 +1881,7 @@
     "m_Type": "UnityEditor.ShaderGraph.MultiplyNode",
     "m_ObjectId": "31ed688048484434a83bc343864b74da",
     "m_Group": {
-        "m_Id": "64f90e8acd3e4870bb0b360cd971c09b"
+        "m_Id": ""
     },
     "m_Name": "Multiply",
     "m_DrawState": {
@@ -2600,7 +2597,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.10000000149011612,
+    "m_Value": 0.15000000596046449,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -2691,17 +2688,6 @@
     "m_PreviewMode": 0,
     "m_CustomColors": {
         "m_SerializableColors": []
-    }
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.GroupData",
-    "m_ObjectId": "64f90e8acd3e4870bb0b360cd971c09b",
-    "m_Title": "Time",
-    "m_Position": {
-        "x": -990.0,
-        "y": -912.0000610351563
     }
 }
 
@@ -3460,7 +3446,7 @@
     "m_Type": "UnityEditor.ShaderGraph.FractionNode",
     "m_ObjectId": "9af4ec359cc14e16868bc5a6f91d839e",
     "m_Group": {
-        "m_Id": "64f90e8acd3e4870bb0b360cd971c09b"
+        "m_Id": ""
     },
     "m_Name": "Fraction",
     "m_DrawState": {
@@ -3696,7 +3682,7 @@
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "a9518f4ae6804ab0921d4770f1eadc73",
     "m_Group": {
-        "m_Id": "64f90e8acd3e4870bb0b360cd971c09b"
+        "m_Id": ""
     },
     "m_Name": "Property",
     "m_DrawState": {
@@ -4199,8 +4185,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 114.99989318847656,
-            "y": -587.9999389648438,
+            "x": 175.00001525878907,
+            "y": -588.0,
             "width": 208.0,
             "height": 326.0
         }
