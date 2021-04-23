@@ -180,7 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 20
   attackSpeed: 0.1
-  bulletUsed: default bullet
+  bulletUsed: player bullet
   firePoint: {fileID: 4523558255318955318}
 --- !u!61 &4523558256386118406
 BoxCollider2D:

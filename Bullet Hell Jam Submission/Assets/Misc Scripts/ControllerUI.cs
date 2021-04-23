@@ -31,6 +31,7 @@ public class ControllerUI : MonoBehaviour
         volume.profile.TryGet(out colorAdjustments);
 
         currentLevel.text = "LEVEL " + level.ToString();
+        AudioManager.instance.Play("level moosic");
     }
 
     public void UpdateCurrentLevel()
@@ -63,9 +64,14 @@ public class ControllerUI : MonoBehaviour
         {
             Time.timeScale = 0;
             Debug.Log("Paused");
+            //AudioManager.instance.Play("level moosic");
         }
         else
+        {
             Time.timeScale = 1;
+            //AudioManager.instance.UnPause("level moosic");
+
+        }
     }
 
     // Update is called once per frame

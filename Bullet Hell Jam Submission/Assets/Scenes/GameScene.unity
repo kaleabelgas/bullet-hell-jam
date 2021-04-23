@@ -1557,7 +1557,7 @@ MonoBehaviour:
   pools:
   - tag: default bullet
     objectPrefab: {fileID: 3646535366457579801, guid: be8d6c258e393104bb6edd880b3b8617, type: 3}
-    poolSize: 100
+    poolSize: 50
   - tag: homing bullet
     objectPrefab: {fileID: 3646535366457579801, guid: 7388bfdf8cdd9ae4f8fbe030035336d7, type: 3}
     poolSize: 0
@@ -1573,6 +1573,12 @@ MonoBehaviour:
   - tag: default enemy
     objectPrefab: {fileID: 820460646642010933, guid: eb6e1ed96027c0944830b3a81080c9b4, type: 3}
     poolSize: 10
+  - tag: rare enemy
+    objectPrefab: {fileID: 820460646642010933, guid: a2105303ac0f82b4795bd4ddac4dbfdd, type: 3}
+    poolSize: 0
+  - tag: player bullet
+    objectPrefab: {fileID: 3646535366457579801, guid: 4cff55b131eedea4fbf05c49204ff3d5, type: 3}
+    poolSize: 50
 --- !u!4 &659574834
 Transform:
   m_ObjectHideFlags: 0
@@ -3853,7 +3859,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 037ce4c5684fc384d98c3ea089c72f01, type: 2}
+  - {fileID: 2100000, guid: 4a266abbbb9d04049936b268d112f70e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4641,6 +4647,15 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: level moosic
+    clip: {fileID: 8300000, guid: e1d09e97ba9537b4eba102ab24c05617, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
 --- !u!4 &2098452769

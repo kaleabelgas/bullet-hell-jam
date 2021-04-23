@@ -166,6 +166,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
+        AudioManager.instance.Stop("level moosic");
         SceneManager.LoadScene(0);
     }
 }
