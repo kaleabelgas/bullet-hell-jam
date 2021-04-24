@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
 
     PulseScript pulseScript;
 
-    [SerializeField] private GameObject EndScreen;
     private float timeRemaining;
 
     public event Action NextLevel;
@@ -55,8 +54,6 @@ public class GameManager : MonoBehaviour
         if (string.IsNullOrEmpty(PlayerPrefs.GetString("Name"))){
             PlayerPrefs.SetString("Name", "AAA");
         }
-
-        EndScreen.SetActive(false);
         timeRemaining = timePerLevel;
         NextLevel += controllerUI.UpdateCurrentLevel;
         highScore = PlayerPrefs.GetInt("highscore");
@@ -159,14 +156,8 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("highscore", highScore);
         blit.settings.blitMaterial = null;
         Time.timeScale = 0;
-        EndScreen.SetActive(true);
+        //EndScreen.SetActive(true);
         PlayerPrefs.Save();
-        //SceneManager.LoadScene(0);
-    }
-
-    public void LoadMainMenu()
-    {
-        AudioManager.instance.Stop("level moosic");
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
 }
