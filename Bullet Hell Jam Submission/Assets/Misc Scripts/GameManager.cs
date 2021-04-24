@@ -17,14 +17,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ControllerUI controllerUI;
 
     [SerializeField] private dreamloLeaderBoard dreamloLeaderBoard;
-
-    [SerializeField] private ScriptableRendererData ScriptableRendererData;
-
-    [SerializeField] private Material rippleMaterial;
-
-    private List<ScriptableRendererFeature> ScriptableRendererFeature;
-
-
     PulseScript pulseScript;
 
     private float timeRemaining;
@@ -32,20 +24,11 @@ public class GameManager : MonoBehaviour
     public event Action NextLevel;
     private int highScore = 1;
     private bool tutorialDone = false;
-
-    Blit blit;
-
     public int Level { get; private set; } = 0;
 
     
     void Awake()
     {
-        ScriptableRendererFeature = ScriptableRendererData.rendererFeatures;
-
-
-        blit = (Blit)ScriptableRendererFeature[0];
-
-        blit.settings.blitMaterial = rippleMaterial;
         CameraShake.TargetPos = transform.position;
 
 
@@ -154,7 +137,6 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         PlayerPrefs.SetInt("highscore", highScore);
-        blit.settings.blitMaterial = null;
         Time.timeScale = 0;
         //EndScreen.SetActive(true);
         PlayerPrefs.Save();

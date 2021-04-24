@@ -19,6 +19,8 @@ public class HighScoresDisplayer : MonoBehaviour
 
     [SerializeField] List<string> easterEggNames = new List<string>();
 
+    WaitForSeconds leaderboardUpdate = new WaitForSeconds(0.5f);
+
     void OnEnable()
     {
         dl = FindObjectOfType<dreamloLeaderBoard>();
@@ -42,9 +44,14 @@ public class HighScoresDisplayer : MonoBehaviour
 
     private void Update()
     {
+        StartCoroutine(UpdateLeaderboard());
+    }
+
+    private IEnumerator UpdateLeaderboard()
+    {
+
         HighScoresList = dl.ToListHighToLow();
         for (int i = 0; i < highScoreTexts.Length; i++)
-
         {
             highScoreTexts[i].text = i + 1 + ". N/A...";
             if (HighScoresList.Count > i)
@@ -53,5 +60,7 @@ public class HighScoresDisplayer : MonoBehaviour
                 highScoreTexts[i].text = i + 1 + ". " + HighScoresList[i].playerName + " - " + HighScoresList[i].score;
             }
         }
+        yield return leaderboardUpdate;
+        
     }
 }

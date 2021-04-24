@@ -55,10 +55,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef040a9462efccf47b4e5ee7d8a1a08e, type: 3}
   m_Name: NewBlit
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   settings:
     Event: 500
-    blitMaterial: {fileID: 2100000, guid: 8e12b493c7bc8914aa50f1cf0b9b8eac, type: 2}
+    blitMaterial: {fileID: 0}
     defaultMaterial: {fileID: 0}
     blitMaterialPassIndex: 0
     destination: 0
