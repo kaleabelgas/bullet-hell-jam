@@ -26,10 +26,8 @@ public class HighScoresDisplayer : MonoBehaviour
         dl = FindObjectOfType<dreamloLeaderBoard>();
         dl.AddScore(PlayerPrefs.GetString("Name"), PlayerPrefs.GetInt("highscore"));
         for (int i = 0; i < highScoreTexts.Length; i++)
-
         {
-            highScoreTexts[i].text = i + 1 + ". Fetching...";
-            
+            highScoreTexts[i].text = $"{i}. Fetching...";
         }
 
         foreach(string name in easterEggNames)
@@ -57,7 +55,9 @@ public class HighScoresDisplayer : MonoBehaviour
             if (HighScoresList.Count > i)
             {
                 //Debug.Log("yes");
-                highScoreTexts[i].text = i + 1 + ". " + HighScoresList[i].playerName + " - " + HighScoresList[i].score;
+                string textToDisplay = $"{HighScoresList[i].score} - {HighScoresList[i].playerName}";
+                if(textToDisplay.Length > 16) { textToDisplay = $"{textToDisplay.Substring(0, 14)}.."; }
+                highScoreTexts[i].text = $"[{textToDisplay}]";
             }
         }
         yield return leaderboardUpdate;

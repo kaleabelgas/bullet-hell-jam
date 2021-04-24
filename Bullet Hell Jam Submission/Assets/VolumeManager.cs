@@ -3,9 +3,6 @@ using UnityEngine;
 public class VolumeManager : MonoBehaviour
 {
     [SerializeField] GameObject globalVolume;
-
-    private bool isPostProcessingOn = true;
-
     private void Start()
     {
         globalVolume = GameObject.FindGameObjectWithTag("Volume");
@@ -22,8 +19,6 @@ public class VolumeManager : MonoBehaviour
 
     public void TogglePostProcessing()
     {
-        
-
         if (PlayerPrefs.GetInt("isVolumeOn") <= 0)
         {
             globalVolume.SetActive(false);

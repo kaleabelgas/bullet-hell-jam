@@ -124,7 +124,7 @@ public class dreamloLeaderBoard : MonoBehaviour {
         using UnityWebRequest www = UnityWebRequest.Get(url);
         yield return www.SendWebRequest();
         highScores = www.downloadHandler.text;
-        Debug.Log(highScores);
+        //Debug.Log(highScores);
 
         //Debug.Log()
 
