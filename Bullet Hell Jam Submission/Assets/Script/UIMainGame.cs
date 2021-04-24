@@ -5,9 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
-using UnityEngine.SceneManagement;
 
-public class ControllerUI : MonoBehaviour
+public class UIMainGame : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI currentLevel;
     [SerializeField] TextMeshProUGUI timer;

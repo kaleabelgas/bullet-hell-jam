@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,9 +13,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private float timePerLevel = 1;
 
-    [SerializeField] private ControllerUI controllerUI;
-
-    [SerializeField] private dreamloLeaderBoard dreamloLeaderBoard;
+    [SerializeField] private UIMainGame uIMainGame;
     PulseScript pulseScript;
 
     private float timeRemaining;
@@ -38,7 +35,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetString("Name", "AAA");
         }
         timeRemaining = timePerLevel;
-        NextLevel += controllerUI.UpdateCurrentLevel;
+        NextLevel += uIMainGame.UpdateCurrentLevel;
         highScore = PlayerPrefs.GetInt("highscore");
         //SpawnEnemies();
     }
@@ -63,7 +60,7 @@ public class GameManager : MonoBehaviour
 
             if (!tutorialDone)
             {
-                controllerUI.DeleteTutorial();
+                uIMainGame.DeleteTutorial();
                 tutorialDone = true;
             }
 

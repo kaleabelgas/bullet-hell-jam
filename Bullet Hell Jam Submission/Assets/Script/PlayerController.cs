@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour, ITakeDamage
     [SerializeField] private int playerSpeed;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private int playerHealth;
-    private ControllerUI controllerUI;
+    private UIMainGame uIMainGame;
 
     public event Action OnPlayerDeath;
     private Vector2 direction;
@@ -19,13 +19,14 @@ public class PlayerController : MonoBehaviour, ITakeDamage
 
     private void Awake()
     {
-        controllerUI = FindObjectOfType<ControllerUI>();
+        uIMainGame = FindObjectOfType<UIMainGame>();
         OnPlayerDeath += gameManager.GameOver;
         playerRB2D = GetComponent<Rigidbody2D>();
         Health = playerHealth;
-
-        controllerUI.SetHealthBarMax(playerHealth);
+        uIMainGame.SetHealthBarMax(playerHealth);
     }
+
+
 
     private void Update()
     {
@@ -48,7 +49,7 @@ public class PlayerController : MonoBehaviour, ITakeDamage
         Health -= amount;
         CameraShake.Trauma = 0.7f;
         //Debug.Log("Health: " + Health);
-        controllerUI.SetHealthBar(Health);
+        uIMainGame.SetHealthBar(Health);
         if (Health <= 0)
             Die();
     }
