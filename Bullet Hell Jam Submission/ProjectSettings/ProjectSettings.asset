@@ -14,8 +14,8 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: ' Kale & Pearl'
   productName: Survive 10
-  defaultCursor: {fileID: 2800000, guid: 92403eba6c4bb15469aea14629bdc702, type: 3}
-  cursorHotspot: {x: 8, y: 8}
+  defaultCursor: {fileID: 2800000, guid: ceade61fad1a70c4c83f3d13bbf708ac, type: 3}
+  cursorHotspot: {x: 25, y: 25}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1

@@ -785,6 +785,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
+  - tag: hit effect
+    objectPrefab: {fileID: 3375661579799012832, guid: 7ef30628ae1bcad478948b5f439172d1, type: 3}
+    poolSize: 25
   - tag: default bullet
     objectPrefab: {fileID: 3646535366457579801, guid: be8d6c258e393104bb6edd880b3b8617, type: 3}
     poolSize: 50
@@ -797,9 +800,6 @@ MonoBehaviour:
   - tag: death effect
     objectPrefab: {fileID: 3375661579799012832, guid: 8b569566756100f43a652c4972d184c6, type: 3}
     poolSize: 15
-  - tag: hit effect
-    objectPrefab: {fileID: 3375661579799012832, guid: 7ef30628ae1bcad478948b5f439172d1, type: 3}
-    poolSize: 25
   - tag: default enemy
     objectPrefab: {fileID: 820460646642010933, guid: eb6e1ed96027c0944830b3a81080c9b4, type: 3}
     poolSize: 10

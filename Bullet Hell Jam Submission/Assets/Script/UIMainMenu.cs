@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class StartGame : MonoBehaviour
+public class UIMainMenu : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI highScore;
 
@@ -47,6 +47,12 @@ public class StartGame : MonoBehaviour
         highScore.text = "High Score: <color=#FF0D0D>Level " + PlayerPrefs.GetInt("highscore").ToString() + "</color>";
         //Debug.Log("reset");
     }
+
+    public void OpenLeaderboard()
+    {
+        SceneManager.LoadScene(2);
+    }
+
     public void OpenDiscord()
     {
         Application.OpenURL("https://discord.gg/JkF6BJEAeC");

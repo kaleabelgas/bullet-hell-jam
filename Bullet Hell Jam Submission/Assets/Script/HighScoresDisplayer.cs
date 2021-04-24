@@ -51,7 +51,7 @@ public class HighScoresDisplayer : MonoBehaviour
         HighScoresList = dl.ToListHighToLow();
         for (int i = 0; i < highScoreTexts.Length; i++)
         {
-            highScoreTexts[i].text = i + 1 + ". N/A...";
+            highScoreTexts[i].text = $"[Fetching... ]";
             if (HighScoresList.Count > i)
             {
                 //Debug.Log("yes");
