@@ -25,6 +25,6 @@ public class HealthAdder : MonoBehaviour
 
     private void OnDisable()
     {
-        ObjectPooler.Instance.SpawnFromPool("hit effect", transform.position, transform.rotation);
+        ObjectPooler.Instance.SpawnFromPool("collect health", transform.position, Quaternion.identity);
     }
 }

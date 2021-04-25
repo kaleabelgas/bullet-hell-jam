@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour, ITakeDamage
         if (owner.Equals(this.gameObject))
             return;
         Health -= amount;
-        CameraShake.Trauma = 0.7f;
+        if(amount > 0) CameraShake.Trauma = 0.7f;
         //Debug.Log("Health: " + Health);
         uIMainGame.SetHealthBar(Health);
         if (Health <= 0)
