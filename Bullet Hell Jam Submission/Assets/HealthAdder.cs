@@ -19,6 +19,7 @@ public class HealthAdder : MonoBehaviour
         {
             //AudioManager.instance.Play("hit");
             toDamage.GetDamaged(damageAmount, Owner);
+            AudioManager.instance.Play("powerup");
             gameObject.SetActive(false);
         }
     }
