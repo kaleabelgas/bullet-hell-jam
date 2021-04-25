@@ -802,7 +802,7 @@ MonoBehaviour:
     objectPrefab: {fileID: 3375661579799012832, guid: 8b569566756100f43a652c4972d184c6, type: 3}
     poolSize: 15
   - tag: default enemy
-    objectPrefab: {fileID: 820460646642010933, guid: eb6e1ed96027c0944830b3a81080c9b4, type: 3}
+    objectPrefab: {fileID: 820460646642010933, guid: cbe986e21b49c834691e8be7e07c6bd2, type: 3}
     poolSize: 10
   - tag: rare enemy
     objectPrefab: {fileID: 820460646642010933, guid: a2105303ac0f82b4795bd4ddac4dbfdd, type: 3}
@@ -866,9 +866,9 @@ MonoBehaviour:
   - {fileID: 752788996}
   enemies:
   - enemyName: default enemy
-    chanceToSpawn: 0
-  - enemyName: rare enemy
     chanceToSpawn: 100
+  - enemyName: rare enemy
+    chanceToSpawn: 0
   chanceToPickSpawnPoint: 5
   amountToIncreaseChance: 1.5
   timePerLevel: 10
