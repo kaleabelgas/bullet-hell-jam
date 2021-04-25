@@ -45,16 +45,16 @@ public class HighScoresDisplayer : MonoBehaviour
             highScoreTexts[i].text = $"{i}. Fetching...";
         }
 
-        foreach(string name in easterEggNames)
+        foreach (string name in easterEggNames)
         {
 
-            if(PlayerPrefs.GetString("Name").Equals(name))
+            if (PlayerPrefs.GetString("Name").Equals(name))
             {
                 gameOverText.color = highestColor;
             }
         }
 
-        if(highScore >= 200)
+        if (highScore >= 200)
         {
             gameOverText.color = highestColor;
         }
@@ -88,11 +88,11 @@ public class HighScoresDisplayer : MonoBehaviour
             {
                 //Debug.Log("yes");
                 string textToDisplay = $"{HighScoresList[i].score} - {HighScoresList[i].playerName}";
-                if(textToDisplay.Length > 16) { textToDisplay = $"{textToDisplay.Substring(0, 14)}.."; }
+                if (textToDisplay.Length > 16) { textToDisplay = $"{textToDisplay.Substring(0, 14)}.."; }
                 highScoreTexts[i].text = $"[{textToDisplay}]";
             }
         }
         yield return leaderboardUpdate;
-        
+
     }
 }

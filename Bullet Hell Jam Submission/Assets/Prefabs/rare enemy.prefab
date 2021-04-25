@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 820460646642010936}
   - component: {fileID: 820460646642010935}
   - component: {fileID: 820460646642010934}
-  - component: {fileID: 820460646642010937}
   - component: {fileID: -5378225388360553415}
+  - component: {fileID: -4277789708700304930}
   - component: {fileID: -1882135872919263423}
   - component: {fileID: -2766704730411848568}
   m_Layer: 0
@@ -100,22 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cd2c8d9f072fd54385ed3d706b0c2c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &820460646642010937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 820460646642010933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72cb90e485a51b145b398e99c8b52af6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpeed: 10
-  attackSpeed: 0.3
-  bulletUsed: default bullet
-  firePoint: {fileID: 5872392702283852024}
 --- !u!114 &-5378225388360553415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +114,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   target: {fileID: 4523558256386118413, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
-  health: 50
+  health: 100
+--- !u!114 &-4277789708700304930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820460646642010933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50bcbea45cd3a24d8f8fd0e0a608d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 5
+  attackSpeed: 1
+  bulletUsed: default bullet
+  numPoints: 10
+  radius: 1
 --- !u!58 &-1882135872919263423
 CircleCollider2D:
   m_ObjectHideFlags: 0

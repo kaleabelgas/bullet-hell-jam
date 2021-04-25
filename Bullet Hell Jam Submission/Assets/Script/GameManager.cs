@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     private bool tutorialDone = false;
     public int Level { get; private set; } = 0;
 
-    
+
     void Awake()
     {
         CameraShake.TargetPos = transform.position;
@@ -41,7 +41,8 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 1;
         pulseScript = GetComponent<PulseScript>();
-        if (string.IsNullOrEmpty(PlayerPrefs.GetString("Name"))){
+        if (string.IsNullOrEmpty(PlayerPrefs.GetString("Name")))
+        {
             PlayerPrefs.SetString("Name", "AAA");
         }
         timeRemaining = timePerLevel;
@@ -67,7 +68,7 @@ public class GameManager : MonoBehaviour
                 uIMainGame.DeleteTutorial();
                 tutorialDone = true;
             }
-            
+
             Level++;
 
             AudioManager.instance.Play("next level");
@@ -80,7 +81,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(SpawnEnemies());
 
 
-            if(amountToIncreaseChance < 100)
+            if (amountToIncreaseChance < 100)
             {
                 chanceToPickSpawnPoint += amountToIncreaseChance;
             }
@@ -100,7 +101,7 @@ public class GameManager : MonoBehaviour
     {
         List<string> chosenEnemy = new List<string>();
 
-        for(int i = 0; i < enemiesToChooseFrom.Count; i++)
+        for (int i = 0; i < enemiesToChooseFrom.Count; i++)
         {
             // RNG
             float randomNumber = UnityEngine.Random.Range(1f, 100f);
@@ -109,7 +110,7 @@ public class GameManager : MonoBehaviour
                 chosenEnemy.Add(enemiesToChooseFrom[i].enemyName);
             }
         }
-        if(chosenEnemy.Count <= 0) { chosenEnemy.Add(enemiesToChooseFrom[0].enemyName); }
+        if (chosenEnemy.Count <= 0) { chosenEnemy.Add(enemiesToChooseFrom[0].enemyName); }
         return chosenEnemy;
     }
 
@@ -120,7 +121,7 @@ public class GameManager : MonoBehaviour
         // spawn in at least 1
         chosenSpawnPoints.Add(spawnPointsToChooseFrom[UnityEngine.Random.Range(1, spawnPointsToChooseFrom.Count)]);
 
-        for(int i = 0; i < spawnPointsToChooseFrom.Count; i++)
+        for (int i = 0; i < spawnPointsToChooseFrom.Count; i++)
         {
             float randomNumber = UnityEngine.Random.Range(1f, 100f);
             if (randomNumber < chanceToPickSpawnPoint)

@@ -791,7 +791,7 @@ MonoBehaviour:
     poolSize: 25
   - tag: default bullet
     objectPrefab: {fileID: 3646535366457579801, guid: be8d6c258e393104bb6edd880b3b8617, type: 3}
-    poolSize: 50
+    poolSize: 100
   - tag: homing bullet
     objectPrefab: {fileID: 3646535366457579801, guid: 7388bfdf8cdd9ae4f8fbe030035336d7, type: 3}
     poolSize: 0
@@ -813,6 +813,9 @@ MonoBehaviour:
   - tag: Health
     objectPrefab: {fileID: 5389692456650467292, guid: dab4cb905a513a24296e8025fbb2e56a, type: 3}
     poolSize: 10
+  - tag: pulsing bullet
+    objectPrefab: {fileID: 3646535366457579801, guid: e34d2f981ec356d4fb1bf27d55e37ab8, type: 3}
+    poolSize: 100
 --- !u!4 &659574834
 Transform:
   m_ObjectHideFlags: 0
@@ -862,7 +865,7 @@ MonoBehaviour:
   - enemyName: default enemy
     chanceToSpawn: 50
   - enemyName: rare enemy
-    chanceToSpawn: 70
+    chanceToSpawn: 10
   chanceToPickSpawnPoint: 5
   amountToIncreaseChance: 1.5
   timePerLevel: 10
@@ -896,7 +899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfHealth: 5
-  chanceToSpawnHealth: 10
+  chanceToSpawnHealth: 100
   verticalOffset: 0.15
 --- !u!1 &752788995
 GameObject:

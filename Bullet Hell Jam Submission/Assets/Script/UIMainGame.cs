@@ -58,7 +58,8 @@ public class UIMainGame : MonoBehaviour
 
     public void Pause()
     {
-        colorAdjustments.active = !colorAdjustments.active;
+        if(colorAdjustments != null)
+            colorAdjustments.active = !colorAdjustments.active;
         paused = !paused;
         if (paused)
         {
@@ -77,7 +78,7 @@ public class UIMainGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timeRemaining > 0)
+        if (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
             timeToDisplay = Mathf.CeilToInt(timeRemaining);

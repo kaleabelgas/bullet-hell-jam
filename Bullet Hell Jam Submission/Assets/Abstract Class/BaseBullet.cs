@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class BaseBullet : MonoBehaviour
 {
     [SerializeField] protected int damageAmount;
-    [SerializeField] AudioSource bulletHit;
     public GameObject Owner;
 
     public virtual void SetDirection(Vector2 direction, float speed)
@@ -21,7 +20,10 @@ public abstract class BaseBullet : MonoBehaviour
         {
             AudioManager.instance.Play("hit");
             toDamage.GetDamaged(damageAmount, Owner);
-            gameObject.SetActive(false);
+            //if (other.gameObject.CompareTag("Player"))
+            //{
+            //}
+                gameObject.SetActive(false);
         }
     }
 
