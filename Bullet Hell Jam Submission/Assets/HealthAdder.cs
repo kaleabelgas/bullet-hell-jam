@@ -1,0 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class HealthAdder : MonoBehaviour
+{
+    [SerializeField] private int damageAmount = -10;
+
+    GameObject Owner;
+    private void Start()
+    {
+        Owner = this.gameObject;
+    }
+
+    private void Update()
+    {
+        gameObject.SetActive(true);
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        ITakeDamage toDamage = other.GetComponent<ITakeDamage>();
+
+        if (toDamage != null && other.gameObject.CompareTag("Player"))
+        {
+            //AudioManager.instance.Play("hit");
+            toDamage.GetDamaged(damageAmount, Owner);
+            //gameObject.SetActive(false);
+        }
+    }
+}
