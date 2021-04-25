@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 10
   attackSpeed: 0.3
-  bulletUsed: homing bullet
+  bulletUsed: default bullet
   firePoint: {fileID: 5872392702283852024}
 --- !u!114 &-5378225388360553415
 MonoBehaviour:

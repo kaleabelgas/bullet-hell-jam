@@ -6,10 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [System.Serializable]
+    public class EnemyType
+    {
+        public string enemyName;
+        public float chanceToSpawn;
+    }
+
     [SerializeField] private List<Transform> spawnPoints;
-    [SerializeField] private List<string> enemies;
-    [SerializeField] private float chanceToSpawnEnemy = 1;
+    [SerializeField] private List<EnemyType> enemies;
     [SerializeField] private float chanceToPickSpawnPoint = 1;
+    [SerializeField] private float amountToIncreaseChance = 1;
 
     [SerializeField] private float timePerLevel = 1;
 
@@ -64,6 +71,11 @@ public class GameManager : MonoBehaviour
                 tutorialDone = true;
             }
 
+            if(amountToIncreaseChance < 100)
+            {
+                chanceToPickSpawnPoint += amountToIncreaseChance;
+            }
+
             pulseScript.DoPulse();
             StartCoroutine(SpawnEnemies());
 
@@ -76,26 +88,25 @@ public class GameManager : MonoBehaviour
                 highScore = Level;
             }
 
-            if (GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
-                GameOver();
+            //if (GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
+            //    GameOver();
         }
     }
 
-    string EnemyChosen(List<string> enemiesToChooseFrom)
+    List<string> EnemyChosen(List<EnemyType> enemiesToChooseFrom)
     {
-        string chosenEnemy = enemiesToChooseFrom[0];
+        List<string> chosenEnemy = new List<string>();
 
         for(int i = 0; i < enemiesToChooseFrom.Count; i++)
         {
             // RNG
             float randomNumber = UnityEngine.Random.Range(1f, 100f);
-            if (randomNumber < chanceToSpawnEnemy)
+            if (randomNumber < enemiesToChooseFrom[i].chanceToSpawn)
             {
-                chosenEnemy = enemiesToChooseFrom[i];
-                //Debug.Log(chosenEnemy);
-                return chosenEnemy;
+                chosenEnemy.Add(enemiesToChooseFrom[i].enemyName);
             }
         }
+        if(chosenEnemy.Count <= 0) { chosenEnemy.Add(enemiesToChooseFrom[0].enemyName); }
         return chosenEnemy;
     }
 
@@ -121,14 +132,18 @@ public class GameManager : MonoBehaviour
     private IEnumerator SpawnEnemies()
     {
         yield return new WaitForSeconds(.5f);
+        Time.timeScale = 1;
 
         List<Transform> spawnPointsLocal = SpawnPointsChosen(spawnPoints);
-        Time.timeScale = 1;
-        string enemyLocal = EnemyChosen(enemies);
+        List<string> enemyLocal = EnemyChosen(enemies);
 
-        for(int i = 0; i < spawnPointsLocal.Count; i++)
+        Debug.Log(enemyLocal.Count);
+        for (int i = 0; i < spawnPointsLocal.Count; i++)
         {
-            ObjectPooler.Instance.SpawnFromPool(enemyLocal, spawnPointsLocal[i].position, Quaternion.identity);
+            for (int j = 0; j < enemyLocal.Count; j++)
+            {
+                ObjectPooler.Instance.SpawnFromPool(enemyLocal[j], spawnPointsLocal[i].position, Quaternion.identity);
+            }
         }
     }
     public void GameOver()
