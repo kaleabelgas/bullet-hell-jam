@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
 
     private float timeRemaining;
 
+    private HealthSpawner healthSpawner;
+
     public event Action NextLevel;
     private int highScore = 1;
     private bool tutorialDone = false;
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour
     {
         CameraShake.TargetPos = transform.position;
 
+        healthSpawner = GetComponent<HealthSpawner>();
 
         Time.timeScale = 1;
         pulseScript = GetComponent<PulseScript>();
@@ -59,29 +62,29 @@ public class GameManager : MonoBehaviour
         else
         {
             //Debug.Log("Current Level: " + Level);
-
-            Time.timeScale = 0.3f;
-            AudioManager.instance.Play("next level");
-
-            NextLevel.Invoke();
-
             if (!tutorialDone)
             {
                 uIMainGame.DeleteTutorial();
                 tutorialDone = true;
             }
+            
+            Level++;
+
+            AudioManager.instance.Play("next level");
+            Time.timeScale = 0.3f;
+
+            NextLevel.Invoke();
+            pulseScript.DoPulse();
+            timeRemaining = timePerLevel;
+            healthSpawner.ClearHealth();
+            StartCoroutine(SpawnEnemies());
+
 
             if(amountToIncreaseChance < 100)
             {
                 chanceToPickSpawnPoint += amountToIncreaseChance;
             }
 
-            pulseScript.DoPulse();
-            StartCoroutine(SpawnEnemies());
-
-            timeRemaining = timePerLevel;
-
-            Level++;
 
             if (Level > highScore)
             {
@@ -133,6 +136,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(.5f);
         Time.timeScale = 1;
+        healthSpawner.SpawnHealth();
 
         List<Transform> spawnPointsLocal = SpawnPointsChosen(spawnPoints);
         List<string> enemyLocal = EnemyChosen(enemies);

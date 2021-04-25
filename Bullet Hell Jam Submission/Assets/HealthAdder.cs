@@ -7,14 +7,9 @@ public class HealthAdder : MonoBehaviour
     [SerializeField] private int damageAmount = -10;
 
     GameObject Owner;
-    private void Start()
+    private void OnEnable()
     {
         Owner = this.gameObject;
-    }
-
-    private void Update()
-    {
-        gameObject.SetActive(true);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -24,7 +19,12 @@ public class HealthAdder : MonoBehaviour
         {
             //AudioManager.instance.Play("hit");
             toDamage.GetDamaged(damageAmount, Owner);
-            //gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
+    }
+
+    private void OnDisable()
+    {
+        ObjectPooler.Instance.SpawnFromPool("hit effect", transform.position, transform.rotation);
     }
 }

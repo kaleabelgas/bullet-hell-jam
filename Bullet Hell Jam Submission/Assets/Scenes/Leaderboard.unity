@@ -2154,11 +2154,16 @@ MonoBehaviour:
   - {fileID: 1848602351}
   dl: {fileID: 1265712695}
   gameOverText: {fileID: 1452823603}
-  specialColor: {r: 1, g: 0.84569454, b: 0.4198113, a: 1}
+  highestColor: {r: 9.005236, g: 6.903727, b: 0, a: 1}
+  highColor: {r: 0.8572956, g: 0.18393561, b: 4.3327074, a: 1}
+  mediumColor: {r: 3.0056746, g: 0.439509, b: 0.439509, a: 1}
+  lowColor: {r: 1.4142135, g: 0.94835496, b: 0.86516595, a: 1}
   easterEggNames:
   - pearl
   - kale
   - playerten
+  - surviveten
+  - nevergonnagiveyouup
 --- !u!4 &1714311080
 Transform:
   m_ObjectHideFlags: 0

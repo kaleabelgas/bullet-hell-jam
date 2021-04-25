@@ -15,16 +15,31 @@ public class HighScoresDisplayer : MonoBehaviour
 
     List<dreamloLeaderBoard.Score> HighScoresList;
 
-    [SerializeField] Color specialColor = new Color(252, 186, 3);
+    [ColorUsageAttribute(true, true)]
+    [SerializeField] Color highestColor = new Color(252, 186, 3);
+
+    [ColorUsageAttribute(true, true)]
+    [SerializeField] Color highColor = new Color();
+
+    [ColorUsageAttribute(true, true)]
+    [SerializeField] Color mediumColor = new Color();
+
+    [ColorUsageAttribute(true, true)]
+    [SerializeField] Color lowColor = new Color();
+
+
 
     [SerializeField] List<string> easterEggNames = new List<string>();
 
     WaitForSeconds leaderboardUpdate = new WaitForSeconds(0.5f);
 
+    private int highScore;
+
     void OnEnable()
     {
+        highScore = PlayerPrefs.GetInt("highscore");
         dl = FindObjectOfType<dreamloLeaderBoard>();
-        dl.AddScore(PlayerPrefs.GetString("Name"), PlayerPrefs.GetInt("highscore"));
+        dl.AddScore(PlayerPrefs.GetString("Name"), highScore);
         for (int i = 0; i < highScoreTexts.Length; i++)
         {
             highScoreTexts[i].text = $"{i}. Fetching...";
@@ -35,8 +50,25 @@ public class HighScoresDisplayer : MonoBehaviour
 
             if(PlayerPrefs.GetString("Name").Equals(name))
             {
-                gameOverText.color = specialColor;
+                gameOverText.color = highestColor;
             }
+        }
+
+        if(highScore >= 200)
+        {
+            gameOverText.color = highestColor;
+        }
+        else if (highScore >= 100 && highScore < 150)
+        {
+            gameOverText.color = highColor;
+        }
+        else if (highScore >= 50 && highScore < 100)
+        {
+            gameOverText.color = mediumColor;
+        }
+        else if (highScore >= 20 && highScore < 50)
+        {
+            gameOverText.color = lowColor;
         }
     }
 
