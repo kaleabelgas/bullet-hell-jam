@@ -866,9 +866,9 @@ MonoBehaviour:
   - {fileID: 752788996}
   enemies:
   - enemyName: default enemy
-    chanceToSpawn: 50
+    chanceToSpawn: 0
   - enemyName: rare enemy
-    chanceToSpawn: 10
+    chanceToSpawn: 100
   chanceToPickSpawnPoint: 5
   amountToIncreaseChance: 1.5
   timePerLevel: 10
