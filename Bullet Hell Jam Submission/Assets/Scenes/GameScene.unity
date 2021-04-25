@@ -795,18 +795,15 @@ MonoBehaviour:
   - tag: homing bullet
     objectPrefab: {fileID: 3646535366457579801, guid: 7388bfdf8cdd9ae4f8fbe030035336d7, type: 3}
     poolSize: 0
-  - tag: normal enemy
-    objectPrefab: {fileID: 820460646642010933, guid: eb6e1ed96027c0944830b3a81080c9b4, type: 3}
-    poolSize: 0
   - tag: death effect
     objectPrefab: {fileID: 3375661579799012832, guid: 8b569566756100f43a652c4972d184c6, type: 3}
     poolSize: 15
   - tag: default enemy
-    objectPrefab: {fileID: 820460646642010933, guid: cbe986e21b49c834691e8be7e07c6bd2, type: 3}
-    poolSize: 10
+    objectPrefab: {fileID: 820460646642010933, guid: eb6e1ed96027c0944830b3a81080c9b4, type: 3}
+    poolSize: 20
   - tag: rare enemy
     objectPrefab: {fileID: 820460646642010933, guid: a2105303ac0f82b4795bd4ddac4dbfdd, type: 3}
-    poolSize: 10
+    poolSize: 20
   - tag: player bullet
     objectPrefab: {fileID: 3646535366457579801, guid: 4cff55b131eedea4fbf05c49204ff3d5, type: 3}
     poolSize: 50
@@ -819,6 +816,9 @@ MonoBehaviour:
   - tag: collect health
     objectPrefab: {fileID: 3375661579799012832, guid: 60522cbf6a8d7fd47877f0784daa19a4, type: 3}
     poolSize: 10
+  - tag: rotating enemy
+    objectPrefab: {fileID: 820460646642010933, guid: cbe986e21b49c834691e8be7e07c6bd2, type: 3}
+    poolSize: 20
 --- !u!4 &659574834
 Transform:
   m_ObjectHideFlags: 0
@@ -866,9 +866,11 @@ MonoBehaviour:
   - {fileID: 752788996}
   enemies:
   - enemyName: default enemy
-    chanceToSpawn: 100
+    chanceToSpawn: 50
   - enemyName: rare enemy
-    chanceToSpawn: 0
+    chanceToSpawn: 20
+  - enemyName: rotating enemy
+    chanceToSpawn: 30
   chanceToPickSpawnPoint: 5
   amountToIncreaseChance: 1.5
   timePerLevel: 10
