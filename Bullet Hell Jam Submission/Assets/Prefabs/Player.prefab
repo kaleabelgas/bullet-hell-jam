@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 15
+  focusAmount: 0.5
   gameManager: {fileID: 0}
   playerHealth: 500
 --- !u!114 &4523558256386118407

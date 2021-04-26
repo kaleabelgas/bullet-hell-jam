@@ -10,11 +10,20 @@ public class GameManager : MonoBehaviour
     public class EnemyType
     {
         public string enemyName;
-        public float chanceToSpawn;
+        public int levelToAppear;
+        public float enemyChance;
+    }
+
+    [System.Serializable]
+    public class BossEnemy
+    {
+        public string bossName;
+        public float frequency;
     }
 
     [SerializeField] private List<Transform> spawnPoints;
     [SerializeField] private List<EnemyType> enemies;
+    [SerializeField] private BossEnemy boss;
     [SerializeField] private float chanceToPickSpawnPoint = 1;
     [SerializeField] private float amountToIncreaseChance = 1;
 
@@ -98,24 +107,35 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    List<string> EnemyChosen(List<EnemyType> enemiesToChooseFrom)
+    List<string> ChooseEnemies(List<EnemyType> _enemiesToChooseFrom, BossEnemy _boss)
     {
-        List<string> chosenEnemy = new List<string>();
+        List<string> chosenEnemies = new List<string>();
 
-        for (int i = 0; i < enemiesToChooseFrom.Count; i++)
+        for (int i = 0; i < _enemiesToChooseFrom.Count; i++)
         {
-            // RNG
-            float randomNumber = UnityEngine.Random.Range(1f, 100f);
-            if (randomNumber < enemiesToChooseFrom[i].chanceToSpawn)
+            if (Level >= _enemiesToChooseFrom[i].levelToAppear)
             {
-                chosenEnemy.Add(enemiesToChooseFrom[i].enemyName);
+                float randomN = UnityEngine.Random.Range(1f, 100f);
+                if (randomN < _enemiesToChooseFrom[i].enemyChance)
+                {
+                    chosenEnemies.Add(_enemiesToChooseFrom[i].enemyName);
+                }
             }
         }
-        if (chosenEnemy.Count <= 0) { chosenEnemy.Add(enemiesToChooseFrom[0].enemyName); }
-        return chosenEnemy;
+
+        if (chosenEnemies.Count < 1)
+            chosenEnemies.Add(_enemiesToChooseFrom[0].enemyName);
+
+        if(Level % _boss.frequency == 0)
+        {
+            chosenEnemies.Clear();
+            chosenEnemies[0] = _boss.bossName;
+        }
+
+        return chosenEnemies;
     }
 
-    List<Transform> SpawnPointsChosen(List<Transform> spawnPointsToChooseFrom)
+    List<Transform> ChooseSpawnPoints(List<Transform> spawnPointsToChooseFrom)
     {
         List<Transform> chosenSpawnPoints = new List<Transform>();
 
@@ -140,15 +160,18 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         healthSpawner.SpawnHealth();
 
-        List<Transform> spawnPointsLocal = SpawnPointsChosen(spawnPoints);
+        List<Transform> _spawnPoints= ChooseSpawnPoints(spawnPoints);
+        //string _enemy = ChooseEnemy(enemies, boss);
+
 
         //Debug.Log(enemyLocal.Count);
-        for (int i = 0; i < spawnPointsLocal.Count; i++)
+        for (int i = 0; i < _spawnPoints.Count; i++)
         {
-            List<string> enemyLocal = EnemyChosen(enemies);
-            for (int j = 0; j < enemyLocal.Count; j++)
+            List<string> _enemies = ChooseEnemies(enemies, boss);
+            for(int j = 0; j < _enemies.Count; j++)
             {
-                ObjectPooler.Instance.SpawnFromPool(enemyLocal[j], spawnPointsLocal[i].position, Quaternion.identity);
+                ObjectPooler.Instance.SpawnFromPool(_enemies[j], _spawnPoints[i].position, Quaternion.identity);
+
             }
         }
     }

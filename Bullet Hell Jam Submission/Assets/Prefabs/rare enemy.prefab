@@ -127,10 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50bcbea45cd3a24d8f8fd0e0a608d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 20
-  attackSpeed: 0.2
+  bulletSpeed: 10
+  attackSpeed: 0.5
   bulletUsed: default bullet
-  numSides: 20
+  numSides: 40
   radius: 1
 --- !u!58 &-1882135872919263423
 CircleCollider2D:

@@ -788,10 +788,10 @@ MonoBehaviour:
   pools:
   - tag: hit effect
     objectPrefab: {fileID: 3375661579799012832, guid: 7ef30628ae1bcad478948b5f439172d1, type: 3}
-    poolSize: 500
+    poolSize: 1000
   - tag: default bullet
     objectPrefab: {fileID: 3646535366457579801, guid: be8d6c258e393104bb6edd880b3b8617, type: 3}
-    poolSize: 500
+    poolSize: 1000
   - tag: homing bullet
     objectPrefab: {fileID: 3646535366457579801, guid: 7388bfdf8cdd9ae4f8fbe030035336d7, type: 3}
     poolSize: 0
@@ -869,15 +869,19 @@ MonoBehaviour:
   - {fileID: 752788996}
   enemies:
   - enemyName: default enemy
-    chanceToSpawn: 50
-  - enemyName: rare enemy
-    chanceToSpawn: 1.5
+    levelToAppear: 1
+    enemyChance: 50
   - enemyName: rotating enemy
-    chanceToSpawn: 35
+    levelToAppear: 5
+    enemyChance: 25
   - enemyName: rotating rare enemy
-    chanceToSpawn: 5
+    levelToAppear: 15
+    enemyChance: 25
+  boss:
+    bossName: rare enemy
+    frequency: 50
   chanceToPickSpawnPoint: 5
-  amountToIncreaseChance: 1.5
+  amountToIncreaseChance: 1
   timePerLevel: 10
   uIMainGame: {fileID: 1664965851}
 --- !u!114 &659574836

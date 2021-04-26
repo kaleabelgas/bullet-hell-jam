@@ -34,7 +34,7 @@ public class ShootAtMousePosition : BaseGun
             bulletScript.SetDirection(lookDir, bulletSpeed);
             bulletTimer = Time.time + attackSpeed;
             AudioManager.instance.Play("hit");
-            CameraShake.Trauma = 0.5f;
+            CameraShake.Trauma = 0.35f;
         }
     }
 }
