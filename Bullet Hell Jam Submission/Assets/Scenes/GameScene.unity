@@ -869,13 +869,13 @@ MonoBehaviour:
   - {fileID: 752788996}
   enemies:
   - enemyName: default enemy
-    chanceToSpawn: 40
+    chanceToSpawn: 50
   - enemyName: rare enemy
-    chanceToSpawn: 10
+    chanceToSpawn: 1.5
   - enemyName: rotating enemy
     chanceToSpawn: 35
   - enemyName: rotating rare enemy
-    chanceToSpawn: 15
+    chanceToSpawn: 5
   chanceToPickSpawnPoint: 5
   amountToIncreaseChance: 1.5
   timePerLevel: 10
