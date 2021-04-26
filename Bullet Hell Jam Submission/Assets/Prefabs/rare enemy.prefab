@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: -2135585597343286014, guid: 4b2a04fdbe0ef4d8da8f90eaca817cd1, type: 3}
-  m_Color: {r: 1, g: 0.09803921, b: 0.8549226, a: 1}
+  m_Color: {r: 1, g: 0.9322248, b: 0.09803921, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   target: {fileID: 4523558256386118413, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
-  health: 100
+  health: 200
 --- !u!114 &-4277789708700304930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,10 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50bcbea45cd3a24d8f8fd0e0a608d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 5
-  attackSpeed: 1
+  bulletSpeed: 20
+  attackSpeed: 0.2
   bulletUsed: default bullet
-  numPoints: 10
+  numSides: 20
   radius: 1
 --- !u!58 &-1882135872919263423
 CircleCollider2D:

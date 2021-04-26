@@ -31,10 +31,10 @@ public class ShootAtMousePosition : BaseGun
                 return;
             BaseBullet bulletScript = bullet.GetComponent<BaseBullet>();
             bulletScript.Owner = gameObject;
-            bulletScript.SetDirection(Vector2.up, bulletSpeed);
+            bulletScript.SetDirection(lookDir, bulletSpeed);
             bulletTimer = Time.time + attackSpeed;
             AudioManager.instance.Play("hit");
-            CameraShake.Trauma = 0.3f;
+            CameraShake.Trauma = 0.5f;
         }
     }
 }

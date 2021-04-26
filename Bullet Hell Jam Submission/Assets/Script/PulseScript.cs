@@ -28,16 +28,16 @@ public class PulseScript : MonoBehaviour
             currentRange += pulseSpeed * Time.deltaTime;
             pulse.localScale = new Vector3(currentRange, currentRange);
 
-            RaycastHit2D[] raycastHit2DArray = Physics2D.CircleCastAll(transform.position, currentRange, Vector2.zero);
-            foreach(RaycastHit2D raycastHit2D in raycastHit2DArray)
-            {
-                if(raycastHit2D.collider != null)
-                {
-                    hitEntities.Add(raycastHit2D.collider);
-                    ClearEnemy(raycastHit2D.transform.gameObject);
-                    Debug.Log(raycastHit2D.transform.gameObject.name);
-                }
-            }
+            //RaycastHit2D[] raycastHit2DArray = Physics2D.CircleCastAll(transform.position, currentRange, Vector2.zero);
+            //foreach(RaycastHit2D raycastHit2D in raycastHit2DArray)
+            //{
+            //    if(raycastHit2D.collider != null)
+            //    {
+            //        hitEntities.Add(raycastHit2D.collider);
+            //        ClearEnemy(raycastHit2D.transform.gameObject);
+            //        Debug.Log(raycastHit2D.transform.gameObject.name);
+            //    }
+            //}
         }
         else
         {

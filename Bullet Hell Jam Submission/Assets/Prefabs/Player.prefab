@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb31663e94d984e41bd8b39b6d256071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 20
+  bulletSpeed: 50
   attackSpeed: 0.1
   bulletUsed: player bullet
   firePoint: {fileID: 4523558255318955318}

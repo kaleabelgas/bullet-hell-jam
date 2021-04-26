@@ -27,11 +27,13 @@ public class UIMainGame : MonoBehaviour
 
     private void Start()
     {
-        volume = FindObjectOfType<Volume>();
-        volume.profile.TryGet(out colorAdjustments);
-
-        currentLevel.text = "LEVEL " + level.ToString();
         AudioManager.instance.Play("level moosic");
+        currentLevel.text = "LEVEL " + level.ToString();
+        
+        volume = FindObjectOfType<Volume>();
+        if(volume != null)
+            volume.profile.TryGet(out colorAdjustments);
+
     }
 
     public void UpdateCurrentLevel()

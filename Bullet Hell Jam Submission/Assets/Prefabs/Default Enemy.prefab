@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72cb90e485a51b145b398e99c8b52af6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 10
+  bulletSpeed: 15
   attackSpeed: 0.3
   bulletUsed: default bullet
   firePoint: {fileID: 5872392702283852024}
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   target: {fileID: 4523558256386118413, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
-  health: 50
+  health: 100
 --- !u!58 &-1882135872919263423
 CircleCollider2D:
   m_ObjectHideFlags: 0

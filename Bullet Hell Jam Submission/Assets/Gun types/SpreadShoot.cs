@@ -8,31 +8,31 @@ public class SpreadShoot : BaseGun
     [SerializeField] private float attackSpeed;
     [SerializeField] private string bulletUsed;
     //[SerializeField] private Transform firePoint;
-    [SerializeField] private int numPoints;
+    [SerializeField] private int numSides;
     [SerializeField] private float radius = 1;
 
+    private Vector3 point;
+    private Vector3 direction;
+    private float arc = 360;
     private float bulletTimer;
 
     public override void Shoot()
     {
-        //Debug.Log("Called!");
-        //bulletTimer += Time.deltaTime;
-
         if (Time.time >= bulletTimer)
         {
-            for (int i = 0; i < numPoints; i++)
+            for (int i = 0; i < numSides; i++)
             {
-                float angle = (i * 360 * Mathf.Deg2Rad) / numPoints;
-                Vector2 firePoint = new Vector2(radius * Mathf.Cos(angle), radius * Mathf.Sin(angle));
+                var angle = Mathf.Deg2Rad * (2 * arc * i - arc * numSides + arc + 180 * numSides) / (2 * numSides);
+                point = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius;
+                point = Quaternion.LookRotation(transform.forward, transform.up) * point;
+                direction = point.normalized;
+                point += transform.position;
 
-                GameObject bullet = ObjectPooler.Instance.SpawnFromPool(bulletUsed, (Vector2)transform.position + firePoint, transform.rotation);
-                if (bullet == null)
-                    return;
+                GameObject bullet = ObjectPooler.Instance.SpawnFromPool(bulletUsed, point, Quaternion.identity);
                 BaseBullet bulletScript = bullet.GetComponent<BaseBullet>();
                 bulletScript.Owner = gameObject;
-                bulletScript.SetDirection(firePoint.normalized, bulletSpeed);
+                bulletScript.SetDirection(direction, bulletSpeed);
             }
-
             bulletTimer = Time.time + attackSpeed;
         }
     }

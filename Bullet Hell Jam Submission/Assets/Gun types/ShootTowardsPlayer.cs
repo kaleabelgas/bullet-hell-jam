@@ -23,6 +23,8 @@ public class ShootTowardsPlayer : BaseGun
     {
         //Debug.Log("Called!");
         playerPosition = player.transform.position;
+        Vector2 targetPosition = playerPosition - (Vector2)transform.position;
+
         //bulletTimer += Time.deltaTime;
 
         if (Time.time >= bulletTimer)
@@ -32,7 +34,7 @@ public class ShootTowardsPlayer : BaseGun
                 return;
             BaseBullet bulletScript = bullet.GetComponent<BaseBullet>();
             bulletScript.Owner = gameObject;
-            bulletScript.SetDirection(Vector2.down, bulletSpeed);
+            bulletScript.SetDirection(targetPosition.normalized, bulletSpeed);
             bulletTimer = Time.time + attackSpeed;
         }
     }

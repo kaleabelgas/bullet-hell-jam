@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 820460646642010936}
   - component: {fileID: 820460646642010935}
   - component: {fileID: 820460646642010934}
-  - component: {fileID: 4270739467303047525}
-  - component: {fileID: -1160466794382709498}
+  - component: {fileID: -4277789708700304930}
+  - component: {fileID: 2786988158873350558}
   - component: {fileID: -1882135872919263423}
   - component: {fileID: -2766704730411848568}
   m_Layer: 0
-  m_Name: Rotating Enemy
+  m_Name: rotating rare enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: -2135585597343286014, guid: 4b2a04fdbe0ef4d8da8f90eaca817cd1, type: 3}
-  m_Color: {r: 1, g: 0.16760664, b: 0.0990566, a: 1}
+  m_Color: {r: 1, g: 0.09803921, b: 0.8549226, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cd2c8d9f072fd54385ed3d706b0c2c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4270739467303047525
+--- !u!114 &-4277789708700304930
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,12 +112,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50bcbea45cd3a24d8f8fd0e0a608d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 5
+  bulletSpeed: 10
   attackSpeed: 0.1
   bulletUsed: default bullet
-  numSides: 1
-  radius: 1
---- !u!114 &-1160466794382709498
+  numSides: 6
+  radius: 1.5
+--- !u!114 &2786988158873350558
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,9 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bfad72693505a4428940206b9ca8ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  health: 100
-  offset: 20
+  speed: 1
+  health: 200
+  offset: 5
 --- !u!58 &-1882135872919263423
 CircleCollider2D:
   m_ObjectHideFlags: 0

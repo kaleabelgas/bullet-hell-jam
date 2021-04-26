@@ -9,6 +9,7 @@ public class RotatingEnemy : MonoBehaviour, ITakeDamage
     [SerializeField] private int health;
 
     private Vector2 screenBounds;
+    [SerializeField] float offset = 10;
 
     private void OnEnable()
     {
@@ -20,6 +21,7 @@ public class RotatingEnemy : MonoBehaviour, ITakeDamage
     private void Update()
     {
         transform.Translate(Vector2.down * speed * Time.deltaTime, Space.World);
+        //offset *= (Mathf.Sin(Time.time) + 1) * 0.5f;
     }
 
     private void LateUpdate()
@@ -36,12 +38,13 @@ public class RotatingEnemy : MonoBehaviour, ITakeDamage
     private IEnumerator SpiralEnemy()
     {
         float angle = 0;
-        float offset = 10;
+        float _offset = offset;
         while (true)
         {
+            //Quaternion initialRot = transform.rotation;
             transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, angle);
+            angle += _offset;
             yield return new WaitForSeconds(0.05f);
-            angle += offset;
         }
     }
 
@@ -59,7 +62,7 @@ public class RotatingEnemy : MonoBehaviour, ITakeDamage
     {
         AudioManager.instance.Play("enemy ded");
         ObjectPooler.Instance.SpawnFromPool("death effect", transform.position, transform.rotation);
-        CameraShake.Trauma = 0.65f;
+        CameraShake.Trauma = 0.75f;
         gameObject.SetActive(false);
     }
 }

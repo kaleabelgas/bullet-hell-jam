@@ -788,10 +788,10 @@ MonoBehaviour:
   pools:
   - tag: hit effect
     objectPrefab: {fileID: 3375661579799012832, guid: 7ef30628ae1bcad478948b5f439172d1, type: 3}
-    poolSize: 25
+    poolSize: 500
   - tag: default bullet
     objectPrefab: {fileID: 3646535366457579801, guid: be8d6c258e393104bb6edd880b3b8617, type: 3}
-    poolSize: 100
+    poolSize: 500
   - tag: homing bullet
     objectPrefab: {fileID: 3646535366457579801, guid: 7388bfdf8cdd9ae4f8fbe030035336d7, type: 3}
     poolSize: 0
@@ -818,6 +818,9 @@ MonoBehaviour:
     poolSize: 10
   - tag: rotating enemy
     objectPrefab: {fileID: 820460646642010933, guid: cbe986e21b49c834691e8be7e07c6bd2, type: 3}
+    poolSize: 20
+  - tag: rotating rare enemy
+    objectPrefab: {fileID: 820460646642010933, guid: b04c714e8176bc549b1b3499c7ebc86a, type: 3}
     poolSize: 20
 --- !u!4 &659574834
 Transform:
@@ -866,11 +869,13 @@ MonoBehaviour:
   - {fileID: 752788996}
   enemies:
   - enemyName: default enemy
-    chanceToSpawn: 50
+    chanceToSpawn: 40
   - enemyName: rare enemy
-    chanceToSpawn: 20
+    chanceToSpawn: 10
   - enemyName: rotating enemy
-    chanceToSpawn: 30
+    chanceToSpawn: 35
+  - enemyName: rotating rare enemy
+    chanceToSpawn: 15
   chanceToPickSpawnPoint: 5
   amountToIncreaseChance: 1.5
   timePerLevel: 10
@@ -904,7 +909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfHealth: 5
-  chanceToSpawnHealth: 100
+  chanceToSpawnHealth: 15
   verticalOffset: 0.15
 --- !u!1 &752788995
 GameObject:
@@ -1488,63 +1493,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135917692}
   m_CullTransparentMesh: 1
---- !u!1001 &1165266420
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 354877315115873651, guid: 60522cbf6a8d7fd47877f0784daa19a4, type: 3}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 354877315115873651, guid: 60522cbf6a8d7fd47877f0784daa19a4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 354877315115873651, guid: 60522cbf6a8d7fd47877f0784daa19a4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 354877315115873651, guid: 60522cbf6a8d7fd47877f0784daa19a4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 354877315115873651, guid: 60522cbf6a8d7fd47877f0784daa19a4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 354877315115873651, guid: 60522cbf6a8d7fd47877f0784daa19a4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 354877315115873651, guid: 60522cbf6a8d7fd47877f0784daa19a4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 354877315115873651, guid: 60522cbf6a8d7fd47877f0784daa19a4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 354877315115873651, guid: 60522cbf6a8d7fd47877f0784daa19a4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 354877315115873651, guid: 60522cbf6a8d7fd47877f0784daa19a4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 354877315115873651, guid: 60522cbf6a8d7fd47877f0784daa19a4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3375661579799012832, guid: 60522cbf6a8d7fd47877f0784daa19a4, type: 3}
-      propertyPath: m_Name
-      value: collect healh
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 60522cbf6a8d7fd47877f0784daa19a4, type: 3}
 --- !u!1 &1174195947
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,7 +36,7 @@ public class ObjectPooler : MonoBehaviour
 
             for (int i = 0; i < pool.poolSize; i++)
             {
-                GameObject objectToPool = Instantiate(pool.objectPrefab);
+                GameObject objectToPool = Instantiate(pool.objectPrefab, new Vector3(0, -100), Quaternion.identity);
                 objectToPool.SetActive(false);
                 objectPool.Enqueue(objectToPool);
             }

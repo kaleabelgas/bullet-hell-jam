@@ -18,12 +18,9 @@ public abstract class BaseBullet : MonoBehaviour
 
         if (toDamage != null)
         {
-            AudioManager.instance.Play("hit");
+            //AudioManager.instance.Play("hit");
             toDamage.GetDamaged(damageAmount, Owner);
-            //if (other.gameObject.CompareTag("Player"))
-            //{
-            //}
-                gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 

@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         timeRemaining = timePerLevel;
         NextLevel += uIMainGame.UpdateCurrentLevel;
         highScore = PlayerPrefs.GetInt("highscore");
-        //SpawnEnemies();
+        //StartCoroutine(SpawnEnemies());
     }
 
     // Update is called once per frame
@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
 
             NextLevel.Invoke();
             pulseScript.DoPulse();
+            ClearBullets();
             timeRemaining = timePerLevel;
             healthSpawner.ClearHealth();
             StartCoroutine(SpawnEnemies());
@@ -92,8 +93,8 @@ public class GameManager : MonoBehaviour
                 highScore = Level;
             }
 
-            //if (GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
-            //    GameOver();
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
+                GameOver();
         }
     }
 
@@ -140,15 +141,24 @@ public class GameManager : MonoBehaviour
         healthSpawner.SpawnHealth();
 
         List<Transform> spawnPointsLocal = SpawnPointsChosen(spawnPoints);
-        List<string> enemyLocal = EnemyChosen(enemies);
 
-        Debug.Log(enemyLocal.Count);
+        //Debug.Log(enemyLocal.Count);
         for (int i = 0; i < spawnPointsLocal.Count; i++)
         {
+            List<string> enemyLocal = EnemyChosen(enemies);
             for (int j = 0; j < enemyLocal.Count; j++)
             {
                 ObjectPooler.Instance.SpawnFromPool(enemyLocal[j], spawnPointsLocal[i].position, Quaternion.identity);
             }
+        }
+    }
+
+    private void ClearBullets()
+    {
+        GameObject[] bulletsInScene = GameObject.FindGameObjectsWithTag("Bullet");
+        foreach(GameObject bullet in bulletsInScene)
+        {
+            bullet.SetActive(false);
         }
     }
     public void GameOver()

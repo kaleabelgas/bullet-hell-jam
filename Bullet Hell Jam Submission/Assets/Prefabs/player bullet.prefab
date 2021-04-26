@@ -46,8 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c9b9ba3b638d564294cc5874aee8b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 10
-  bulletHit: {fileID: -1938113500522347160}
+  damageAmount: 15
   Owner: {fileID: 0}
 --- !u!212 &1613076055413235044
 SpriteRenderer:

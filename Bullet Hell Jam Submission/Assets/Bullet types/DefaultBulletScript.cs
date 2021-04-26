@@ -14,7 +14,7 @@ public class DefaultBulletScript : BaseBullet
 
     private void Update()
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        transform.Translate(direction * speed * Time.deltaTime, Space.World);
     }
 
 }

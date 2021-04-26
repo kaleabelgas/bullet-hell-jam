@@ -29,7 +29,7 @@ public class EnemyController : MonoBehaviour, ITakeDamage
 
     public void GetDamaged(int amount, GameObject owner)
     {
-        if (owner.Equals(gameObject))
+        if (owner.CompareTag(gameObject.tag))
             return;
         EnemyHealth -= amount;
         CameraShake.Trauma = 0.2f;
@@ -41,7 +41,7 @@ public class EnemyController : MonoBehaviour, ITakeDamage
     {
         AudioManager.instance.Play("enemy ded");
         ObjectPooler.Instance.SpawnFromPool("death effect", transform.position, transform.rotation);
-        CameraShake.Trauma = 0.65f;
+        CameraShake.Trauma = 0.7f;
         gameObject.SetActive(false);
     }
 }
