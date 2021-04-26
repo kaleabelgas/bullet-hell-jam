@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
 
@@ -75,6 +74,12 @@ public class UIMainGame : MonoBehaviour
             //AudioManager.instance.UnPause("level moosic");
 
         }
+    }
+
+    public void GoToMainMenu()
+    {
+        AudioManager.instance.Stop("level moosic");
+        SceneManager.LoadScene(0);
     }
 
     // Update is called once per frame

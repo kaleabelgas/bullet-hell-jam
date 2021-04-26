@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
         if(Level % _boss.frequency == 0)
         {
             chosenEnemies.Clear();
-            chosenEnemies[0] = _boss.bossName;
+            chosenEnemies.Add(boss.bossName);
         }
 
         return chosenEnemies;
@@ -140,7 +140,6 @@ public class GameManager : MonoBehaviour
         List<Transform> chosenSpawnPoints = new List<Transform>();
 
         // spawn in at least 1
-        chosenSpawnPoints.Add(spawnPointsToChooseFrom[UnityEngine.Random.Range(1, spawnPointsToChooseFrom.Count)]);
 
         for (int i = 0; i < spawnPointsToChooseFrom.Count; i++)
         {
@@ -151,6 +150,10 @@ public class GameManager : MonoBehaviour
             }
             //Debug.Log(chosenSpawnPoints.Count);
         }
+        
+        if(chosenSpawnPoints.Count < 1)
+            chosenSpawnPoints.Add(spawnPointsToChooseFrom[UnityEngine.Random.Range(1, spawnPointsToChooseFrom.Count)]);
+        
         return chosenSpawnPoints;
     }
 

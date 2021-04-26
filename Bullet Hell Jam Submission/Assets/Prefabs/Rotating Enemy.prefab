@@ -116,7 +116,7 @@ MonoBehaviour:
   attackSpeed: 0.1
   bulletUsed: default bullet
   numSides: 1
-  radius: 1
+  radius: 1.1
 --- !u!114 &-1160466794382709498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  health: 100
+  health: 60
   offset: 20
 --- !u!58 &-1882135872919263423
 CircleCollider2D:

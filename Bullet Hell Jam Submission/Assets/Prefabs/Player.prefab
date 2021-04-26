@@ -151,8 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc29100da00da74dad2d15a60d3cd13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 15
-  focusAmount: 0.5
+  playerSpeed: 17
+  focusAmount: 0.45
   gameManager: {fileID: 0}
   playerHealth: 500
 --- !u!114 &4523558256386118407
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 50
-  attackSpeed: 0.1
+  attackSpeed: 0.12
   bulletUsed: player bullet
   firePoint: {fileID: 4523558255318955318}
 --- !u!61 &4523558256386118406

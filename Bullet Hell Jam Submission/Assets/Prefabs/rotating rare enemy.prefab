@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  health: 200
+  health: 100
   offset: 5
 --- !u!58 &-1882135872919263423
 CircleCollider2D:
