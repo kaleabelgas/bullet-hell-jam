@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -1882135872919263423}
   - component: {fileID: -2766704730411848568}
   m_Layer: 0
-  m_Name: Rotating Enemy
+  m_Name: two gun enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,10 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50bcbea45cd3a24d8f8fd0e0a608d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 8
-  attackSpeed: 0.05
+  bulletSpeed: 20
+  attackSpeed: 0.3
   bulletUsed: default bullet
-  numSides: 1
+  numSides: 2
   radius: 1.1
 --- !u!114 &-1160466794382709498
 MonoBehaviour:
@@ -131,8 +131,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   health: 80
-  offset: 10
-  rotationUpdateSpeed: 0.05
+  offset: 20
+  rotationUpdateSpeed: 0.3
 --- !u!58 &-1882135872919263423
 CircleCollider2D:
   m_ObjectHideFlags: 0

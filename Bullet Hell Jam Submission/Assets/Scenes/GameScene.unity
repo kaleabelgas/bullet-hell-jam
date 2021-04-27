@@ -1212,7 +1212,7 @@ MonoBehaviour:
     poolSize: 15
   - tag: default enemy
     objectPrefab: {fileID: 820460646642010933, guid: eb6e1ed96027c0944830b3a81080c9b4, type: 3}
-    poolSize: 20
+    poolSize: 50
   - tag: rare enemy
     objectPrefab: {fileID: 820460646642010933, guid: a2105303ac0f82b4795bd4ddac4dbfdd, type: 3}
     poolSize: 20
@@ -1230,10 +1230,13 @@ MonoBehaviour:
     poolSize: 10
   - tag: rotating enemy
     objectPrefab: {fileID: 820460646642010933, guid: cbe986e21b49c834691e8be7e07c6bd2, type: 3}
-    poolSize: 20
+    poolSize: 50
   - tag: rotating rare enemy
     objectPrefab: {fileID: 820460646642010933, guid: b04c714e8176bc549b1b3499c7ebc86a, type: 3}
     poolSize: 20
+  - tag: two gun enemy
+    objectPrefab: {fileID: 820460646642010933, guid: 3c7695ab48999ba48b56dfe949ad2883, type: 3}
+    poolSize: 50
 --- !u!4 &659574834
 Transform:
   m_ObjectHideFlags: 0
@@ -1282,21 +1285,24 @@ MonoBehaviour:
   enemies:
   - enemyName: rotating enemy
     levelToAppear: 1
-    enemyChance: 65
+    enemyChance: 70
   - enemyName: default enemy
-    levelToAppear: 15
-    enemyChance: 25
+    levelToAppear: 10
+    enemyChance: 50
+  - enemyName: two gun enemy
+    levelToAppear: 20
+    enemyChance: 20
   - enemyName: rotating rare enemy
     levelToAppear: 30
     enemyChance: 8
   - enemyName: rare enemy
-    levelToAppear: 50
+    levelToAppear: 40
     enemyChance: 2
   boss:
     bossName: rare enemy
-    frequency: 20
-  chanceToPickSpawnPoint: 5
-  amountToIncreaseChance: 1
+    frequency: 30
+  chanceToPickSpawnPoint: 1
+  amountToIncreaseChance: 1.5
   timePerLevel: 10
   uIMainGame: {fileID: 1664965851}
 --- !u!114 &659574836
@@ -1314,7 +1320,7 @@ MonoBehaviour:
   pulse: {fileID: 1677385638}
   rangeMax: 10
   pulseSpeed: 18
-  minSize: 1
+  minSize: 0.8
 --- !u!114 &659574837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1535,7 +1541,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1562,8 +1568,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2044,7 +2050,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'LEVEL '
+  m_text: Level 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2071,8 +2077,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

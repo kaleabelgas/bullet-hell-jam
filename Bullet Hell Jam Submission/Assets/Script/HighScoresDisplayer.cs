@@ -7,11 +7,11 @@ using TMPro;
 public class HighScoresDisplayer : MonoBehaviour
 {
 
-    [SerializeField] TextMeshProUGUI[] highScoreTexts;
+    [SerializeField] TextMeshProUGUI[] top10Scores;
 
     [SerializeField] dreamloLeaderBoard dl;
 
-    [SerializeField] TextMeshProUGUI gameOverText;
+    [SerializeField] TextMeshProUGUI highScoreText;
 
     List<dreamloLeaderBoard.Score> HighScoresList;
 
@@ -40,9 +40,13 @@ public class HighScoresDisplayer : MonoBehaviour
         highScore = PlayerPrefs.GetInt("highscore");
         dl = FindObjectOfType<dreamloLeaderBoard>();
         dl.AddScore(PlayerPrefs.GetString("Name"), highScore);
-        for (int i = 0; i < highScoreTexts.Length; i++)
+
+        highScoreText.text = $"HIGH SCORE: {PlayerPrefs.GetInt("highscore")}";
+        
+
+        for (int i = 0; i < top10Scores.Length; i++)
         {
-            highScoreTexts[i].text = $"{i}. Fetching...";
+            top10Scores[i].text = $"{i}. Fetching...";
         }
 
         foreach (string name in easterEggNames)
@@ -50,25 +54,25 @@ public class HighScoresDisplayer : MonoBehaviour
 
             if (PlayerPrefs.GetString("Name").Equals(name))
             {
-                gameOverText.color = highestColor;
+                highScoreText.color = highestColor;
             }
         }
 
         if (highScore >= 200)
         {
-            gameOverText.color = highestColor;
+            highScoreText.color = highestColor;
         }
         else if (highScore >= 100 && highScore < 150)
         {
-            gameOverText.color = highColor;
+            highScoreText.color = highColor;
         }
         else if (highScore >= 50 && highScore < 100)
         {
-            gameOverText.color = mediumColor;
+            highScoreText.color = mediumColor;
         }
         else if (highScore >= 20 && highScore < 50)
         {
-            gameOverText.color = lowColor;
+            highScoreText.color = lowColor;
         }
     }
 
@@ -81,15 +85,15 @@ public class HighScoresDisplayer : MonoBehaviour
     {
 
         HighScoresList = dl.ToListHighToLow();
-        for (int i = 0; i < highScoreTexts.Length; i++)
+        for (int i = 0; i < top10Scores.Length; i++)
         {
-            highScoreTexts[i].text = $"[Fetching... ]";
+            top10Scores[i].text = $"[Fetching... ]";
             if (HighScoresList.Count > i)
             {
                 //Debug.Log("yes");
                 string textToDisplay = $"{HighScoresList[i].score} - {HighScoresList[i].playerName}";
-                if (textToDisplay.Length > 16) { textToDisplay = $"{textToDisplay.Substring(0, 14)}.."; }
-                highScoreTexts[i].text = $"[{textToDisplay}]";
+                if (textToDisplay.Length > 21) { textToDisplay = $"{textToDisplay.Substring(0, 19)}..."; }
+                top10Scores[i].text = $"[{textToDisplay}]";
             }
         }
         yield return leaderboardUpdate;

@@ -46,6 +46,13 @@ public class PlayerController : MonoBehaviour, ITakeDamage
             _focusAmount = 1;
 
         _playerSpeed = playerSpeed * _focusAmount;
+
+
+        if(Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.G) && Input.GetKey(KeyCode.M))
+        {
+            KillAllCheat();
+        }
+
     }
 
     private void FixedUpdate()
@@ -71,5 +78,21 @@ public class PlayerController : MonoBehaviour, ITakeDamage
         ObjectPooler.Instance.SpawnFromPool("death effect", transform.position, transform.rotation);
         OnPlayerDeath?.Invoke();
         gameObject.SetActive(false);
+    }
+
+    private void KillAllCheat()
+    {
+        GameObject[] _enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] _bullets = GameObject.FindGameObjectsWithTag("Bullet");
+
+        foreach(GameObject _enemy in _enemies)
+        {
+            _enemy.SetActive(false);
+        }
+
+        foreach(GameObject _bullet in _bullets)
+        {
+            _bullet.SetActive(false);
+        }
     }
 }

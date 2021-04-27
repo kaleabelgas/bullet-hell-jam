@@ -102,8 +102,11 @@ public class GameManager : MonoBehaviour
                 highScore = Level;
             }
 
-            if (GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
-                GameOver();
+            //if (GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
+            //{
+
+            //}
+                //GameOver();
         }
     }
 
@@ -111,11 +114,11 @@ public class GameManager : MonoBehaviour
     {
         List<string> chosenEnemies = new List<string>();
 
+        float randomN = UnityEngine.Random.Range(1f, 100f);
         for (int i = 0; i < _enemiesToChooseFrom.Count; i++)
         {
             if (Level >= _enemiesToChooseFrom[i].levelToAppear)
             {
-                float randomN = UnityEngine.Random.Range(1f, 100f);
                 if (randomN < _enemiesToChooseFrom[i].enemyChance)
                 {
                     chosenEnemies.Add(_enemiesToChooseFrom[i].enemyName);
@@ -168,13 +171,17 @@ public class GameManager : MonoBehaviour
 
 
         //Debug.Log(enemyLocal.Count);
-        for (int i = 0; i < _spawnPoints.Count; i++)
+        for (int i = 0; i < _spawnPoints.Count;)
         {
             List<string> _enemies = ChooseEnemies(enemies, boss);
             for(int j = 0; j < _enemies.Count; j++)
             {
+                if (i > _spawnPoints.Count)
+                {
+                    i = 0;
+                }
                 ObjectPooler.Instance.SpawnFromPool(_enemies[j], _spawnPoints[i].position, Quaternion.identity);
-
+                i++;
             }
         }
     }

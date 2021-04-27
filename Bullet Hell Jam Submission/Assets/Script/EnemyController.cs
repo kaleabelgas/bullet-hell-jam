@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviour, ITakeDamage
         if (owner.CompareTag(gameObject.tag))
             return;
         EnemyHealth -= amount;
-        CameraShake.Trauma = 0.2f;
+        CameraShake.Trauma = 0.4f;
         if (EnemyHealth <= 0)
             Die();
     }

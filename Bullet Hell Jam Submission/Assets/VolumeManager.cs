@@ -3,7 +3,8 @@ using UnityEngine;
 public class VolumeManager : MonoBehaviour
 {
     [SerializeField] GameObject globalVolume;
-    private void Start()
+
+    private void Awake()
     {
         globalVolume = GameObject.FindGameObjectWithTag("Volume");
         globalVolume.SetActive(PlayerPrefs.GetInt("isVolumeOn") <= 0);

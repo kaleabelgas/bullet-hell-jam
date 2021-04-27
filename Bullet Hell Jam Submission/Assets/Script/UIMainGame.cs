@@ -27,9 +27,10 @@ public class UIMainGame : MonoBehaviour
     private void Start()
     {
         AudioManager.instance.Play("level moosic");
-        currentLevel.text = "LEVEL " + level.ToString();
+        currentLevel.text = $"Level {level}";
         
         volume = FindObjectOfType<Volume>();
+
         if(volume != null)
             volume.profile.TryGet(out colorAdjustments);
 
@@ -38,7 +39,7 @@ public class UIMainGame : MonoBehaviour
     public void UpdateCurrentLevel()
     {
         level++;
-        currentLevel.text = "LEVEL " + level.ToString();
+        currentLevel.text = $"Level {level}";
     }
 
     public void DeleteTutorial()
@@ -96,6 +97,6 @@ public class UIMainGame : MonoBehaviour
             timeToDisplay = 10;
         }
 
-        timer.text = timeToDisplay.ToString();
+        timer.text = $"{timeToDisplay}";
     }
 }

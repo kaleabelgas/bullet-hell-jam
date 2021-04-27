@@ -10,6 +10,7 @@ public class RotatingEnemy : MonoBehaviour, ITakeDamage
 
     private Vector2 screenBounds;
     [SerializeField] float offset = 10;
+    [SerializeField] float rotationUpdateSpeed;
 
     private void OnEnable()
     {
@@ -44,16 +45,16 @@ public class RotatingEnemy : MonoBehaviour, ITakeDamage
             //Quaternion initialRot = transform.rotation;
             transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, angle);
             angle += _offset;
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(rotationUpdateSpeed);
         }
     }
 
     public void GetDamaged(int amount, GameObject owner)
     {
-        if (owner.Equals(gameObject))
+        if (owner.CompareTag(gameObject.tag))
             return;
         EnemyHealth -= amount;
-        CameraShake.Trauma = 0.2f;
+        CameraShake.Trauma = 0.4f;
         if (EnemyHealth <= 0)
             Die();
     }
