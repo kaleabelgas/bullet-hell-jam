@@ -1,6 +1,7 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class AudioManager : MonoBehaviour
 	public AudioMixerGroup mixerGroup;
 
 	public Sound[] sounds;
+
+	public Sound[] tracks;
+
+	private bool stopAudio = false;
 
 	void Awake()
 	{
@@ -31,9 +36,23 @@ public class AudioManager : MonoBehaviour
 
 			s.source.outputAudioMixerGroup = mixerGroup;
 		}
+
+		foreach(Sound m in tracks)
+        {
+			m.source = gameObject.AddComponent<AudioSource>();
+			m.source.clip = m.clip;
+			m.source.loop = m.loop;
+
+			m.source.outputAudioMixerGroup = mixerGroup;
+        }
 	}
 
-	public void Play(string sound)
+    private void Start()
+    {
+		StartCoroutine(StartPlaylist(tracks));
+    }
+
+    public void Play(string sound)
 	{
 		Sound s = Array.Find(sounds, item => item.name == sound);
 		if (s == null)
@@ -62,4 +81,24 @@ public class AudioManager : MonoBehaviour
 		s.source.Stop();
 	}
 
+	public IEnumerator StartPlaylist(Sound[] _tracks)
+    {
+		for (int i = 0; i < _tracks.Length; i++)
+		{
+			_tracks[i].source.Play();
+			while (_tracks[i].source.isPlaying)
+			{
+				if (stopAudio)
+				{
+					_tracks[i].source.Stop();
+					yield break;
+				}
+				yield return null;
+			}
+		}
+	}
+	public void StopMusic()
+    {
+		stopAudio = true;
+    }
 }

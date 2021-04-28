@@ -1296,7 +1296,7 @@ MonoBehaviour:
     - {fileID: 1645625359}
     - {fileID: 752788996}
     SpawnPointAmount: 2
-    LevelToAppear: 2
+    LevelToAppear: 5
   - SpawnPoints:
     - {fileID: 1682871983}
     - {fileID: 442627683}
@@ -1308,7 +1308,7 @@ MonoBehaviour:
     - {fileID: 1645625359}
     - {fileID: 752788996}
     SpawnPointAmount: 3
-    LevelToAppear: 3
+    LevelToAppear: 10
   - SpawnPoints:
     - {fileID: 1682871983}
     - {fileID: 442627683}
@@ -1320,7 +1320,67 @@ MonoBehaviour:
     - {fileID: 1645625359}
     - {fileID: 752788996}
     SpawnPointAmount: 4
-    LevelToAppear: 4
+    LevelToAppear: 20
+  - SpawnPoints:
+    - {fileID: 1682871983}
+    - {fileID: 442627683}
+    - {fileID: 1385766745}
+    - {fileID: 1630485301}
+    - {fileID: 1715202739}
+    - {fileID: 1397763932}
+    - {fileID: 1588649235}
+    - {fileID: 1645625359}
+    - {fileID: 752788996}
+    SpawnPointAmount: 5
+    LevelToAppear: 30
+  - SpawnPoints:
+    - {fileID: 1682871983}
+    - {fileID: 442627683}
+    - {fileID: 1385766745}
+    - {fileID: 1630485301}
+    - {fileID: 1715202739}
+    - {fileID: 1397763932}
+    - {fileID: 1588649235}
+    - {fileID: 1645625359}
+    - {fileID: 752788996}
+    SpawnPointAmount: 6
+    LevelToAppear: 50
+  - SpawnPoints:
+    - {fileID: 1682871983}
+    - {fileID: 442627683}
+    - {fileID: 1385766745}
+    - {fileID: 1630485301}
+    - {fileID: 1715202739}
+    - {fileID: 1397763932}
+    - {fileID: 1588649235}
+    - {fileID: 1645625359}
+    - {fileID: 752788996}
+    SpawnPointAmount: 7
+    LevelToAppear: 70
+  - SpawnPoints:
+    - {fileID: 1682871983}
+    - {fileID: 442627683}
+    - {fileID: 1385766745}
+    - {fileID: 1630485301}
+    - {fileID: 1715202739}
+    - {fileID: 1397763932}
+    - {fileID: 1588649235}
+    - {fileID: 1645625359}
+    - {fileID: 752788996}
+    SpawnPointAmount: 8
+    LevelToAppear: 80
+  - SpawnPoints:
+    - {fileID: 1682871983}
+    - {fileID: 442627683}
+    - {fileID: 1385766745}
+    - {fileID: 1630485301}
+    - {fileID: 1715202739}
+    - {fileID: 1397763932}
+    - {fileID: 1588649235}
+    - {fileID: 1645625359}
+    - {fileID: 752788996}
+    SpawnPointAmount: 9
+    LevelToAppear: 100
   spawnPoints:
   - {fileID: 1682871983}
   - {fileID: 442627683}
@@ -1349,7 +1409,7 @@ MonoBehaviour:
     enemyChance: 2
   boss:
     bossName: rare enemy
-    frequency: 30
+    frequency: 50
   chanceToPickSpawnPoint: 1
   amountToIncreaseChance: 1.5
   timePerLevel: 10

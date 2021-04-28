@@ -64,10 +64,14 @@ public class PlayerController : MonoBehaviour, ITakeDamage
     {
         if (owner.Equals(this.gameObject))
             return;
-        Health -= amount;
-        if(amount > 0) CameraShake.Trauma = 0.7f;
-        if (Health > playerHealth) 
-            Health = playerHealth;
+        Health = Mathf.Min(playerHealth, Health - amount);
+        if (amount > 0)
+        {
+            CameraShake.Trauma = 0.7f;
+            AudioManager.instance.Play("player hit");
+        }
+        //if (Health > playerHealth) 
+        //    Health = playerHealth;
         uIMainGame.SetHealthBar(Health);
         if (Health <= 0)
             Die();
