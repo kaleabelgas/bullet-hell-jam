@@ -1272,6 +1272,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ca3e96e0c5e1ea4e85cfa0a6d61b422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPointClass:
+  - SpawnPoints:
+    - {fileID: 1682871983}
+    - {fileID: 442627683}
+    - {fileID: 1385766745}
+    - {fileID: 1630485301}
+    - {fileID: 1715202739}
+    - {fileID: 1397763932}
+    - {fileID: 1588649235}
+    - {fileID: 1645625359}
+    - {fileID: 752788996}
+    SpawnPointAmount: 1
+    LevelToAppear: 1
+  - SpawnPoints:
+    - {fileID: 1682871983}
+    - {fileID: 442627683}
+    - {fileID: 1385766745}
+    - {fileID: 1630485301}
+    - {fileID: 1715202739}
+    - {fileID: 1397763932}
+    - {fileID: 1588649235}
+    - {fileID: 1645625359}
+    - {fileID: 752788996}
+    SpawnPointAmount: 9
+    LevelToAppear: 2
+  - SpawnPoints:
+    - {fileID: 1682871983}
+    - {fileID: 442627683}
+    - {fileID: 1385766745}
+    - {fileID: 1630485301}
+    - {fileID: 1715202739}
+    - {fileID: 1397763932}
+    - {fileID: 1588649235}
+    - {fileID: 1645625359}
+    - {fileID: 752788996}
+    SpawnPointAmount: 1
+    LevelToAppear: 3
   spawnPoints:
   - {fileID: 1682871983}
   - {fileID: 442627683}

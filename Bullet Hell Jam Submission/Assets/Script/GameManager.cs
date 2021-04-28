@@ -21,7 +21,17 @@ public class GameManager : MonoBehaviour
         public float frequency;
     }
 
+    [System.Serializable]
+    public class SpawnMode
+    {
+        public List<Transform> SpawnPoints;
+        public int SpawnPointAmount;
+        public int LevelToAppear;
+    }
+
+    [SerializeField] private List<SpawnMode> spawnPointClass;
     [SerializeField] private List<Transform> spawnPoints;
+
     [SerializeField] private List<EnemyType> enemies;
     [SerializeField] private BossEnemy boss;
     [SerializeField] private float chanceToPickSpawnPoint = 1;
@@ -106,7 +116,7 @@ public class GameManager : MonoBehaviour
             //{
 
             //}
-                //GameOver();
+            //GameOver();
         }
     }
 
@@ -129,7 +139,7 @@ public class GameManager : MonoBehaviour
         if (chosenEnemies.Count < 1)
             chosenEnemies.Add(_enemiesToChooseFrom[0].enemyName);
 
-        if(Level % _boss.frequency == 0)
+        if (Level % _boss.frequency == 0)
         {
             chosenEnemies.Clear();
             chosenEnemies.Add(boss.bossName);
@@ -138,25 +148,46 @@ public class GameManager : MonoBehaviour
         return chosenEnemies;
     }
 
-    List<Transform> ChooseSpawnPoints(List<Transform> spawnPointsToChooseFrom)
+    List<Transform> ChooseSpawnPoints(List<SpawnMode> _spawnMode)
     {
         List<Transform> chosenSpawnPoints = new List<Transform>();
 
-        // spawn in at least 1
+        //// spawn in at least 1
 
-        for (int i = 0; i < spawnPointsToChooseFrom.Count; i++)
+        //for (int i = 0; i < spawnPointsToChooseFrom.Count; i++)
+        //{
+        //    float randomNumber = UnityEngine.Random.Range(1f, 100f);
+        //    if (randomNumber < chanceToPickSpawnPoint)
+        //    {
+        //        chosenSpawnPoints.Add(spawnPointsToChooseFrom[i]);
+        //    }
+        //    //Debug.Log(chosenSpawnPoints.Count);
+        //}
+
+        //if (chosenSpawnPoints.Count < 1)
+        //    chosenSpawnPoints.Add(spawnPointsToChooseFrom[UnityEngine.Random.Range(1, spawnPointsToChooseFrom.Count)]);
+
+
+        // loop through the spawn modes
+        for(int i = 0; i < _spawnMode.Count; i++)
         {
-            float randomNumber = UnityEngine.Random.Range(1f, 100f);
-            if (randomNumber < chanceToPickSpawnPoint)
+            // check if the spawn mode will engage in that level
+            if(Level >= _spawnMode[i].LevelToAppear)
             {
-                chosenSpawnPoints.Add(spawnPointsToChooseFrom[i]);
+                chosenSpawnPoints.Clear();
+                // choose spawnpoint depending on spawn mode's spawnpoint amount
+                for(int j = 0; j < _spawnMode[i].SpawnPointAmount; j++)
+                {
+                    //randomize the location of spawnpoints
+                    int randomSpawn = UnityEngine.Random.Range(0, _spawnMode[i].SpawnPoints.Count);
+                    chosenSpawnPoints.Add(_spawnMode[i].SpawnPoints[randomSpawn]);
+                }
             }
-            //Debug.Log(chosenSpawnPoints.Count);
         }
-        
-        if(chosenSpawnPoints.Count < 1)
-            chosenSpawnPoints.Add(spawnPointsToChooseFrom[UnityEngine.Random.Range(1, spawnPointsToChooseFrom.Count)]);
-        
+
+
+
+
         return chosenSpawnPoints;
     }
 
@@ -166,7 +197,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         healthSpawner.SpawnHealth();
 
-        List<Transform> _spawnPoints= ChooseSpawnPoints(spawnPoints);
+        List<Transform> _spawnPoints = ChooseSpawnPoints(spawnPointClass);
         //string _enemy = ChooseEnemy(enemies, boss);
 
 
@@ -174,7 +205,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < _spawnPoints.Count;)
         {
             List<string> _enemies = ChooseEnemies(enemies, boss);
-            for(int j = 0; j < _enemies.Count; j++)
+            for (int j = 0; j < _enemies.Count; j++)
             {
                 if (i > _spawnPoints.Count)
                 {
@@ -189,7 +220,7 @@ public class GameManager : MonoBehaviour
     private void ClearBullets()
     {
         GameObject[] bulletsInScene = GameObject.FindGameObjectsWithTag("Bullet");
-        foreach(GameObject bullet in bulletsInScene)
+        foreach (GameObject bullet in bulletsInScene)
         {
             bullet.SetActive(false);
         }
