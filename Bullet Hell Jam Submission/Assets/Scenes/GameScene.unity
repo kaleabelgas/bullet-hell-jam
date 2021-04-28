@@ -1343,8 +1343,20 @@ MonoBehaviour:
     - {fileID: 1588649235}
     - {fileID: 1645625359}
     - {fileID: 752788996}
-    SpawnPointAmount: 6
+    SpawnPointAmount: 3
     LevelToAppear: 50
+  - SpawnPoints:
+    - {fileID: 1682871983}
+    - {fileID: 442627683}
+    - {fileID: 1385766745}
+    - {fileID: 1630485301}
+    - {fileID: 1715202739}
+    - {fileID: 1397763932}
+    - {fileID: 1588649235}
+    - {fileID: 1645625359}
+    - {fileID: 752788996}
+    SpawnPointAmount: 6
+    LevelToAppear: 51
   - SpawnPoints:
     - {fileID: 1682871983}
     - {fileID: 442627683}
@@ -1379,8 +1391,20 @@ MonoBehaviour:
     - {fileID: 1588649235}
     - {fileID: 1645625359}
     - {fileID: 752788996}
-    SpawnPointAmount: 9
+    SpawnPointAmount: 5
     LevelToAppear: 100
+  - SpawnPoints:
+    - {fileID: 1682871983}
+    - {fileID: 442627683}
+    - {fileID: 1385766745}
+    - {fileID: 1630485301}
+    - {fileID: 1715202739}
+    - {fileID: 1397763932}
+    - {fileID: 1588649235}
+    - {fileID: 1645625359}
+    - {fileID: 752788996}
+    SpawnPointAmount: 9
+    LevelToAppear: 101
   spawnPoints:
   - {fileID: 1682871983}
   - {fileID: 442627683}
