@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 8
   attackSpeed: 0.05
-  bulletUsed: default bullet
+  bulletUsed: holey bullet
   numSides: 1
   radius: 1.1
 --- !u!114 &-1160466794382709498

@@ -1237,6 +1237,9 @@ MonoBehaviour:
   - tag: two gun enemy
     objectPrefab: {fileID: 820460646642010933, guid: 3c7695ab48999ba48b56dfe949ad2883, type: 3}
     poolSize: 50
+  - tag: holey bullet
+    objectPrefab: {fileID: 3646535366457579801, guid: d2f087688ad88d24885e9fdf3b7918aa, type: 3}
+    poolSize: 1000
 --- !u!4 &659574834
 Transform:
   m_ObjectHideFlags: 0
