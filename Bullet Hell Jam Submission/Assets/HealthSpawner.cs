@@ -28,17 +28,16 @@ public class HealthSpawner : MonoBehaviour
 
     public void SpawnHealth()
     {
-        if(playerController.Health / playerController.playerHealth <= healthPercentage)
+        if (playerController.Health > playerController.playerHealth * healthPercentage)
+            return;
+        for (int i = 0; i < numberOfHealth; i++)
         {
-            for (int i = 0; i < numberOfHealth; i++)
+            float randomNumber = Random.Range(1f, 100f);
+            if (randomNumber < chanceToSpawnHealth)
             {
-                float randomNumber = Random.Range(1f, 100f);
-                if (randomNumber < chanceToSpawnHealth)
-                {
-                    Vector2 randomPositionOnScreen = Camera.main.ViewportToWorldPoint
-                        (new Vector2(Random.value, Mathf.Clamp(Random.value, verticalOffset, 1 - verticalOffset)));
-                    ObjectPooler.Instance.SpawnFromPool("Health", randomPositionOnScreen, Quaternion.identity);
-                }
+                Vector2 randomPositionOnScreen = Camera.main.ViewportToWorldPoint
+                    (new Vector2(Random.value, Mathf.Clamp(Random.value, verticalOffset, 1 - verticalOffset)));
+                ObjectPooler.Instance.SpawnFromPool("Health", randomPositionOnScreen, Quaternion.identity);
             }
         }
     }

@@ -92,7 +92,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: player hit
     clip: {fileID: 8300000, guid: 9466b7356af76ec4083b044214441422, type: 3}
-    volume: 1
+    volume: 0.2
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
     source: {fileID: 0}
   tracks:
   - name: 
-    clip: {fileID: 8300000, guid: 7373cb7900f2bf34aacea1e942010256, type: 3}
+    clip: {fileID: 8300000, guid: e1d09e97ba9537b4eba102ab24c05617, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -110,7 +110,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: 
-    clip: {fileID: 8300000, guid: e1d09e97ba9537b4eba102ab24c05617, type: 3}
+    clip: {fileID: 8300000, guid: 7373cb7900f2bf34aacea1e942010256, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1

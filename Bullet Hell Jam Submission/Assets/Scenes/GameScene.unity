@@ -1442,10 +1442,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68313234c425b3e4795781476a6ea574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfHealth: 4
-  chanceToSpawnHealth: 20
+  numberOfHealth: 5
+  chanceToSpawnHealth: 25
   verticalOffset: 0.15
-  healthPercentage: 0.6
+  healthPercentage: 0.5
 --- !u!1 &752788995
 GameObject:
   m_ObjectHideFlags: 0
