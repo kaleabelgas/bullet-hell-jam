@@ -9,20 +9,36 @@ public class HealthSpawner : MonoBehaviour
     [SerializeField]
     [Range(0, 1)] float verticalOffset;
 
+    [SerializeField] float healthPercentage;
+
+    private PlayerController playerController;
+
+    private Camera cam;
+
+    private void Awake()
+    {
+        playerController = FindObjectOfType<PlayerController>();
+        cam = Camera.main;
+    }
+
     private void Update()
     {
-        Debug.DrawLine(new Vector3(-100, Camera.main.ViewportToWorldPoint(new Vector2(0, verticalOffset)).y), new Vector3(100, Camera.main.ViewportToWorldPoint(new Vector2(0, verticalOffset)).y));
+        Debug.DrawLine(new Vector3(-100, cam.ViewportToWorldPoint(new Vector2(0, verticalOffset)).y), new Vector3(100, cam.ViewportToWorldPoint(new Vector2(0, verticalOffset)).y));
     }
 
     public void SpawnHealth()
     {
-        for (int i = 0; i < numberOfHealth; i++)
+        if(playerController.Health / playerController.playerHealth <= healthPercentage)
         {
-            float randomNumber = Random.Range(1f, 100f);
-            if (randomNumber < chanceToSpawnHealth)
+            for (int i = 0; i < numberOfHealth; i++)
             {
-                Vector2 randomPositionOnScreen = Camera.main.ViewportToWorldPoint(new Vector2(Random.value, Random.value - verticalOffset));
-                ObjectPooler.Instance.SpawnFromPool("Health", randomPositionOnScreen, Quaternion.identity);
+                float randomNumber = Random.Range(1f, 100f);
+                if (randomNumber < chanceToSpawnHealth)
+                {
+                    Vector2 randomPositionOnScreen = Camera.main.ViewportToWorldPoint
+                        (new Vector2(Random.value, Mathf.Clamp(Random.value, verticalOffset, 1 - verticalOffset)));
+                    ObjectPooler.Instance.SpawnFromPool("Health", randomPositionOnScreen, Quaternion.identity);
+                }
             }
         }
     }

@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour, ITakeDamage
     [SerializeField] private float playerSpeed;
     [SerializeField] private float focusAmount;
     [SerializeField] private GameManager gameManager;
-    [SerializeField] private int playerHealth;
+    public int playerHealth;
     private UIMainGame uIMainGame;
 
     private float _focusAmount = 1;

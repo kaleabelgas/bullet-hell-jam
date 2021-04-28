@@ -150,23 +150,6 @@ public class GameManager : MonoBehaviour
 
     List<Transform> ChooseSpawnPoints(List<SpawnMode> _spawnMode)
     {
-
-        //// spawn in at least 1
-
-        //for (int i = 0; i < spawnPointsToChooseFrom.Count; i++)
-        //{
-        //    float randomNumber = UnityEngine.Random.Range(1f, 100f);
-        //    if (randomNumber < chanceToPickSpawnPoint)
-        //    {
-        //        chosenSpawnPoints.Add(spawnPointsToChooseFrom[i]);
-        //    }
-        //    //Debug.Log(chosenSpawnPoints.Count);
-        //}
-
-        //if (chosenSpawnPoints.Count < 1)
-        //    chosenSpawnPoints.Add(spawnPointsToChooseFrom[UnityEngine.Random.Range(1, spawnPointsToChooseFrom.Count)]);
-
-
         // loop through the spawn modes
         List<Transform> chosenSpawnPoints = new List<Transform>();
         for(int i = 0; i < _spawnMode.Count; i++)
@@ -191,10 +174,6 @@ public class GameManager : MonoBehaviour
             }
         }
         return chosenSpawnPoints;
-
-
-
-
     }
 
     private IEnumerator SpawnEnemies()
