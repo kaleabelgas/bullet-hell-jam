@@ -26,7 +26,9 @@ public class UIMainGame : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.instance.Play("level moosic");
+        //AudioManager.instance.Play("level moosic");
+
+        StartCoroutine(AudioManager.instance.StartPlaylist());
         currentLevel.text = $"Level {level}";
         
         volume = FindObjectOfType<Volume>();
@@ -79,7 +81,8 @@ public class UIMainGame : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        AudioManager.instance.Stop("level moosic");
+        //AudioManager.instance.Stop("level moosic");
+        AudioManager.instance.StopMusic();
         SceneManager.LoadScene(0);
     }
 

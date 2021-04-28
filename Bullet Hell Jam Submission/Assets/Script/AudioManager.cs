@@ -47,11 +47,6 @@ public class AudioManager : MonoBehaviour
         }
 	}
 
-    private void Start()
-    {
-		StartCoroutine(StartPlaylist(tracks));
-    }
-
     public void Play(string sound)
 	{
 		Sound s = Array.Find(sounds, item => item.name == sound);
@@ -81,8 +76,10 @@ public class AudioManager : MonoBehaviour
 		s.source.Stop();
 	}
 
-	public IEnumerator StartPlaylist(Sound[] _tracks)
+	public IEnumerator StartPlaylist()
     {
+		stopAudio = false;
+		Sound[] _tracks = tracks;
 		for (int i = 0; i < _tracks.Length; i++)
 		{
 			_tracks[i].source.Play();
