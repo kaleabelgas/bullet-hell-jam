@@ -101,5 +101,10 @@ public class UIMainGame : MonoBehaviour
         }
 
         timer.text = $"{timeToDisplay}";
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Pause();
+        }
     }
 }
