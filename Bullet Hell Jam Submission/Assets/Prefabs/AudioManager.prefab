@@ -92,7 +92,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: player hit
     clip: {fileID: 8300000, guid: 9466b7356af76ec4083b044214441422, type: 3}
-    volume: 0.3
+    volume: 0.5
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0

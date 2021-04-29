@@ -9,6 +9,7 @@ public class UILeaderboard : MonoBehaviour
     {
         //AudioManager.instance.Stop("level moosic");
         AudioManager.instance.StopMusic();
+        AudioManager.instance.StopMusic();
         SceneManager.LoadScene(0);
     }
 }
