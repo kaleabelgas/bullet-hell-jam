@@ -11,6 +11,7 @@ public class UIMainGame : MonoBehaviour
     [SerializeField] TextMeshProUGUI timer;
     [SerializeField] GameObject tutorial;
     [SerializeField] Slider slider;
+    [SerializeField] GameObject pauseMenu;
 
     ColorAdjustments colorAdjustments;
     Volume volume;
@@ -69,11 +70,13 @@ public class UIMainGame : MonoBehaviour
         {
             Time.timeScale = 0;
             Debug.Log("Paused");
+            pauseMenu.gameObject.SetActive(true);
             //AudioManager.instance.Play("level moosic");
         }
         else
         {
             Time.timeScale = 1;
+            pauseMenu.gameObject.SetActive(false);
             //AudioManager.instance.UnPause("level moosic");
 
         }
