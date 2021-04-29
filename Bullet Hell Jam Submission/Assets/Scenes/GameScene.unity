@@ -1447,8 +1447,8 @@ MonoBehaviour:
     levelToAppear: 40
     enemyChance: 2
   boss:
-    bossName: two gun enemy
-    frequency: 1
+    bossName: rare enemy
+    frequency: 50
   chanceToPickSpawnPoint: 1
   amountToIncreaseChance: 1.5
   timePerLevel: 10

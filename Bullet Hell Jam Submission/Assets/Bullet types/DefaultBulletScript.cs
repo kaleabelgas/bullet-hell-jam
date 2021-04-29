@@ -10,6 +10,8 @@ public class DefaultBulletScript : BaseBullet
     {
         this.direction = direction;
         this.speed = speed;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+        transform.Rotate(0, 0, angle, Space.World);
     }
 
     private void Update()

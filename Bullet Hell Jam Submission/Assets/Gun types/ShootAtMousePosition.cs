@@ -13,9 +13,16 @@ public class ShootAtMousePosition : BaseGun
 
     private Vector2 mousePosition;
 
+
+    private Camera maincam;
+
+    private void Start()
+    {
+        maincam = Camera.main;
+    }
     public override void Shoot()
     {
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition = maincam.ScreenToWorldPoint(Input.mousePosition);
 
         Vector2 lookDir = mousePosition - (Vector2)firePoint.position;
         lookDir.Normalize();
@@ -26,7 +33,7 @@ public class ShootAtMousePosition : BaseGun
 
         if (Time.time >= bulletTimer)
         {
-            GameObject bullet = ObjectPooler.Instance.SpawnFromPool(bulletUsed, firePoint.position, transform.rotation);
+            GameObject bullet = ObjectPooler.Instance.SpawnFromPool(bulletUsed, firePoint.position, Quaternion.identity);
             if (bullet == null)
                 return;
             BaseBullet bulletScript = bullet.GetComponent<BaseBullet>();

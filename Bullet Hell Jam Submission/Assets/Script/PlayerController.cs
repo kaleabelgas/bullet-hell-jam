@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour, ITakeDamage
     private Vector2 direction;
     private Rigidbody2D playerRB2D;
 
+    private Camera cam;
+    private Vector2 mousePos;
+
     public int Health { get; private set; } = 100;
 
     private void Awake()
@@ -28,12 +31,23 @@ public class PlayerController : MonoBehaviour, ITakeDamage
         playerRB2D = GetComponent<Rigidbody2D>();
         Health = playerHealth;
         uIMainGame.SetHealthBarMax(playerHealth);
+
+        cam = Camera.main;
     }
 
 
 
     private void Update()
     {
+        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+
+        Vector2 lookDir = mousePos - (Vector2)transform.position;
+        lookDir.Normalize();
+        //Debug.Log(lookDir);
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
+
+        transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, angle);
+
         direction.x = Input.GetAxisRaw("Horizontal");
         direction.y = Input.GetAxisRaw("Vertical");
         direction.Normalize();

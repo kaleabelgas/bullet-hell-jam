@@ -92,7 +92,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: player hit
     clip: {fileID: 8300000, guid: 9466b7356af76ec4083b044214441422, type: 3}
-    volume: 0.2
+    volume: 0.3
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: 
-    clip: {fileID: 8300000, guid: 7373cb7900f2bf34aacea1e942010256, type: 3}
+    clip: {fileID: 8300000, guid: 94e4acd0ed259b44a84e6c5ba0e5f672, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
