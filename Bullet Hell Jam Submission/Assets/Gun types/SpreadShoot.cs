@@ -13,7 +13,7 @@ public class SpreadShoot : BaseGun
 
     private Vector3 point;
     private Vector3 direction;
-    private float arc = 360;
+    [SerializeField] private float arc = 360;
     private float bulletTimer;
 
     public override void Shoot()

@@ -20,9 +20,9 @@ public class EnemyController : MonoBehaviour, ITakeDamage
 
         Vector2 lookDir = target.transform.position - transform.position;
         lookDir.Normalize();
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 270;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
 
-        transform.Translate(Vector2.down * speed * Time.deltaTime);
+        transform.Translate(Vector2.up * speed * Time.deltaTime);
         transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, angle);
         //transform.right = target.position - transform.position;
     }

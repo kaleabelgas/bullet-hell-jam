@@ -1203,7 +1203,7 @@ MonoBehaviour:
     poolSize: 1000
   - tag: default bullet
     objectPrefab: {fileID: 3646535366457579801, guid: be8d6c258e393104bb6edd880b3b8617, type: 3}
-    poolSize: 1000
+    poolSize: 500
   - tag: homing bullet
     objectPrefab: {fileID: 3646535366457579801, guid: 7388bfdf8cdd9ae4f8fbe030035336d7, type: 3}
     poolSize: 0
@@ -1239,7 +1239,16 @@ MonoBehaviour:
     poolSize: 50
   - tag: holey bullet
     objectPrefab: {fileID: 3646535366457579801, guid: d2f087688ad88d24885e9fdf3b7918aa, type: 3}
+    poolSize: 500
+  - tag: sharp bullet
+    objectPrefab: {fileID: 3646535366457579801, guid: 1a4ab57be4d320a48a5ecd4a41074ee9, type: 3}
     poolSize: 1000
+  - tag: shotgun enemy
+    objectPrefab: {fileID: 820460646642010933, guid: 4374b877f754f8940bc7dbf705cf24f3, type: 3}
+    poolSize: 10
+  - tag: rocket bullet
+    objectPrefab: {fileID: 3646535366457579801, guid: ef1b40355eb9cd3449a053ba5cf93023, type: 3}
+    poolSize: 500
 --- !u!4 &659574834
 Transform:
   m_ObjectHideFlags: 0
@@ -1422,12 +1431,15 @@ MonoBehaviour:
   - enemyName: rotating enemy
     levelToAppear: 1
     enemyChance: 70
+  - enemyName: two gun enemy
+    levelToAppear: 1
+    enemyChance: 50
   - enemyName: default enemy
     levelToAppear: 10
     enemyChance: 50
-  - enemyName: two gun enemy
+  - enemyName: shotgun enemy
     levelToAppear: 20
-    enemyChance: 20
+    enemyChance: 40
   - enemyName: rotating rare enemy
     levelToAppear: 30
     enemyChance: 8
@@ -1435,8 +1447,8 @@ MonoBehaviour:
     levelToAppear: 40
     enemyChance: 2
   boss:
-    bossName: rare enemy
-    frequency: 50
+    bossName: two gun enemy
+    frequency: 1
   chanceToPickSpawnPoint: 1
   amountToIncreaseChance: 1.5
   timePerLevel: 10
