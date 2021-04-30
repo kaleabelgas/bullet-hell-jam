@@ -16,6 +16,8 @@ public class AudioManager : MonoBehaviour
 
 	private bool stopAudio = false;
 
+	bool inGame;
+
 	void Awake()
 	{
 		if (instance != null)
@@ -83,7 +85,7 @@ public class AudioManager : MonoBehaviour
 		for (int i = 0; i < _tracks.Length; i++)
 		{
 			_tracks[i].source.Play();
-			while (_tracks[i].source.isPlaying)
+			while (_tracks[i].source.isPlaying || !inGame)
 			{
 				if (stopAudio)
 				{
@@ -97,5 +99,10 @@ public class AudioManager : MonoBehaviour
 	public void StopMusic()
     {
 		stopAudio = true;
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+		inGame = focus;
     }
 }
