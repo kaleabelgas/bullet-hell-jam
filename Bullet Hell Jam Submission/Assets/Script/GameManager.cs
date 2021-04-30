@@ -190,12 +190,8 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < _spawnPoints.Count;)
         {
             List<string> _enemies = ChooseEnemies(enemies, boss);
-            for (int j = 0; j < _enemies.Count; j++)
+            for (int j = 0; j < Mathf.Min(_enemies.Count, _spawnPoints.Count); j++)
             {
-                if (i > _spawnPoints.Count)
-                {
-                    i = 0;
-                }
                 ObjectPooler.Instance.SpawnFromPool(_enemies[j], _spawnPoints[i].position, Quaternion.identity);
                 i++;
             }
