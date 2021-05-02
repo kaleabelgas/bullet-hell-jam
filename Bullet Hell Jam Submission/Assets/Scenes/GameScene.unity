@@ -571,7 +571,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e8e1d020779d6bc46a80d9b8a90fc910, type: 3}
-  m_Color: {r: 0.14117648, g: 0.14117648, b: 0.14117648, a: 1}
+  m_Color: {r: 0.1254902, g: 0.1254902, b: 0.1254902, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2437,7 +2437,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'ENEMIES DESTROYED:'
+  m_text: 'ENEMIES KILLED:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f7050152b4210ec45aee82bc987719c7, type: 2}
   m_sharedMaterial: {fileID: -1604996132676524975, guid: f7050152b4210ec45aee82bc987719c7, type: 2}

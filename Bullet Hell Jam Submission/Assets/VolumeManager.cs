@@ -1,34 +1,30 @@
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class VolumeManager : MonoBehaviour
 {
-    [SerializeField] GameObject globalVolume;
+    private Volume volume;
+    private Bloom bloom;
+    private ChromaticAberration chromaticAberration;
 
+    private bool isBloom = true;
+    private bool isChromAb = true;
     private void Awake()
     {
-        globalVolume = GameObject.FindGameObjectWithTag("Volume");
-        globalVolume.SetActive(PlayerPrefs.GetInt("isVolumeOn") <= 0);
-    }
+        volume = FindObjectOfType<Volume>();
+        if (volume != null)
+        {
+            volume.profile.TryGet(out bloom);
+            volume.profile.TryGet(out chromaticAberration);
+        }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            TogglePostProcessing();
-        }
+        isBloom = PlayerPrefs.GetInt("isBloom") < 1;
+        isChromAb = PlayerPrefs.GetInt("isChromAberration") < 1;
     }
-
-    public void TogglePostProcessing()
+    private void Start()
     {
-        if (PlayerPrefs.GetInt("isVolumeOn") <= 0)
-        {
-            globalVolume.SetActive(false);
-            PlayerPrefs.SetInt("isVolumeOn", 1);
-        }
-        else
-        {
-            globalVolume.SetActive(true);
-            PlayerPrefs.SetInt("isVolumeOn", 0);
-        }
+        bloom.active = isBloom;
+        chromaticAberration.active = isChromAb;
     }
 }

@@ -78,17 +78,17 @@ MonoBehaviour:
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 0
-    m_Scale: 2
-    m_Name: settings transparent
-    m_HashCode: 1847774115
+    m_Scale: 2.5
+    m_Name: settings
+    m_HashCode: 1503177829
   m_SpriteGlyphTable:
   - m_Index: 0
     m_Metrics:
-      m_Width: 400
-      m_Height: 400
-      m_HorizontalBearingX: -18.7
-      m_HorizontalBearingY: 170
-      m_HorizontalAdvance: 246
+      m_Width: 256
+      m_Height: 256
+      m_HorizontalBearingX: -21.3
+      m_HorizontalBearingY: 165.1
+      m_HorizontalAdvance: 233.1
     m_GlyphRect:
       m_X: 0
       m_Y: 0

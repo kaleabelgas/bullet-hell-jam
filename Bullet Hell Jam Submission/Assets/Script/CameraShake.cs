@@ -24,6 +24,8 @@ public class CameraShake : MonoBehaviour
 
     public static float Trauma { get { return Instance._trauma; } set { Instance._trauma = value; } }
 
+    public static bool IsEnabled = true;
+
     private float _seed;
 
     private float _elapsedTime;
@@ -34,6 +36,7 @@ public class CameraShake : MonoBehaviour
     private void Start()
     {
         _seed = Random.Range(0, 999999);
+        IsEnabled = PlayerPrefs.GetInt("isCameraShake") < 1;
     }
 
     // Update is called once per frame
@@ -45,7 +48,8 @@ public class CameraShake : MonoBehaviour
         var xPos = GetPerlin(_seed, 100, 1);
         var yPos = GetPerlin(_seed + 1, 100, 1);
         var rot = GetPerlin(_seed + 2, 100, 10);
-        transform.position = new Vector3(TargetPos.x + xPos, TargetPos.y + yPos, transform.position.z);
+        if(IsEnabled)
+            transform.position = new Vector3(TargetPos.x + xPos, TargetPos.y + yPos, transform.position.z);
         //transform.eulerAngles = new Vector3(0, 0, rot);
         _elapsedTime += Time.deltaTime;
     }
