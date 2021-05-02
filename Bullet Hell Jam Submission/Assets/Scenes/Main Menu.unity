@@ -1357,7 +1357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TabGroup: {fileID: 1048981194}
-  background: {fileID: 0}
+  background: {fileID: 286749290}
 --- !u!1 &296787976
 GameObject:
   m_ObjectHideFlags: 0
@@ -1919,7 +1919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TabGroup: {fileID: 1048981194}
-  background: {fileID: 0}
+  background: {fileID: 388820195}
 --- !u!1 &389022571
 GameObject:
   m_ObjectHideFlags: 0
@@ -5627,7 +5627,8 @@ MonoBehaviour:
   tabidle: {fileID: 21300000, guid: ea03184e9332f674bbd8f5d14c7c8525, type: 3}
   tabHover: {fileID: 21300000, guid: 7812f6dd176cc98458221567b38b9cd3, type: 3}
   tabActive: {fileID: 21300000, guid: c706ed916127f9a4bba5c9748b6671b1, type: 3}
-  selectedTab: {fileID: 1058695798}
+  selectedTab: {fileID: 0}
+  defaultTab: {fileID: 1058695798}
   objectsToSwap:
   - {fileID: 761452179}
   - {fileID: 773665099}
@@ -5768,7 +5769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TabGroup: {fileID: 1048981194}
-  background: {fileID: 0}
+  background: {fileID: 1058695796}
 --- !u!1 &1059361276
 GameObject:
   m_ObjectHideFlags: 0
@@ -6198,7 +6199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1178537274
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10231,7 +10232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TabGroup: {fileID: 1048981194}
-  background: {fileID: 0}
+  background: {fileID: 1974863193}
 --- !u!1 &1977364552
 GameObject:
   m_ObjectHideFlags: 0

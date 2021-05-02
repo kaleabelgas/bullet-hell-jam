@@ -10,12 +10,13 @@ public class TabGroup : MonoBehaviour
     [SerializeField] private Sprite tabHover;
     [SerializeField] private Sprite tabActive;
     [SerializeField] private ButtonTab selectedTab;
+    [SerializeField] private ButtonTab defaultTab;
 
     [SerializeField] private List<GameObject> objectsToSwap;
 
-    private void Start()
+    private void OnEnable()
     {
-        OnTabSelected(selectedTab);
+        OnTabSelected(defaultTab);
     }
 
     public void Subscribe(ButtonTab button)

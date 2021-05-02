@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+[RequireComponent(typeof(Image))]
 public class ButtonTab : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
 {
     [SerializeField] TabGroup TabGroup;
     public Image background;
 
-    private void Start()
+    private void Awake()
     {
         background = GetComponent<Image>();
         TabGroup.Subscribe(this);
