@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float timePerLevel = 1;
 
     [SerializeField] private UIMainGame uIMainGame;
+    [SerializeField] private GameObject gameOverScreen;
     PulseScript pulseScript;
 
     private float timeRemaining;
@@ -57,6 +58,8 @@ public class GameManager : MonoBehaviour
         CameraShake.TargetPos = transform.position;
 
         healthSpawner = GetComponent<HealthSpawner>();
+
+        gameOverScreen.gameObject.SetActive(false);
 
         Time.timeScale = 1;
         pulseScript = GetComponent<PulseScript>();
@@ -209,9 +212,10 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         PlayerPrefs.SetInt("highscore", highScore);
+        EnemyCounter.SaveEnemyKillCount();
         Time.timeScale = 0;
-        //EndScreen.SetActive(true);
+        AudioManager.instance.StopMusic();
         PlayerPrefs.Save();
-        SceneManager.LoadScene(2);
+        gameOverScreen.gameObject.SetActive(true);
     }
 }

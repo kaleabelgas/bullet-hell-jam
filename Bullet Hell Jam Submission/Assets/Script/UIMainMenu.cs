@@ -11,7 +11,8 @@ public class UIMainMenu : MonoBehaviour
     private string playerName = "";
     private void Start()
     {
-
+        AudioManager.instance.StopMusic();
+        EnemyCounter.ClearEnemiesKilledCountCurrent();
         highScore.text = "High Score: <color=#FF0D0D>Level " + PlayerPrefs.GetInt("highscore").ToString() + "</color>";
         if (!string.IsNullOrEmpty(PlayerPrefs.GetString("Name")))
         {

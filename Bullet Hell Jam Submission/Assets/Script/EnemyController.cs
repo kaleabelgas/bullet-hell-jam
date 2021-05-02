@@ -42,6 +42,7 @@ public class EnemyController : MonoBehaviour, ITakeDamage
         AudioManager.instance.Play("enemy ded");
         ObjectPooler.Instance.SpawnFromPool("death effect", transform.position, transform.rotation);
         CameraShake.Trauma = 0.7f;
+        EnemyCounter.AddEnemyToKillCount(1);
         gameObject.SetActive(false);
     }
 }

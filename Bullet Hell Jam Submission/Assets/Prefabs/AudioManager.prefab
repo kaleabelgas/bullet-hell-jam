@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 7868482516867388659}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.044409934, y: 0.044409934, z: 0.044409934}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -70,15 +70,6 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: level moosic
-    clip: {fileID: 8300000, guid: e1d09e97ba9537b4eba102ab24c05617, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: powerup

@@ -63,6 +63,7 @@ public class RotatingEnemy : MonoBehaviour, ITakeDamage
     {
         AudioManager.instance.Play("enemy ded");
         ObjectPooler.Instance.SpawnFromPool("death effect", transform.position, transform.rotation);
+        EnemyCounter.AddEnemyToKillCount(1);
         CameraShake.Trauma = 0.75f;
         gameObject.SetActive(false);
     }

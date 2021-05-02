@@ -15,6 +15,8 @@ public class HighScoresDisplayer : MonoBehaviour
 
     List<dreamloLeaderBoard.Score> HighScoresList;
 
+    [SerializeField] Color nameColor = new Color(255, 0, 0);
+
     [ColorUsageAttribute(true, true)]
     [SerializeField] Color highestColor = new Color(252, 186, 3);
 
@@ -92,8 +94,14 @@ public class HighScoresDisplayer : MonoBehaviour
             {
                 //Debug.Log("yes");
                 string textToDisplay = $"{HighScoresList[i].score} - {HighScoresList[i].playerName}";
-                if (textToDisplay.Length > 21) { textToDisplay = $"{textToDisplay.Substring(0, 19)}..."; }
+                if (textToDisplay.Length > 20) { textToDisplay = $"{textToDisplay.Substring(0, 18)}.."; }
                 top10Scores[i].text = $"[{textToDisplay}]";
+
+                string _name = PlayerPrefs.GetString("Name");
+                if (_name.Equals(HighScoresList[i].playerName))
+                {
+                    top10Scores[i].color = nameColor;
+                }
             }
         }
         yield return leaderboardUpdate;

@@ -29,7 +29,8 @@ public class UIMainGame : MonoBehaviour
     {
         //AudioManager.instance.Play("level moosic");
 
-        StartCoroutine(AudioManager.instance.StartPlaylist());
+        //StartCoroutine(AudioManager.instance.StartPlaylist());
+        AudioManager.instance.PlayMusic();
         currentLevel.text = $"Level {level}";
         
         volume = FindObjectOfType<Volume>();

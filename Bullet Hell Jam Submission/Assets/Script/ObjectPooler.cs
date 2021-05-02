@@ -52,14 +52,19 @@ public class ObjectPooler : MonoBehaviour
 
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
 
-        objectToSpawn.SetActive(true);
-        objectToSpawn.transform.position = position;
-        objectToSpawn.transform.rotation = rotation;
+        if(objectToSpawn != null)
+        {
 
-        poolDictionary[tag].Enqueue(objectToSpawn);
+            objectToSpawn.SetActive(true);
+            objectToSpawn.transform.position = position;
+            objectToSpawn.transform.rotation = rotation;
 
-        //Debug.Log("Pooler Used");
+            poolDictionary[tag].Enqueue(objectToSpawn);
 
-        return objectToSpawn;
+            //Debug.Log("Pooler Used");
+
+            return objectToSpawn;
+        }
+        return null;
     }
 }

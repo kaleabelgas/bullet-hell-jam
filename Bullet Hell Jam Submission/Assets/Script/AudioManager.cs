@@ -15,8 +15,7 @@ public class AudioManager : MonoBehaviour
 	public Sound[] tracks;
 
 	private bool stopAudio = false;
-
-	bool inGame;
+	private bool isplaying;
 
 	void Awake()
 	{
@@ -85,10 +84,14 @@ public class AudioManager : MonoBehaviour
 		for (int i = 0; i < _tracks.Length; i++)
 		{
 			_tracks[i].source.Play();
-			while (_tracks[i].source.isPlaying || !inGame)
+			while (_tracks[i].source.isPlaying)
 			{
+				isplaying = _tracks[i].source.isPlaying;
+				Debug.Log("playing");
 				if (stopAudio)
 				{
+					Debug.Log("Stopped");
+					isplaying = false;
 					_tracks[i].source.Stop();
 					yield break;
 				}
@@ -96,13 +99,15 @@ public class AudioManager : MonoBehaviour
 			}
 		}
 	}
+
+	public void PlayMusic()
+    {
+		StartCoroutine(StartPlaylist());
+    }
+
 	public void StopMusic()
     {
 		stopAudio = true;
     }
 
-    private void OnApplicationFocus(bool focus)
-    {
-		inGame = focus;
-    }
 }
