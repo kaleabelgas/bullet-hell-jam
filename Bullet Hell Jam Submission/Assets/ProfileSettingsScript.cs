@@ -12,7 +12,7 @@ public class ProfileSettingsScript : MonoBehaviour
 
     private void OnEnable()
     {
-        highScore.text = $"{PlayerPrefs.GetInt("highscore")}";
+        highScore.text = $"{PlayerPrefs.GetInt("highscore")}00";
         totalEnemiesKilled.text = $"{PlayerPrefs.GetInt("enemieskilled")}";
         playerName.text = $"{PlayerPrefs.GetString("Name")}";
     }

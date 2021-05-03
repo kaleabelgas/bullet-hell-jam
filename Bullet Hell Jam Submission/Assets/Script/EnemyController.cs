@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,17 @@ public class EnemyController : MonoBehaviour, ITakeDamage
     [SerializeField] float speed;
     [SerializeField] private GameObject target;
     [SerializeField] private int health;
+    [SerializeField] private int enemyScore;
+
+    public event Action iHaveDied;
+    private UIMainGame UIMainGame;
 
     private void OnEnable()
     {
         target = GameObject.FindGameObjectWithTag("Player");
         EnemyHealth = health;
+        UIMainGame = FindObjectOfType<UIMainGame>();
+        iHaveDied += UIMainGame.UpdateScore;
     }
 
     private void Update()
@@ -42,7 +49,12 @@ public class EnemyController : MonoBehaviour, ITakeDamage
         AudioManager.instance.Play("enemy ded");
         ObjectPooler.Instance.SpawnFromPool("death effect", transform.position, transform.rotation);
         CameraShake.Trauma = 0.7f;
-        EnemyCounter.AddEnemyToKillCount(1);
+        EnemyCounter.AddToScore(enemyScore);
+        iHaveDied?.Invoke();
         gameObject.SetActive(false);
+    }
+    private void OnDisable()
+    {
+        iHaveDied -= UIMainGame.UpdateScore;
     }
 }

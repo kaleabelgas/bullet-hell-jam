@@ -117,6 +117,7 @@ MonoBehaviour:
   bulletUsed: default bullet
   numSides: 6
   radius: 1.5
+  arc: 360
 --- !u!114 &2786988158873350558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   health: 150
+  enemyScore: 5
   offset: 5
   rotationUpdateSpeed: 0.1
 --- !u!58 &-1882135872919263423

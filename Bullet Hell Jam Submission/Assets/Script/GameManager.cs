@@ -34,8 +34,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private List<EnemyType> enemies;
     [SerializeField] private BossEnemy boss;
-    [SerializeField] private float chanceToPickSpawnPoint = 1;
-    [SerializeField] private float amountToIncreaseChance = 1;
 
     [SerializeField] private float timePerLevel = 1;
 
@@ -46,13 +44,9 @@ public class GameManager : MonoBehaviour
     private float timeRemaining;
 
     private HealthSpawner healthSpawner;
-
-    public event Action NextLevel;
-    private int highScore = 1;
     private bool tutorialDone = false;
-    public int Level { get; private set; } = 0;
 
-
+    private int CurrentWave = 0;
     void Awake()
     {
         CameraShake.TargetPos = transform.position;
@@ -68,8 +62,6 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetString("Name", "AAA");
         }
         timeRemaining = timePerLevel;
-        NextLevel += uIMainGame.UpdateCurrentLevel;
-        highScore = PlayerPrefs.GetInt("highscore");
         //StartCoroutine(SpawnEnemies());
     }
 
@@ -84,43 +76,29 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Current Level: " + Level);
-            if (!tutorialDone)
-            {
-                uIMainGame.DeleteTutorial();
-                tutorialDone = true;
-            }
-
-            Level++;
-
-            AudioManager.instance.Play("next level");
-            Time.timeScale = 0.3f;
-
-            NextLevel.Invoke();
-            pulseScript.DoPulse();
-            ClearBullets();
-            timeRemaining = timePerLevel;
-            healthSpawner.ClearHealth();
-            StartCoroutine(SpawnEnemies());
-
-
-            if (amountToIncreaseChance < 100)
-            {
-                chanceToPickSpawnPoint += amountToIncreaseChance;
-            }
-
-
-            if (Level > highScore)
-            {
-                highScore = Level;
-            }
-
-            //if (GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
-            //{
-
-            //}
-            //GameOver();
+            DoNextLevel();
         }
+    }
+
+    private void DoNextLevel()
+    {
+        //Debug.Log("Current Level: " + Level);
+        if (!tutorialDone)
+        {
+            uIMainGame.DeleteTutorial();
+            tutorialDone = true;
+        }
+        EnemyCounter.AddToScore(500); //yeah magic number, just add score on next wave lol
+        AudioManager.instance.Play("next level");
+        Time.timeScale = 0.3f;
+        pulseScript.DoPulse();
+        ClearBullets();
+
+        CurrentWave++;
+
+        timeRemaining = timePerLevel;
+        healthSpawner.ClearHealth();
+        StartCoroutine(SpawnEnemies());
     }
 
     List<string> ChooseEnemies(List<EnemyType> _enemiesToChooseFrom, BossEnemy _boss)
@@ -130,7 +108,7 @@ public class GameManager : MonoBehaviour
         float randomN = UnityEngine.Random.Range(1f, 100f);
         for (int i = 0; i < _enemiesToChooseFrom.Count; i++)
         {
-            if (Level >= _enemiesToChooseFrom[i].levelToAppear)
+            if (CurrentWave >= _enemiesToChooseFrom[i].levelToAppear)
             {
                 if (randomN < _enemiesToChooseFrom[i].enemyChance)
                 {
@@ -142,7 +120,7 @@ public class GameManager : MonoBehaviour
         if (chosenEnemies.Count < 1)
             chosenEnemies.Add(_enemiesToChooseFrom[0].enemyName);
 
-        if (Level % _boss.frequency == 0)
+        if (CurrentWave % _boss.frequency == 0)
         {
             chosenEnemies.Clear();
             chosenEnemies.Add(boss.bossName);
@@ -158,7 +136,7 @@ public class GameManager : MonoBehaviour
         for(int i = 0; i < _spawnMode.Count; i++)
         {
             // check if the spawn mode will engage in that level
-            if(Level >= _spawnMode[i].LevelToAppear)
+            if(CurrentWave >= _spawnMode[i].LevelToAppear)
             {
                 chosenSpawnPoints.Clear();
                 // choose spawnpoint depending on spawn mode's spawnpoint amount
@@ -211,8 +189,7 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
-        PlayerPrefs.SetInt("highscore", highScore);
-        EnemyCounter.SaveEnemyKillCount();
+        EnemyCounter.SavePlayerScores();
         Time.timeScale = 0;
         AudioManager.instance.StopMusic();
         PlayerPrefs.Save();

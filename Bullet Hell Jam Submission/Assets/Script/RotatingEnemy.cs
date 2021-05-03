@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,16 +8,23 @@ public class RotatingEnemy : MonoBehaviour, ITakeDamage
     public int EnemyHealth { get; private set; }
     [SerializeField] float speed;
     [SerializeField] private int health;
+    [SerializeField] private int enemyScore;
 
     private Vector2 screenBounds;
     [SerializeField] float offset = 10;
     [SerializeField] float rotationUpdateSpeed;
 
+
+    public event Action iHaveDied;
+    private UIMainGame UIMainGame;
     private void OnEnable()
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height/2, Camera.main.transform.position.z));
         EnemyHealth = health;
         StartCoroutine(SpiralEnemy());
+
+        UIMainGame = FindObjectOfType<UIMainGame>();
+        iHaveDied += UIMainGame.UpdateScore;
     }
 
     private void Update()
@@ -63,8 +71,14 @@ public class RotatingEnemy : MonoBehaviour, ITakeDamage
     {
         AudioManager.instance.Play("enemy ded");
         ObjectPooler.Instance.SpawnFromPool("death effect", transform.position, transform.rotation);
-        EnemyCounter.AddEnemyToKillCount(1);
         CameraShake.Trauma = 0.75f;
+        EnemyCounter.AddToScore(enemyScore);
+        iHaveDied?.Invoke();
         gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        iHaveDied -= UIMainGame.UpdateScore;
     }
 }

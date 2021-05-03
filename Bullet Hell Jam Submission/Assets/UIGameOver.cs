@@ -7,15 +7,15 @@ using UnityEngine.SceneManagement;
 public class UIGameOver : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
-    [SerializeField] private TextMeshProUGUI levelReached;
+    [SerializeField] private TextMeshProUGUI currentScore;
     [SerializeField] private TextMeshProUGUI highScore;
     [SerializeField] private TextMeshProUGUI enemiesKilled;
 
     private void OnEnable()
     {
-        highScore.text = $"{PlayerPrefs.GetInt("highscore")}";
+        highScore.text = $"{PlayerPrefs.GetInt("highscore")}00";
         enemiesKilled.text = $"{EnemyCounter.EnemiesKilled}";
-        levelReached.text = $"{gameManager.Level}";
+        currentScore.text = $"{EnemyCounter.SessionScore}";
     }
 
     public void OpenMainMenu()
@@ -28,8 +28,8 @@ public class UIGameOver : MonoBehaviour
     }
     public void RestartLevel()
     {
-        gameObject.SetActive(false);
         EnemyCounter.ClearEnemiesKilledCountCurrent();
         SceneManager.LoadScene(1);
+        gameObject.SetActive(false);
     }
 }

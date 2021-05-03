@@ -154,7 +154,7 @@ MonoBehaviour:
   playerSpeed: 17
   focusAmount: 0.45
   gameManager: {fileID: 0}
-  playerHealth: 1
+  playerHealth: 700
 --- !u!114 &4523558256386118407
 MonoBehaviour:
   m_ObjectHideFlags: 0

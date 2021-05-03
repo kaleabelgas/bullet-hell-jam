@@ -8,7 +8,9 @@ public class AudioManager : MonoBehaviour
 
 	public static AudioManager instance;
 
-	public AudioMixerGroup mixerGroup;
+	public AudioMixerGroup SFXMixerGroup;
+
+	public AudioMixerGroup musicMixerGroup;
 
 	public Sound[] sounds;
 
@@ -35,7 +37,7 @@ public class AudioManager : MonoBehaviour
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
 
-			s.source.outputAudioMixerGroup = mixerGroup;
+			s.source.outputAudioMixerGroup = SFXMixerGroup;
 		}
 
 		foreach(Sound m in tracks)
@@ -44,7 +46,7 @@ public class AudioManager : MonoBehaviour
 			m.source.clip = m.clip;
 			m.source.loop = m.loop;
 
-			m.source.outputAudioMixerGroup = mixerGroup;
+			m.source.outputAudioMixerGroup = musicMixerGroup;
         }
 	}
 
@@ -87,7 +89,7 @@ public class AudioManager : MonoBehaviour
 			while (_tracks[i].source.isPlaying)
 			{
 				isplaying = _tracks[i].source.isPlaying;
-				Debug.Log("playing");
+				//Debug.Log("playing");
 				if (stopAudio)
 				{
 					Debug.Log("Stopped");

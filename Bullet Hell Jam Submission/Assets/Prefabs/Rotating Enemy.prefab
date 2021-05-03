@@ -132,6 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   health: 80
+  enemyScore: 1
   offset: 10
   rotationUpdateSpeed: 0.05
 --- !u!58 &-1882135872919263423

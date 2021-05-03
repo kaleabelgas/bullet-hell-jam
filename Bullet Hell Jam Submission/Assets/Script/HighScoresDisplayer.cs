@@ -93,7 +93,7 @@ public class HighScoresDisplayer : MonoBehaviour
             if (HighScoresList.Count > i)
             {
                 //Debug.Log("yes");
-                string textToDisplay = $"{HighScoresList[i].score} - {HighScoresList[i].playerName}";
+                string textToDisplay = $"{HighScoresList[i].score}00 - {HighScoresList[i].playerName}";
                 if (textToDisplay.Length > 20) { textToDisplay = $"{textToDisplay.Substring(0, 18)}.."; }
                 top10Scores[i].text = $"[{textToDisplay}]";
 
