@@ -17,7 +17,21 @@ public class UIGameOver : MonoBehaviour
         waveReached.text = $"{gameManager.CurrentWave}";
         highScore.text = $"{PlayerPrefs.GetInt("highscore")}00";
         enemiesKilled.text = $"{EnemyCounter.EnemiesKilled}";
-        currentScore.text = $"{EnemyCounter.SessionScore}00";
+        StartCoroutine(CountUpScore());
+    }
+
+    IEnumerator CountUpScore()
+    {
+        int targetScore = EnemyCounter.SessionScore;
+        int _currentNumber = 0;
+
+        while (_currentNumber < targetScore)
+        {
+            _currentNumber++;
+            currentScore.text = $"{_currentNumber}00";
+            yield return new WaitForSecondsRealtime(0.1f);
+
+        }
     }
 
     public void OpenMainMenu()

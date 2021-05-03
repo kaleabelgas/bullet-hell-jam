@@ -45,7 +45,7 @@ public class HighScoresDisplayer : MonoBehaviour
         dl = FindObjectOfType<dreamloLeaderBoard>();
         dl.AddScore(PlayerPrefs.GetString("Name"), highScore);
 
-        highScoreText.text = $"HIGH SCORE: {PlayerPrefs.GetInt("highscore")}";
+        highScoreText.text = $"LOCAL HIGH SCORE: {PlayerPrefs.GetInt("highscore")}";
         
 
         for (int i = 0; i < top10Names.Length; i++)
@@ -58,25 +58,38 @@ public class HighScoresDisplayer : MonoBehaviour
 
             if (PlayerPrefs.GetString("Name").Equals(name))
             {
-                highScoreText.color = highestColor;
+                highScoreText.color = nameColor;
             }
         }
+        ColorTheScore(highScoreText, true);
+        
+    }
 
-        if (highScore >= 200)
+    private void ColorTheScore(TextMeshProUGUI score, bool isMyScore = false)
+    {
+        //Debug.Log(int.Parse(score.text));
+
+        int _score = highScore;
+        if (!isMyScore)
         {
-            highScoreText.color = highestColor;
+            _score = int.Parse(score.text);
         }
-        else if (highScore >= 100 && highScore < 150)
+
+        if (_score >= 70000)
         {
-            highScoreText.color = highColor;
+            score.color = highestColor;
         }
-        else if (highScore >= 50 && highScore < 100)
+        else if (_score >= 20000)
         {
-            highScoreText.color = mediumColor;
+            score.color = highColor;
         }
-        else if (highScore >= 20 && highScore < 50)
+        else if (_score >= 10000)
         {
-            highScoreText.color = lowColor;
+            score.color = mediumColor;
+        }
+        else
+        {
+            score.color = lowColor;
         }
     }
 
@@ -119,11 +132,7 @@ public class HighScoresDisplayer : MonoBehaviour
                 }
                 top10Scores[i].text = $"{textToDisplay}";
 
-                string _name = PlayerPrefs.GetString("Name");
-                if (_name.Equals(HighScoresList[i].playerName))
-                {
-                    top10Scores[i].color = nameColor;
-                }
+                ColorTheScore(top10Scores[i]);
             }
         }
         yield return leaderboardUpdate;
