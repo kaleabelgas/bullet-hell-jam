@@ -7,15 +7,17 @@ using UnityEngine.SceneManagement;
 public class UIGameOver : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private TextMeshProUGUI waveReached;
     [SerializeField] private TextMeshProUGUI currentScore;
     [SerializeField] private TextMeshProUGUI highScore;
     [SerializeField] private TextMeshProUGUI enemiesKilled;
 
     private void OnEnable()
     {
+        waveReached.text = $"{gameManager.CurrentWave}";
         highScore.text = $"{PlayerPrefs.GetInt("highscore")}00";
         enemiesKilled.text = $"{EnemyCounter.EnemiesKilled}";
-        currentScore.text = $"{EnemyCounter.SessionScore}";
+        currentScore.text = $"{EnemyCounter.SessionScore}00";
     }
 
     public void OpenMainMenu()

@@ -46,10 +46,11 @@ public class GameManager : MonoBehaviour
     private HealthSpawner healthSpawner;
     private bool tutorialDone = false;
 
-    private int CurrentWave = 0;
+    public int CurrentWave { get; private set; } = 0;
     void Awake()
     {
         CameraShake.TargetPos = transform.position;
+        EnemyCounter.ClearEnemiesKilledCountCurrent();
 
         healthSpawner = GetComponent<HealthSpawner>();
 
@@ -88,7 +89,8 @@ public class GameManager : MonoBehaviour
             uIMainGame.DeleteTutorial();
             tutorialDone = true;
         }
-        EnemyCounter.AddToScore(500); //yeah magic number, just add score on next wave lol
+        EnemyCounter.SessionScore += 2; ; //yeah magic number, just add score on next wave lol
+        uIMainGame.UpdateScore();
         AudioManager.instance.Play("next level");
         Time.timeScale = 0.3f;
         pulseScript.DoPulse();

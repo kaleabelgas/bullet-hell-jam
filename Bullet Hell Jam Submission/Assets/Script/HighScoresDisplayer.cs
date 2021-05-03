@@ -7,7 +7,9 @@ using TMPro;
 public class HighScoresDisplayer : MonoBehaviour
 {
 
+    [SerializeField] TextMeshProUGUI[] top10Names;
     [SerializeField] TextMeshProUGUI[] top10Scores;
+
 
     [SerializeField] dreamloLeaderBoard dl;
 
@@ -46,9 +48,9 @@ public class HighScoresDisplayer : MonoBehaviour
         highScoreText.text = $"HIGH SCORE: {PlayerPrefs.GetInt("highscore")}";
         
 
-        for (int i = 0; i < top10Scores.Length; i++)
+        for (int i = 0; i < top10Names.Length; i++)
         {
-            top10Scores[i].text = $"{i}. Fetching...";
+            top10Names[i].text = $"{i}. Fetching...";
         }
 
         foreach (string name in easterEggNames)
@@ -87,15 +89,35 @@ public class HighScoresDisplayer : MonoBehaviour
     {
 
         HighScoresList = dl.ToListHighToLow();
-        for (int i = 0; i < top10Scores.Length; i++)
+        for (int i = 0; i < top10Names.Length; i++)
         {
-            top10Scores[i].text = $"[Fetching... ]";
+            top10Names[i].text = $"[Fetching... ]";
             if (HighScoresList.Count > i)
             {
                 //Debug.Log("yes");
-                string textToDisplay = $"{HighScoresList[i].score}00 - {HighScoresList[i].playerName}";
-                if (textToDisplay.Length > 20) { textToDisplay = $"{textToDisplay.Substring(0, 18)}.."; }
-                top10Scores[i].text = $"[{textToDisplay}]";
+                string textToDisplay = $"{HighScoresList[i].playerName}";
+                if (textToDisplay.Length > 40) { textToDisplay = $"{textToDisplay.Substring(0, 38)}.."; }
+                top10Names[i].text = $"{textToDisplay}";
+
+                string _name = PlayerPrefs.GetString("Name");
+                if (_name.Equals(HighScoresList[i].playerName))
+                {
+                    top10Names[i].color = nameColor;
+                }
+            }
+        }
+        for (int i = 0; i < top10Scores.Length; i++)
+        {
+            top10Scores[i].text = $"0";
+            if (HighScoresList.Count > i)
+            {
+                //Debug.Log("yes");
+                string textToDisplay = $"{HighScoresList[i].score}00";
+                if (textToDisplay.Length > 6) 
+                { 
+                    textToDisplay = $"{textToDisplay.Substring(0, 5)}M"; 
+                }
+                top10Scores[i].text = $"{textToDisplay}";
 
                 string _name = PlayerPrefs.GetString("Name");
                 if (_name.Equals(HighScoresList[i].playerName))
