@@ -36,7 +36,7 @@ public class CameraShake : MonoBehaviour
     private void Start()
     {
         _seed = Random.Range(0, 999999);
-        IsEnabled = PlayerPrefs.GetInt("isCameraShake") < 1;
+        IsEnabled = PlayerPrefs.GetInt("isCameraShake", 1) > 0;
     }
 
     // Update is called once per frame

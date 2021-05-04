@@ -19,8 +19,8 @@ public class VolumeManager : MonoBehaviour
             volume.profile.TryGet(out chromaticAberration);
         }
 
-        isBloom = PlayerPrefs.GetInt("isBloom") < 1;
-        isChromAb = PlayerPrefs.GetInt("isChromAberration") < 1;
+        isBloom = PlayerPrefs.GetInt("isBloom", 1) > 0;
+        isChromAb = PlayerPrefs.GetInt("isChromAberration", 1) > 0;
     }
     private void Start()
     {

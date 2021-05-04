@@ -19,10 +19,6 @@ public class DisplaySettingsScript : MonoBehaviour
     [SerializeField] Toggle CAToggle;
     [SerializeField] Toggle camShakeToggle;
     [SerializeField] Toggle fullscreenToggle;
-
-    private bool _isBloom;
-    private bool _isChrom;
-    private bool _isCamShake;
     private void OnEnable()
     {
         resolutions = Screen.resolutions;
@@ -34,6 +30,8 @@ public class DisplaySettingsScript : MonoBehaviour
         for (int i = 0; i <resolutions.Length; i++)
         {
             string option = $"{resolutions[i].width} x {resolutions[i].height}";
+            if (resolutionOptions.Contains(option))
+                continue;
             resolutionOptions.Add(option);
 
             if (resolutions[i].width.Equals(Screen.width) && resolutions[i].height.Equals(Screen.height))
@@ -55,13 +53,9 @@ public class DisplaySettingsScript : MonoBehaviour
             volume.profile.TryGet(out chromaticAberration);
         }
 
-        _isBloom = PlayerPrefs.GetInt("isBloom") < 1;
-        _isChrom = PlayerPrefs.GetInt("isChromAberration") < 1;
-        _isCamShake = PlayerPrefs.GetInt("isCameraShake") < 1;
-
-        bloomToggle.isOn = _isBloom;
-        CAToggle.isOn = _isChrom;
-        camShakeToggle.isOn = _isCamShake;
+        bloomToggle.isOn = PlayerPrefs.GetInt("isBloom", 1) > 0;
+        CAToggle.isOn = PlayerPrefs.GetInt("isChromAberration", 1) > 0;
+        camShakeToggle.isOn = PlayerPrefs.GetInt("isCameraShake", 1) > 0;
         fullscreenToggle.isOn = Screen.fullScreen;
     }
 
@@ -73,22 +67,23 @@ public class DisplaySettingsScript : MonoBehaviour
     public void ToggleBloom(bool value)
     {
         bloom.active = value;
-        PlayerPrefs.SetInt("isBloom", value ? 0 : 1);
+        PlayerPrefs.SetInt("isBloom", value ? 1 : 0);
     }
     public void ToggleChromaticAberration(bool value)
     {
         chromaticAberration.active = value;
-        PlayerPrefs.SetInt("isChromAberration", value ? 0 : 1);
+        PlayerPrefs.SetInt("isChromAberration", value ? 1 : 0);
     }
     public void ToggleCamShake(bool value)
     {
-        PlayerPrefs.SetInt("isCameraShake", value ? 0 : 1);
+        PlayerPrefs.SetInt("isCameraShake", value ? 1 : 0);
         CameraShake.IsEnabled = value;
     }
 
     public void SetResolution(int resolutionIndex)
     {
         Resolution res = resolutions[resolutionIndex];
+        Debug.Log($"{res.height} {res.width}");
         Screen.SetResolution(res.width, res.height, Screen.fullScreen); 
     }
 }

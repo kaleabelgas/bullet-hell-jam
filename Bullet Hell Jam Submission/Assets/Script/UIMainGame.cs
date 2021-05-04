@@ -8,6 +8,7 @@ using UnityEngine.Rendering;
 public class UIMainGame : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI currentScore;
+    [SerializeField] TextMeshProUGUI currentLevel;
     [SerializeField] TextMeshProUGUI timer;
     [SerializeField] GameObject tutorial;
     [SerializeField] Slider slider;
@@ -24,6 +25,7 @@ public class UIMainGame : MonoBehaviour
     private float timeToDisplay;
 
     private int score = 0;
+    private int level = 0;
 
     private void Start()
     {
@@ -31,7 +33,8 @@ public class UIMainGame : MonoBehaviour
 
         //StartCoroutine(AudioManager.instance.StartPlaylist());
         AudioManager.instance.PlayMusic();
-        currentScore.text = $"Score: {score}";
+        currentScore.text = $"Score: {score}00";
+        currentLevel.text = $"WAVE {level}";
         
         volume = FindObjectOfType<Volume>();
 
@@ -43,7 +46,13 @@ public class UIMainGame : MonoBehaviour
     public void UpdateScore()
     {
         score = EnemyCounter.SessionScore;
-        currentScore.text = $"Score: {score}00";
+        currentScore.text = $"SCORE: {score}00";
+    }
+
+    public void AddLevel()
+    {
+        level++;
+        currentLevel.text = $"WAVE {level}";
     }
 
     public void DeleteTutorial()

@@ -13,9 +13,9 @@ public class AudioSettingsScript : MonoBehaviour
 
     private void Awake()
     {
-        master.value = PlayerPrefs.GetFloat("mastervolume");
-        music.value = PlayerPrefs.GetFloat("musicvolume");
-        sfx.value = PlayerPrefs.GetFloat("sfxvolume");
+        master.value = PlayerPrefs.GetFloat("mastervolume", 10);
+        music.value = PlayerPrefs.GetFloat("musicvolume", 10);
+        sfx.value = PlayerPrefs.GetFloat("sfxvolume", 10);
         Debug.Log(PlayerPrefs.GetFloat("mastervolume"));
     }
     private void Start()

@@ -14,7 +14,7 @@ public class ProfileSettingsScript : MonoBehaviour
     {
         highScore.text = $"{PlayerPrefs.GetInt("highscore")}00";
         totalEnemiesKilled.text = $"{PlayerPrefs.GetInt("enemieskilled")}";
-        playerName.text = $"{PlayerPrefs.GetString("Name")}";
+        playerName.text = $"{PlayerPrefs.GetString("Name", "AAA")}";
     }
 
     public void SetUsername(string name)

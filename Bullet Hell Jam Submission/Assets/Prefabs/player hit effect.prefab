@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6553295156889563170}
   - component: {fileID: 902662155409023612}
   m_Layer: 0
-  m_Name: Death Effect
+  m_Name: player hit effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 0.9
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -168,8 +168,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 5
-      minScalar: 1
+      scalar: 10
+      minScalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -222,7 +222,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.8939694, b: 0.4669811, a: 1}
+      maxColor: {r: 1, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -284,7 +284,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -659,8 +659,8 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 10
-    angle: 25
+    type: 4
+    angle: 21.8
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -746,7 +746,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 0.0001
       mode: 0
       spread: 0
       speed:
@@ -1041,29 +1041,38 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 1
-          inSlope: -3.5988417
-          outSlope: -3.5988417
-          tangentMode: 34
+          inSlope: 0.025523828
+          outSlope: 0.025523828
+          tangentMode: 0
           weightedMode: 0
           inWeight: 0
+          outWeight: 0.86363846
+        - serializedVersion: 3
+          time: 0.35956588
+          value: 0.57209533
+          inSlope: -0.61980706
+          outSlope: -0.61980706
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.37069294
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.2397905
-          value: 0.13703197
-          inSlope: -0.8051314
-          outSlope: -0.8051314
+          time: 0.66959137
+          value: 0.49146062
+          inSlope: -0.37356216
+          outSlope: -0.37356216
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.14942975
+          inWeight: 0.35683626
+          outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.5401391
+          time: 0.8321218
           value: 0
-          inSlope: -0.48080537
-          outSlope: -0.48080537
+          inSlope: -0.1814102
+          outSlope: -0.1814102
           tangentMode: 0
           weightedMode: 0
-          inWeight: 1
+          inWeight: 0.5818172
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -1555,7 +1564,7 @@ ParticleSystem:
     x:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1608,7 +1617,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1661,7 +1670,7 @@ ParticleSystem:
     z:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2093,48 +2102,39 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 1
-          inSlope: 0
-          outSlope: 0
+          inSlope: -0.47631204
+          outSlope: -0.47631204
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.16482238
+          value: 0.9214931
+          inSlope: -1.0338272
+          outSlope: -1.0338272
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.3301045
+          outWeight: 0.48026887
+        - serializedVersion: 3
+          time: 0.348316
+          value: 0.33524716
+          inSlope: -1.4460988
+          outSlope: -1.4460988
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 0.05923928
-          value: 0.0271845
-          inSlope: -0.0881328
-          outSlope: -0.0881328
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 1
           outWeight: 1
         - serializedVersion: 3
-          time: 0.11826986
-          value: -0.011745691
-          inSlope: -0.5940969
-          outSlope: -0.5940969
+          time: 0.53284454
+          value: 0.12832642
+          inSlope: -0.24695294
+          outSlope: -0.24695294
           tangentMode: 0
           weightedMode: 0
           inWeight: 1
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 0.13868843
-          value: -1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 0.1804136
-          value: -0.018577565
-          inSlope: 3.100747
-          outSlope: 3.100747
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.29770285
-          outWeight: 0.33333334
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4

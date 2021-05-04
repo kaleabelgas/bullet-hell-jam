@@ -56,7 +56,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 5906055086404054417, guid: 894d197875ae25d40a8037b1f815e250, type: 2}
     source: {fileID: 0}
   - name: enemy ded
-    clip: {fileID: 8300000, guid: 610ee4056809e934c9549b900a5a2f15, type: 3}
+    clip: {fileID: 8300000, guid: bf4fbcc61ae13f84eb139f4c52932b8d, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1

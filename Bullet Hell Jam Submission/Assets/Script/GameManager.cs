@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     PulseScript pulseScript;
 
     private float timeRemaining;
+    private int levelScore = 0;
 
     private HealthSpawner healthSpawner;
     private bool tutorialDone = false;
@@ -53,9 +54,6 @@ public class GameManager : MonoBehaviour
         EnemyCounter.ClearEnemiesKilledCountCurrent();
 
         healthSpawner = GetComponent<HealthSpawner>();
-
-        gameOverScreen.gameObject.SetActive(false);
-
         Time.timeScale = 1;
         pulseScript = GetComponent<PulseScript>();
         if (string.IsNullOrEmpty(PlayerPrefs.GetString("Name")))
@@ -89,14 +87,29 @@ public class GameManager : MonoBehaviour
             uIMainGame.DeleteTutorial();
             tutorialDone = true;
         }
-        EnemyCounter.SessionScore += 2; ; //yeah magic number, just add score on next wave lol
+
+
+        if (CurrentWave.Equals(0))
+        {
+            Debug.Log("non");
+        }
+        else if((CurrentWave % boss.frequency).Equals(0))
+        {
+            EnemyCounter.SessionScore += 10;
+        }
+        else
+        {
+            EnemyCounter.SessionScore += levelScore;
+        }
+
+        CurrentWave++;
         uIMainGame.UpdateScore();
+        uIMainGame.AddLevel();
         AudioManager.instance.Play("next level");
         Time.timeScale = 0.3f;
         pulseScript.DoPulse();
         ClearBullets();
 
-        CurrentWave++;
 
         timeRemaining = timePerLevel;
         healthSpawner.ClearHealth();
@@ -141,8 +154,9 @@ public class GameManager : MonoBehaviour
             if(CurrentWave >= _spawnMode[i].LevelToAppear)
             {
                 chosenSpawnPoints.Clear();
+                levelScore = _spawnMode[i].SpawnPointAmount;
                 // choose spawnpoint depending on spawn mode's spawnpoint amount
-                for(int j = 0; j < _spawnMode[i].SpawnPointAmount; j++)
+                for (int j = 0; j < _spawnMode[i].SpawnPointAmount; j++)
                 {
                     //randomize the location of spawnpoints
                     while (true)
@@ -192,9 +206,25 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         EnemyCounter.SavePlayerScores();
-        Time.timeScale = 0;
-        AudioManager.instance.StopMusic();
         PlayerPrefs.Save();
+        AudioManager.instance.StopMusic();
+        ClearBullets();
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            ObjectPooler.Instance.SpawnFromPool("hit effect", enemy.transform.position, enemy.transform.rotation);
+            enemy.gameObject.SetActive(false);
+        }
+
+        Time.timeScale = 0.2f;
+        StartCoroutine(EndScreen());
+    }
+
+    IEnumerator EndScreen()
+    {
+        yield return new WaitForSecondsRealtime(2);
+        Time.timeScale = 0;
         gameOverScreen.gameObject.SetActive(true);
     }
 }

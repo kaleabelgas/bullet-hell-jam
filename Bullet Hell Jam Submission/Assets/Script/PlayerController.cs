@@ -83,6 +83,7 @@ public class PlayerController : MonoBehaviour, ITakeDamage
         {
             CameraShake.Trauma = 0.7f;
             AudioManager.instance.Play("player hit");
+            ObjectPooler.Instance.SpawnFromPool("player hit", transform.position, transform.rotation);
         }
         //if (Health > playerHealth) 
         //    Health = playerHealth;
@@ -93,7 +94,7 @@ public class PlayerController : MonoBehaviour, ITakeDamage
 
     public void Die()
     {
-        ObjectPooler.Instance.SpawnFromPool("death effect", transform.position, transform.rotation);
+        //ObjectPooler.Instance.SpawnFromPool("death effect", transform.position, transform.rotation);
         OnPlayerDeath?.Invoke();
         gameObject.SetActive(false);
     }

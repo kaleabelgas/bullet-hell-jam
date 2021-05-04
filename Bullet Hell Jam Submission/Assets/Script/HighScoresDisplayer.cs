@@ -45,12 +45,12 @@ public class HighScoresDisplayer : MonoBehaviour
         dl = FindObjectOfType<dreamloLeaderBoard>();
         dl.AddScore(PlayerPrefs.GetString("Name"), highScore);
 
-        highScoreText.text = $"LOCAL HIGH SCORE: {PlayerPrefs.GetInt("highscore")}";
+        highScoreText.text = $"LOCAL HIGH SCORE: {PlayerPrefs.GetInt("highscore")}00";
         
 
         for (int i = 0; i < top10Names.Length; i++)
         {
-            top10Names[i].text = $"{i}. Fetching...";
+            top10Names[i].text = $"Fetching...";
         }
 
         foreach (string name in easterEggNames)
@@ -104,7 +104,7 @@ public class HighScoresDisplayer : MonoBehaviour
         HighScoresList = dl.ToListHighToLow();
         for (int i = 0; i < top10Names.Length; i++)
         {
-            top10Names[i].text = $"[Fetching... ]";
+            top10Names[i].text = $"Fetching...";
             if (HighScoresList.Count > i)
             {
                 //Debug.Log("yes");

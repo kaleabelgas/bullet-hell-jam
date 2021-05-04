@@ -14,15 +14,15 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: ' Kale & Pearl'
   productName: Survive 10
-  defaultCursor: {fileID: 2800000, guid: 8b947063718790849b3bfa9f5818804e, type: 3}
-  cursorHotspot: {x: 128, y: 128}
-  m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
+  defaultCursor: {fileID: 0}
+  cursorHotspot: {x: 256, y: 256}
+  m_SplashScreenBackgroundColor: {r: 0.15686275, g: 0.15686275, b: 0.15686275, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 1
   m_SplashScreenLogoStyle: 1
-  m_SplashScreenDrawMode: 1
+  m_SplashScreenDrawMode: 0
   m_SplashScreenBackgroundAnimationZoom: 1
   m_SplashScreenLogoAnimationZoom: 1
   m_SplashScreenBackgroundLandscapeAspect: 1
@@ -40,8 +40,6 @@ PlayerSettings:
     width: 1
     height: 1
   m_SplashScreenLogos:
-  - logo: {fileID: 10404, guid: 0000000000000000e000000000000000, type: 0}
-    duration: 2
   - logo: {fileID: 21300000, guid: cb006ec0cdad28b4184f9658340534fa, type: 3}
     duration: 2
   m_VirtualRealitySplashScreen: {fileID: 0}
@@ -97,7 +95,7 @@ PlayerSettings:
   xboxEnableFitness: 0
   visibleInBackground: 1
   allowFullscreenSwitch: 1
-  fullscreenMode: 1
+  fullscreenMode: 3
   xboxSpeechDB: 0
   xboxEnableHeadOrientation: 0
   xboxEnableGuest: 0
@@ -126,11 +124,11 @@ PlayerSettings:
   vulkanEnablePreTransform: 0
   vulkanEnableLateAcquireNextImage: 0
   m_SupportedAspectRatios:
-    4:3: 1
-    5:4: 1
+    4:3: 0
+    5:4: 0
     16:10: 1
     16:9: 1
-    Others: 1
+    Others: 0
   bundleVersion: v1.2.0-dev
   preloadedAssets: []
   metroInputSource: 0
