@@ -91,6 +91,15 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: button
+    clip: {fileID: 8300000, guid: caa91ea1c7d96144ab21e20343989140, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
   tracks:
   - name: 
     clip: {fileID: 8300000, guid: e1d09e97ba9537b4eba102ab24c05617, type: 3}

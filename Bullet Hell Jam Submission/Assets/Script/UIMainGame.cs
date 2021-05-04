@@ -10,6 +10,7 @@ public class UIMainGame : MonoBehaviour
     [SerializeField] TextMeshProUGUI currentScore;
     [SerializeField] TextMeshProUGUI currentLevel;
     [SerializeField] TextMeshProUGUI timer;
+    [SerializeField] TextMeshProUGUI highScoreLeft;
     [SerializeField] GameObject tutorial;
     [SerializeField] Slider slider;
     [SerializeField] GameObject pauseMenu;
@@ -90,6 +91,8 @@ public class UIMainGame : MonoBehaviour
             //AudioManager.instance.UnPause("level moosic");
 
         }
+
+        highScoreLeft.text = $"{PlayerPrefs.GetInt("highscore") - score}00 points to go until HIGH SCORE";
     }
 
     public void GoToMainMenu()
