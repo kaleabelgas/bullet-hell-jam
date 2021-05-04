@@ -102,7 +102,7 @@ MonoBehaviour:
     source: {fileID: 0}
   tracks:
   - name: 
-    clip: {fileID: 8300000, guid: e1d09e97ba9537b4eba102ab24c05617, type: 3}
+    clip: {fileID: 8300000, guid: f1dec0f63d8d5094ea207411cda8cc61, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -111,11 +111,38 @@ MonoBehaviour:
     mixerGroup: {fileID: -3740285420043065053, guid: 894d197875ae25d40a8037b1f815e250, type: 2}
     source: {fileID: 0}
   - name: 
-    clip: {fileID: 8300000, guid: 94e4acd0ed259b44a84e6c5ba0e5f672, type: 3}
+    clip: {fileID: 8300000, guid: c818238262d9e3f45afc0f968e782d88, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
     loop: 0
+    mixerGroup: {fileID: -3740285420043065053, guid: 894d197875ae25d40a8037b1f815e250, type: 2}
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: ace9fae8176796d4c87cbef7e19096f9, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: -3740285420043065053, guid: 894d197875ae25d40a8037b1f815e250, type: 2}
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 46017044d52cd0d4491aa94bd8369bfe, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: -3740285420043065053, guid: 894d197875ae25d40a8037b1f815e250, type: 2}
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 4b1aa66d9534ffe4db23c1ecfc6d906b, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
     mixerGroup: {fileID: -3740285420043065053, guid: 894d197875ae25d40a8037b1f815e250, type: 2}
     source: {fileID: 0}

@@ -27,12 +27,15 @@ public class UIMainGame : MonoBehaviour
 
     private int score = 0;
     private int level = 0;
+    private int highScoreAtStart;
 
     private void Start()
     {
         //AudioManager.instance.Play("level moosic");
 
+
         //StartCoroutine(AudioManager.instance.StartPlaylist());
+        highScoreAtStart = PlayerPrefs.GetInt("highscore");
         AudioManager.instance.PlayMusic();
         currentScore.text = $"Score: {score}00";
         currentLevel.text = $"WAVE {level}";
@@ -92,7 +95,7 @@ public class UIMainGame : MonoBehaviour
 
         }
 
-        highScoreLeft.text = $"{PlayerPrefs.GetInt("highscore") - score}00 points to go until HIGH SCORE";
+        highScoreLeft.text = $"{Mathf.Max(highScoreAtStart - score, 0)}00 points to go until HIGH SCORE";
     }
 
     public void GoToMainMenu()
