@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private UIMainGame uIMainGame;
     [SerializeField] private GameObject gameOverScreen;
+    [SerializeField] private dreamloLeaderBoard dl;
     PulseScript pulseScript;
 
     private float timeRemaining;
@@ -47,11 +48,14 @@ public class GameManager : MonoBehaviour
     private HealthSpawner healthSpawner;
     private bool tutorialDone = false;
 
+    private bool isGameOver;
+
     public int CurrentWave { get; private set; } = 0;
     void Awake()
     {
         CameraShake.TargetPos = transform.position;
         EnemyCounter.ClearEnemiesKilledCountCurrent();
+        dl = FindObjectOfType<dreamloLeaderBoard>();
 
         healthSpawner = GetComponent<HealthSpawner>();
         Time.timeScale = 1;
@@ -76,6 +80,12 @@ public class GameManager : MonoBehaviour
         else
         {
             DoNextLevel();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!isGameOver)
+                uIMainGame.Pause();
         }
     }
 
@@ -209,6 +219,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.Save();
         AudioManager.instance.StopMusic();
         ClearBullets();
+        isGameOver = true;
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
@@ -223,6 +234,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator EndScreen()
     {
+        dl.AddScore(PlayerPrefs.GetString("Name"), CurrentWave);
         yield return new WaitForSecondsRealtime(2);
         Time.timeScale = 0;
         gameOverScreen.gameObject.SetActive(true);

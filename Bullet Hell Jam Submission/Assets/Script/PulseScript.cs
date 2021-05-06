@@ -13,12 +13,10 @@ public class PulseScript : MonoBehaviour
 
     private float currentRange;
 
-    private List<Collider2D> hitEntities;
-
     private void Awake()
     {
         //rippleEffect = Camera.main.GetComponent<RippleEffect>();
-        hitEntities = new List<Collider2D>();
+        currentRange = rangeMax;
     }
 
     private void Update()

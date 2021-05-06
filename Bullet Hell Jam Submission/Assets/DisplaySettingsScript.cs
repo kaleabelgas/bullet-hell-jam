@@ -19,7 +19,8 @@ public class DisplaySettingsScript : MonoBehaviour
     [SerializeField] Toggle CAToggle;
     [SerializeField] Toggle camShakeToggle;
     [SerializeField] Toggle fullscreenToggle;
-    private void OnEnable()
+    [SerializeField] Toggle vsyncToggle;
+    private void Awake()
     {
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
@@ -29,9 +30,7 @@ public class DisplaySettingsScript : MonoBehaviour
         int currentResolutionIndex = 0;
         for (int i = 0; i <resolutions.Length; i++)
         {
-            string option = $"{resolutions[i].width} x {resolutions[i].height}";
-            if (resolutionOptions.Contains(option))
-                continue;
+            string option = $"{resolutions[i].width} x {resolutions[i].height} - {resolutions[i].refreshRate}Hz";
             resolutionOptions.Add(option);
 
             if (resolutions[i].width.Equals(Screen.width) && resolutions[i].height.Equals(Screen.height))
@@ -53,15 +52,27 @@ public class DisplaySettingsScript : MonoBehaviour
             volume.profile.TryGet(out chromaticAberration);
         }
 
+        vsyncToggle.isOn = PlayerPrefs.GetInt("isVsync", 0) > 0;
         bloomToggle.isOn = PlayerPrefs.GetInt("isBloom", 1) > 0;
         CAToggle.isOn = PlayerPrefs.GetInt("isChromAberration", 1) > 0;
         camShakeToggle.isOn = PlayerPrefs.GetInt("isCameraShake", 1) > 0;
         fullscreenToggle.isOn = Screen.fullScreen;
+
+        ToggleBloom(PlayerPrefs.GetInt("isBloom", 1) > 0);
+        ToggleChromaticAberration(PlayerPrefs.GetInt("isChromAberration", 1) > 0);
+        ToggleVsync(PlayerPrefs.GetInt("isVsync", 0) > 0);
     }
 
     public void ToggleFullScreen(bool value)
     {
         Screen.fullScreen = value;
+    }
+
+    public void ToggleVsync(bool value)
+    {
+        QualitySettings.vSyncCount = value ? 1 : 0;
+        PlayerPrefs.SetInt("isVsync", value ? 1 : 0);
+        Debug.Log(QualitySettings.vSyncCount);
     }
 
     public void ToggleBloom(bool value)
@@ -84,6 +95,7 @@ public class DisplaySettingsScript : MonoBehaviour
     {
         Resolution res = resolutions[resolutionIndex];
         Debug.Log($"{res.height} {res.width}");
-        Screen.SetResolution(res.width, res.height, Screen.fullScreen); 
+        Screen.SetResolution(res.width, res.height, FullScreenMode.Windowed, res.refreshRate);
+        fullscreenToggle.isOn = false;
     }
 }

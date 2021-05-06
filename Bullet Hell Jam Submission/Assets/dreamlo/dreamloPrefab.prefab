@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f579fefeba774393965b534c29d2e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IUpgradedAndGotSSL: 0
-  privateCode: _qTggLu1t0WsRlP0NkuyjAV3zB4iHXc0C-EnFhlLb6vw
-  publicCode: 607d65238f40bb5afc8bdc56
+  IUpgradedAndGotSSL: 1
+  privateCode: 6kfJ58ANj0yASVlut1xalQ1zniM3n7Vke0Ils-pOTSSw
+  publicCode: 609277278f40bb1178f9bc99

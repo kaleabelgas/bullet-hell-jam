@@ -15,12 +15,21 @@ public class UIGameOver : MonoBehaviour
 
     private void OnEnable()
     {
-        //waveReached.text = $"{gameManager.CurrentWave}";
-        //enemiesKilled.text = $"{EnemyCounter.EnemiesKilled}";
-        //currentScore.text = $"{StartCoroutine(CountUpScore(EnemyCounter.SessionScore))}00";
-        //highScore.text = $"{PlayerPrefs.GetInt("highscore")}00";
+        
         StartCoroutine(CountUpAllScore());
         
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            StopAllCoroutines();
+            waveReached.text = $"{gameManager.CurrentWave}";
+            enemiesKilled.text = $"{EnemyCounter.EnemiesKilled}";
+            currentScore.text = $"{EnemyCounter.SessionScore}00";
+            highScore.text = $"{PlayerPrefs.GetInt("highscore")}00";
+        }
     }
 
     IEnumerator CountUpAllScore()

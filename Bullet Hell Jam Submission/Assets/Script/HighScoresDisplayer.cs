@@ -43,7 +43,6 @@ public class HighScoresDisplayer : MonoBehaviour
     {
         highScore = PlayerPrefs.GetInt("highscore");
         dl = FindObjectOfType<dreamloLeaderBoard>();
-        dl.AddScore(PlayerPrefs.GetString("Name"), highScore);
 
         highScoreText.text = $"LOCAL HIGH SCORE: {PlayerPrefs.GetInt("highscore")}00";
         
@@ -75,15 +74,15 @@ public class HighScoresDisplayer : MonoBehaviour
             _score = int.Parse(score.text);
         }
 
-        if (_score >= 70000)
+        if (_score >= 130000)
         {
             score.color = highestColor;
         }
-        else if (_score >= 20000)
+        else if (_score >= 80000)
         {
             score.color = highColor;
         }
-        else if (_score >= 10000)
+        else if (_score >= 40000)
         {
             score.color = mediumColor;
         }

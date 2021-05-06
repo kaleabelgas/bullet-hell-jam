@@ -37,7 +37,7 @@ public class UIMainGame : MonoBehaviour
         //StartCoroutine(AudioManager.instance.StartPlaylist());
         highScoreAtStart = PlayerPrefs.GetInt("highscore");
         AudioManager.instance.PlayMusic();
-        currentScore.text = $"Score: {score}00";
+        currentScore.text = $"SCORE: {score}00";
         currentLevel.text = $"WAVE {level}";
         
         volume = FindObjectOfType<Volume>();
@@ -120,10 +120,5 @@ public class UIMainGame : MonoBehaviour
         }
 
         timer.text = $"{timeToDisplay}";
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Pause();
-        }
     }
 }

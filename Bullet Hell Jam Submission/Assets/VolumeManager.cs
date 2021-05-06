@@ -10,6 +10,7 @@ public class VolumeManager : MonoBehaviour
 
     private bool isBloom = true;
     private bool isChromAb = true;
+    private int Vsync;
     private void Awake()
     {
         volume = FindObjectOfType<Volume>();
@@ -21,10 +22,13 @@ public class VolumeManager : MonoBehaviour
 
         isBloom = PlayerPrefs.GetInt("isBloom", 1) > 0;
         isChromAb = PlayerPrefs.GetInt("isChromAberration", 1) > 0;
+        Vsync = PlayerPrefs.GetInt("isVsync", 0);
+
     }
     private void Start()
     {
         bloom.active = isBloom;
         chromaticAberration.active = isChromAb;
+        QualitySettings.vSyncCount = Vsync;
     }
 }

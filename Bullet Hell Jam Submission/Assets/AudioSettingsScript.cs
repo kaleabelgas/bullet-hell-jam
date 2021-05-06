@@ -20,9 +20,9 @@ public class AudioSettingsScript : MonoBehaviour
     }
     private void Start()
     {
-        SetMasterVolume((int)PlayerPrefs.GetFloat("mastervolume"));
-        SetMusicVolume((int)PlayerPrefs.GetFloat("musicvolume"));
-        SetSFXVolume((int)PlayerPrefs.GetFloat("sfxvolume"));
+        SetMasterVolume((int)PlayerPrefs.GetFloat("mastervolume", 10));
+        SetMusicVolume((int)PlayerPrefs.GetFloat("musicvolume", 10));
+        SetSFXVolume((int)PlayerPrefs.GetFloat("sfxvolume", 10));
     }
 
     public void SetMasterVolume(float volume)
