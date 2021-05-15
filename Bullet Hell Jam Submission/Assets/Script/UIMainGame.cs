@@ -21,11 +21,6 @@ public class UIMainGame : MonoBehaviour
 
     private bool paused = false;
 
-    private float timeRemaining = 10;
-    private float timePerWave = 10;
-
-    private float timeToDisplay;
-
     private int score = 0;
     private int level = 0;
     private int highScoreAtStart;
