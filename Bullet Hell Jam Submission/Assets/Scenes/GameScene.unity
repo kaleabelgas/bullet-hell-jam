@@ -324,7 +324,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 9.800003}
-  m_SizeDelta: {x: 146.29, y: 57.67}
+  m_SizeDelta: {x: 424.46, y: 57.67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &182115599
 MonoBehaviour:
@@ -2024,18 +2024,6 @@ MonoBehaviour:
     - {fileID: 1645625359}
     - {fileID: 752788996}
     SpawnPointAmount: 2
-    LevelToAppear: 5
-  - SpawnPoints:
-    - {fileID: 1682871983}
-    - {fileID: 442627683}
-    - {fileID: 1385766745}
-    - {fileID: 1630485301}
-    - {fileID: 1715202739}
-    - {fileID: 1397763932}
-    - {fileID: 1588649235}
-    - {fileID: 1645625359}
-    - {fileID: 752788996}
-    SpawnPointAmount: 3
     LevelToAppear: 10
   - SpawnPoints:
     - {fileID: 1682871983}
@@ -2047,7 +2035,7 @@ MonoBehaviour:
     - {fileID: 1588649235}
     - {fileID: 1645625359}
     - {fileID: 752788996}
-    SpawnPointAmount: 4
+    SpawnPointAmount: 3
     LevelToAppear: 20
   - SpawnPoints:
     - {fileID: 1682871983}
@@ -2059,8 +2047,20 @@ MonoBehaviour:
     - {fileID: 1588649235}
     - {fileID: 1645625359}
     - {fileID: 752788996}
-    SpawnPointAmount: 5
+    SpawnPointAmount: 4
     LevelToAppear: 30
+  - SpawnPoints:
+    - {fileID: 1682871983}
+    - {fileID: 442627683}
+    - {fileID: 1385766745}
+    - {fileID: 1630485301}
+    - {fileID: 1715202739}
+    - {fileID: 1397763932}
+    - {fileID: 1588649235}
+    - {fileID: 1645625359}
+    - {fileID: 752788996}
+    SpawnPointAmount: 5
+    LevelToAppear: 40
   - SpawnPoints:
     - {fileID: 1682871983}
     - {fileID: 442627683}
@@ -2084,18 +2084,6 @@ MonoBehaviour:
     - {fileID: 1645625359}
     - {fileID: 752788996}
     SpawnPointAmount: 6
-    LevelToAppear: 51
-  - SpawnPoints:
-    - {fileID: 1682871983}
-    - {fileID: 442627683}
-    - {fileID: 1385766745}
-    - {fileID: 1630485301}
-    - {fileID: 1715202739}
-    - {fileID: 1397763932}
-    - {fileID: 1588649235}
-    - {fileID: 1645625359}
-    - {fileID: 752788996}
-    SpawnPointAmount: 7
     LevelToAppear: 70
   - SpawnPoints:
     - {fileID: 1682871983}
@@ -2107,8 +2095,8 @@ MonoBehaviour:
     - {fileID: 1588649235}
     - {fileID: 1645625359}
     - {fileID: 752788996}
-    SpawnPointAmount: 8
-    LevelToAppear: 80
+    SpawnPointAmount: 7
+    LevelToAppear: 90
   - SpawnPoints:
     - {fileID: 1682871983}
     - {fileID: 442627683}
@@ -2131,8 +2119,20 @@ MonoBehaviour:
     - {fileID: 1588649235}
     - {fileID: 1645625359}
     - {fileID: 752788996}
+    SpawnPointAmount: 8
+    LevelToAppear: 120
+  - SpawnPoints:
+    - {fileID: 1682871983}
+    - {fileID: 442627683}
+    - {fileID: 1385766745}
+    - {fileID: 1630485301}
+    - {fileID: 1715202739}
+    - {fileID: 1397763932}
+    - {fileID: 1588649235}
+    - {fileID: 1645625359}
+    - {fileID: 752788996}
     SpawnPointAmount: 9
-    LevelToAppear: 101
+    LevelToAppear: 140
   spawnPoints:
   - {fileID: 1682871983}
   - {fileID: 442627683}
@@ -4840,6 +4840,7 @@ MonoBehaviour:
   tutorial: {fileID: 897962168}
   slider: {fileID: 2125246218}
   pauseMenu: {fileID: 1452136312}
+  gameManager: {fileID: 659574835}
 --- !u!1 &1677385636
 GameObject:
   m_ObjectHideFlags: 0
@@ -5455,6 +5456,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1895698563}
   m_CullTransparentMesh: 1
+--- !u!1001 &1922731783
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 2ae922c7d8b784fc9aac6e923c5a88ab, type: 3}
+      propertyPath: m_Name
+      value: dreamloPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2ae922c7d8b784fc9aac6e923c5a88ab, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2ae922c7d8b784fc9aac6e923c5a88ab, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2ae922c7d8b784fc9aac6e923c5a88ab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2ae922c7d8b784fc9aac6e923c5a88ab, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2ae922c7d8b784fc9aac6e923c5a88ab, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2ae922c7d8b784fc9aac6e923c5a88ab, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2ae922c7d8b784fc9aac6e923c5a88ab, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2ae922c7d8b784fc9aac6e923c5a88ab, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2ae922c7d8b784fc9aac6e923c5a88ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2ae922c7d8b784fc9aac6e923c5a88ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2ae922c7d8b784fc9aac6e923c5a88ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2ae922c7d8b784fc9aac6e923c5a88ab, type: 3}
 --- !u!1001 &1984820423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6245,7 +6303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
       propertyPath: dashTime
-      value: 0.05
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
       propertyPath: dashForce
@@ -6257,15 +6315,19 @@ PrefabInstance:
       objectReference: {fileID: 659574835}
     - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
       propertyPath: dashCooldown
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
       propertyPath: dashDistance
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
       propertyPath: playerHealth
       value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523558256386118412, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4523558256386118413, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
       propertyPath: m_Name

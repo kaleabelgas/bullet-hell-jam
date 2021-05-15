@@ -44,6 +44,8 @@ public class HighScoresDisplayer : MonoBehaviour
         highScore = PlayerPrefs.GetInt("highscore");
         dl = FindObjectOfType<dreamloLeaderBoard>();
 
+        dl.GetScores();
+
         highScoreText.text = $"LOCAL HIGH SCORE: {PlayerPrefs.GetInt("highscore")}00";
         
 
@@ -60,35 +62,29 @@ public class HighScoresDisplayer : MonoBehaviour
                 highScoreText.color = nameColor;
             }
         }
-        ColorTheScore(highScoreText, true);
+        ColorTheScore(highScoreText, highScore);
         
     }
 
-    private void ColorTheScore(TextMeshProUGUI score, bool isMyScore = false)
+    private void ColorTheScore(TextMeshProUGUI _text, int _score)
     {
         //Debug.Log(int.Parse(score.text));
 
-        int _score = highScore;
-        if (!isMyScore)
+        if (_score >= 1500)
         {
-            _score = int.Parse(score.text);
+            _text.color = highestColor;
         }
-
-        if (_score >= 130000)
+        else if (_score >= 1000)
         {
-            score.color = highestColor;
+            _text.color = highColor;
         }
-        else if (_score >= 80000)
+        else if (_score >= 500)
         {
-            score.color = highColor;
-        }
-        else if (_score >= 40000)
-        {
-            score.color = mediumColor;
+            _text.color = mediumColor;
         }
         else
         {
-            score.color = lowColor;
+            _text.color = lowColor;
         }
     }
 
@@ -131,7 +127,7 @@ public class HighScoresDisplayer : MonoBehaviour
                 }
                 top10Scores[i].text = $"{textToDisplay}";
 
-                ColorTheScore(top10Scores[i]);
+                ColorTheScore(top10Scores[i], HighScoresList[i].score);
             }
         }
         yield return leaderboardUpdate;

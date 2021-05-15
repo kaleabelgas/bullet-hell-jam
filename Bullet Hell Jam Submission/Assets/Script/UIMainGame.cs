@@ -14,6 +14,7 @@ public class UIMainGame : MonoBehaviour
     [SerializeField] GameObject tutorial;
     [SerializeField] Slider slider;
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameManager gameManager;
 
     ColorAdjustments colorAdjustments;
     Volume volume;
@@ -108,17 +109,6 @@ public class UIMainGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timeRemaining > 0)
-        {
-            timeRemaining -= Time.deltaTime;
-            timeToDisplay = Mathf.CeilToInt(timeRemaining);
-        }
-        else
-        {
-            timeRemaining = timePerWave;
-            timeToDisplay = 10;
-        }
-
-        timer.text = $"{timeToDisplay}";
+        timer.text = $"{Mathf.CeilToInt(gameManager.WaveTimer)}";
     }
 }

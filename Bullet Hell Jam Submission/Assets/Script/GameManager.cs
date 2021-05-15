@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private dreamloLeaderBoard dl;
     PulseScript pulseScript;
 
-    private float timeRemaining;
+    public float WaveTimer { get; private set; }
     private int levelScore = 0;
 
     private HealthSpawner healthSpawner;
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetString("Name", "AAA");
         }
-        timeRemaining = timePerLevel;
+        WaveTimer = timePerLevel;
         //StartCoroutine(SpawnEnemies());
     }
 
@@ -72,12 +72,9 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // timer
+        WaveTimer -= Time.deltaTime;
 
-        if (timeRemaining >= 0)
-        {
-            timeRemaining -= Time.deltaTime;
-        }
-        else
+        if (WaveTimer <= 0)
         {
             DoNextLevel();
         }
@@ -87,6 +84,19 @@ public class GameManager : MonoBehaviour
             if (!isGameOver)
                 uIMainGame.Pause();
         }
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            GameObject[] enemiesOnScreen = GameObject.FindGameObjectsWithTag("Enemy");
+            Debug.Log(enemiesOnScreen.Length);
+            if (enemiesOnScreen.Length.Equals(0)) { SkipWave(); }
+        }
+    }
+
+    private void SkipWave()
+    {
+        EnemyCounter.AddToScore((int)WaveTimer);
+        DoNextLevel();
     }
 
     private void DoNextLevel()
@@ -116,12 +126,12 @@ public class GameManager : MonoBehaviour
         uIMainGame.UpdateScore();
         uIMainGame.AddLevel();
         AudioManager.instance.Play("next level");
-        Time.timeScale = 0.3f;
+        Time.timeScale = 0.4f;
         pulseScript.DoPulse();
         ClearBullets();
 
 
-        timeRemaining = timePerLevel;
+        WaveTimer = timePerLevel;
         healthSpawner.ClearHealth();
         StartCoroutine(SpawnEnemies());
     }
@@ -185,8 +195,6 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator SpawnEnemies()
     {
-        yield return new WaitForSeconds(.5f);
-        Time.timeScale = 1;
         healthSpawner.SpawnHealth();
 
         List<Transform> _spawnPoints = ChooseSpawnPoints(spawnPointClass);
@@ -194,6 +202,7 @@ public class GameManager : MonoBehaviour
 
 
         //Debug.Log(enemyLocal.Count);
+
         for (int i = 0; i < _spawnPoints.Count;)
         {
             List<string> _enemies = ChooseEnemies(enemies, boss);
@@ -201,8 +210,11 @@ public class GameManager : MonoBehaviour
             {
                 ObjectPooler.Instance.SpawnFromPool(_enemies[j], _spawnPoints[i].position, Quaternion.identity);
                 i++;
+                yield return new WaitForSeconds(.3f);
+                Time.timeScale = 1;
             }
         }
+
     }
 
     private void ClearBullets()
