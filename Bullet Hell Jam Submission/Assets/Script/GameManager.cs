@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour
 
     private void SkipWave()
     {
+        if (isGameOver) { return; }
         EnemyCounter.AddToScore((int)WaveTimer);
         DoNextLevel();
     }
@@ -246,7 +247,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator EndScreen()
     {
-        dl.AddScore(PlayerPrefs.GetString("Name"), CurrentWave);
+        //dl.AddScore(PlayerPrefs.GetString("Name"), EnemyCounter.SessionScore);
         yield return new WaitForSecondsRealtime(2);
         Time.timeScale = 0;
         gameOverScreen.gameObject.SetActive(true);
