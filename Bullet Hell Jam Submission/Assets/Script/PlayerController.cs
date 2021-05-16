@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour, ITakeDamage
     bool doDash;
     bool isInvincible;
 
+    float angle;
+
     public int Health { get; private set; } = 100;
 
     private void Awake()
@@ -74,7 +76,7 @@ public class PlayerController : MonoBehaviour, ITakeDamage
         
 
 
-        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.G) && Input.GetKey(KeyCode.M))
+        if (Input.GetKey(KeyCode.F1))
         {
             KillAllCheat();
         }
@@ -117,7 +119,7 @@ public class PlayerController : MonoBehaviour, ITakeDamage
         Vector2 lookDir = mousePos - (Vector2)transform.position;
         lookDir.Normalize();
         //Debug.Log(lookDir);
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
+        angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
 
         transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, angle);
 

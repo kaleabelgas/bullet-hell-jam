@@ -41,12 +41,12 @@ public class HighScoresDisplayer : MonoBehaviour
 
     void OnEnable()
     {
-        highScore = PlayerPrefs.GetInt("highscore");
+        highScore = PlayerPrefs.GetInt(PlayerPrefs.GetString("Name", "AAA") + "score");
         dl = FindObjectOfType<dreamloLeaderBoard>();
 
         dl.GetScores();
 
-        highScoreText.text = $"LOCAL HIGH SCORE: {PlayerPrefs.GetInt("highscore")}00";
+        highScoreText.text = $"LOCAL HIGH SCORE: {highScore}00";
         
 
         for (int i = 0; i < top10Names.Length; i++)

@@ -114,8 +114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   target: {fileID: 4523558256386118413, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
-  health: 250
-  enemyScore: 10
+  health: 200
+  enemyScore: 50
 --- !u!114 &-4277789708700304930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 7
   attackSpeed: 0.45
-  bulletUsed: default bullet
+  bulletUsed: holey bullet
   numSides: 25
   radius: 1.2
   arc: 360

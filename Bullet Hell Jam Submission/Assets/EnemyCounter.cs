@@ -17,14 +17,15 @@ public static class EnemyCounter
     {
         SessionScore += amount;
         EnemiesKilled++;
-        Debug.Log(EnemiesKilled);
+        //Debug.Log(SessionScore);
+        //Debug.Log(EnemiesKilled);
     }
 
     public static void SavePlayerScores()
     {
         int enemiesKilledSaved = PlayerPrefs.GetInt("enemieskilled");
-        PlayerPrefs.SetInt("enemieskilled", EnemiesKilled + enemiesKilledSaved);
-        int _highscore = PlayerPrefs.GetInt("highscore");
-        PlayerPrefs.SetInt("highscore", SessionScore > _highscore ? SessionScore : _highscore);
+        PlayerPrefs.SetInt(PlayerPrefs.GetString("Name", "AAA") + "enemieskilled", EnemiesKilled + enemiesKilledSaved);
+        int _highscore = PlayerPrefs.GetInt(PlayerPrefs.GetString("Name", "AAA") + "score");
+        PlayerPrefs.SetInt(PlayerPrefs.GetString("Name", "AAA") + "score", SessionScore > _highscore ? SessionScore : _highscore);
     }
 }

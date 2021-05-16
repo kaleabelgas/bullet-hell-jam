@@ -31,7 +31,7 @@ public class UIMainGame : MonoBehaviour
 
 
         //StartCoroutine(AudioManager.instance.StartPlaylist());
-        highScoreAtStart = PlayerPrefs.GetInt("highscore");
+        highScoreAtStart = PlayerPrefs.GetInt(PlayerPrefs.GetString("Name", "AAA") + "score");
         AudioManager.instance.PlayMusic();
         currentScore.text = $"SCORE: {score}00";
         currentLevel.text = $"WAVE {level}";

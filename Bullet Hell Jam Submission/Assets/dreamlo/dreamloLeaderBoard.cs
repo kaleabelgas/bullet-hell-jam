@@ -71,6 +71,7 @@ public class dreamloLeaderBoard : MonoBehaviour {
 	public void AddScore(string playerName, int totalScore)
 	{
 		AddScoreWithPipe(playerName, totalScore);
+		Debug.Log($"Adding {totalScore} to {playerName}");
 	}
 	
 	public void AddScore(string playerName, int totalScore, int totalSeconds)
@@ -119,11 +120,13 @@ public class dreamloLeaderBoard : MonoBehaviour {
 	IEnumerator GetRequest(string url)
 	{
         //Something not working? Try copying / pasting the url into your web browser and see if it works.
-               //Debug.Log(url);
+        Debug.Log(url);
 
         using UnityWebRequest www = UnityWebRequest.Get(url);
         yield return www.SendWebRequest();
         highScores = www.downloadHandler.text;
+
+		Debug.Log(highScores);
         //Debug.Log(highScores);
 
         //Debug.Log()

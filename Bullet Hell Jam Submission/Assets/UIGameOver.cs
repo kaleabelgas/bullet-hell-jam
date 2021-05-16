@@ -13,11 +13,15 @@ public class UIGameOver : MonoBehaviour
     [SerializeField] private TextMeshProUGUI enemiesKilled;
     float _delay;
 
+    int myHighScore;
+
     private void OnEnable()
     {
-        
+
         StartCoroutine(CountUpAllScore());
-        
+        myHighScore = PlayerPrefs.GetInt(PlayerPrefs.GetString("Name", "AAA") + "score");
+
+
     }
 
     private void Update()
@@ -28,7 +32,7 @@ public class UIGameOver : MonoBehaviour
             waveReached.text = $"{gameManager.CurrentWave}";
             enemiesKilled.text = $"{EnemyCounter.EnemiesKilled}";
             currentScore.text = $"{EnemyCounter.SessionScore}00";
-            highScore.text = $"{PlayerPrefs.GetInt("highscore")}00";
+            highScore.text = $"{myHighScore}00";
         }
     }
 
@@ -37,14 +41,14 @@ public class UIGameOver : MonoBehaviour
         yield return CountUpScore(gameManager.CurrentWave, waveReached);
         yield return CountUpScore(EnemyCounter.EnemiesKilled, enemiesKilled);
         yield return CountUpScore(EnemyCounter.SessionScore, currentScore, true);
-        yield return CountUpScore(PlayerPrefs.GetInt("highscore"), highScore, true);
+        yield return CountUpScore(myHighScore, highScore, true);
 
     }
 
     IEnumerator CountUpScore(int _targetscore, TextMeshProUGUI _text, bool _isScore = false)
     {
         int _currentNumber = 0;
-        Debug.Log(_text.text);
+        //Debug.Log(_text.text);
 
         if (_targetscore > 100)
             _delay = 0.0001f;
@@ -69,7 +73,7 @@ public class UIGameOver : MonoBehaviour
             }
 
 
-            
+
 
             yield return new WaitForSecondsRealtime(_delay);
         }

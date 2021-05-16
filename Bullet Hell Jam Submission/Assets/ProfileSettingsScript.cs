@@ -12,15 +12,17 @@ public class ProfileSettingsScript : MonoBehaviour
 
     private void OnEnable()
     {
-        highScore.text = $"{PlayerPrefs.GetInt("highscore")}00";
-        totalEnemiesKilled.text = $"{PlayerPrefs.GetInt("enemieskilled")}";
+        highScore.text = $"{PlayerPrefs.GetInt(PlayerPrefs.GetString("Name", "AAA") + "score")}00";
+        totalEnemiesKilled.text = $"{PlayerPrefs.GetInt(PlayerPrefs.GetString("Name", "AAA") + "enemieskilled")}";
         playerName.text = $"{PlayerPrefs.GetString("Name", "AAA")}";
     }
 
     public void SetUsername(string name)
     {
         PlayerPrefs.SetString("Name", name);
-        ResetScore();
+        highScore.text = $"{PlayerPrefs.GetInt(name + "score", 0)}00";
+        totalEnemiesKilled.text = $"{PlayerPrefs.GetInt(name + "enemieskilled", 0)}";
+        //ResetScore();
     }
 
     public void OpenLeaderboardScene()
@@ -31,9 +33,9 @@ public class ProfileSettingsScript : MonoBehaviour
     public void ResetScore()
     {
         highScore.text = "0";
-        PlayerPrefs.SetInt("highscore", 0);
         totalEnemiesKilled.text = "0";
-        PlayerPrefs.SetInt("enemieskilled", 0);
+        PlayerPrefs.SetInt(PlayerPrefs.GetString("Name", "AAA") + "score", 0);
+        PlayerPrefs.SetInt(PlayerPrefs.GetString("Name", "AAA") + "enemieskilled", 0);
     }
 
 

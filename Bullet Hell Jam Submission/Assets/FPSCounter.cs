@@ -28,7 +28,7 @@ public class FPSCounter : MonoBehaviour
         {
             movingAverage = movingAverage + (newValue - movingAverage) / (MovingAverageLength + 1);
 
-            Debug.Log("Moving Average: " + movingAverage); //for testing purposes
+            //Debug.Log("Moving Average: " + movingAverage); //for testing purposes
             //DisplayFPS();
 
         }
@@ -56,6 +56,6 @@ public class FPSCounter : MonoBehaviour
 private void DisplayFPS()
     {
         fpsCounter.text = $"{movingAverage}";
-        Debug.Log(movingAverage);
+        //Debug.Log(movingAverage);
     }
 }

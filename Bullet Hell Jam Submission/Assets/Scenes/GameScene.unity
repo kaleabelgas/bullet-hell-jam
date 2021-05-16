@@ -1916,7 +1916,7 @@ MonoBehaviour:
     poolSize: 1000
   - tag: default bullet
     objectPrefab: {fileID: 3646535366457579801, guid: be8d6c258e393104bb6edd880b3b8617, type: 3}
-    poolSize: 1000
+    poolSize: 2000
   - tag: homing bullet
     objectPrefab: {fileID: 3646535366457579801, guid: 7388bfdf8cdd9ae4f8fbe030035336d7, type: 3}
     poolSize: 0
@@ -1928,7 +1928,7 @@ MonoBehaviour:
     poolSize: 50
   - tag: rare enemy
     objectPrefab: {fileID: 820460646642010933, guid: a2105303ac0f82b4795bd4ddac4dbfdd, type: 3}
-    poolSize: 20
+    poolSize: 50
   - tag: player bullet
     objectPrefab: {fileID: 3646535366457579801, guid: 4cff55b131eedea4fbf05c49204ff3d5, type: 3}
     poolSize: 50
@@ -1946,19 +1946,19 @@ MonoBehaviour:
     poolSize: 50
   - tag: rotating rare enemy
     objectPrefab: {fileID: 820460646642010933, guid: b04c714e8176bc549b1b3499c7ebc86a, type: 3}
-    poolSize: 20
+    poolSize: 50
   - tag: two gun enemy
     objectPrefab: {fileID: 820460646642010933, guid: 3c7695ab48999ba48b56dfe949ad2883, type: 3}
     poolSize: 50
   - tag: holey bullet
     objectPrefab: {fileID: 3646535366457579801, guid: d2f087688ad88d24885e9fdf3b7918aa, type: 3}
-    poolSize: 500
+    poolSize: 2000
   - tag: sharp bullet
     objectPrefab: {fileID: 3646535366457579801, guid: 1a4ab57be4d320a48a5ecd4a41074ee9, type: 3}
     poolSize: 1000
   - tag: shotgun enemy
     objectPrefab: {fileID: 820460646642010933, guid: 4374b877f754f8940bc7dbf705cf24f3, type: 3}
-    poolSize: 10
+    poolSize: 50
   - tag: rocket bullet
     objectPrefab: {fileID: 3646535366457579801, guid: ef1b40355eb9cd3449a053ba5cf93023, type: 3}
     poolSize: 500
@@ -2000,163 +2000,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ca3e96e0c5e1ea4e85cfa0a6d61b422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPointClass:
-  - SpawnPoints:
-    - {fileID: 1682871983}
-    - {fileID: 442627683}
-    - {fileID: 1385766745}
-    - {fileID: 1630485301}
-    - {fileID: 1715202739}
-    - {fileID: 1397763932}
-    - {fileID: 1588649235}
-    - {fileID: 1645625359}
-    - {fileID: 752788996}
-    SpawnPointAmount: 1
-    LevelToAppear: 1
-  - SpawnPoints:
-    - {fileID: 1682871983}
-    - {fileID: 442627683}
-    - {fileID: 1385766745}
-    - {fileID: 1630485301}
-    - {fileID: 1715202739}
-    - {fileID: 1397763932}
-    - {fileID: 1588649235}
-    - {fileID: 1645625359}
-    - {fileID: 752788996}
-    SpawnPointAmount: 2
-    LevelToAppear: 10
-  - SpawnPoints:
-    - {fileID: 1682871983}
-    - {fileID: 442627683}
-    - {fileID: 1385766745}
-    - {fileID: 1630485301}
-    - {fileID: 1715202739}
-    - {fileID: 1397763932}
-    - {fileID: 1588649235}
-    - {fileID: 1645625359}
-    - {fileID: 752788996}
-    SpawnPointAmount: 3
-    LevelToAppear: 20
-  - SpawnPoints:
-    - {fileID: 1682871983}
-    - {fileID: 442627683}
-    - {fileID: 1385766745}
-    - {fileID: 1630485301}
-    - {fileID: 1715202739}
-    - {fileID: 1397763932}
-    - {fileID: 1588649235}
-    - {fileID: 1645625359}
-    - {fileID: 752788996}
-    SpawnPointAmount: 4
-    LevelToAppear: 30
-  - SpawnPoints:
-    - {fileID: 1682871983}
-    - {fileID: 442627683}
-    - {fileID: 1385766745}
-    - {fileID: 1630485301}
-    - {fileID: 1715202739}
-    - {fileID: 1397763932}
-    - {fileID: 1588649235}
-    - {fileID: 1645625359}
-    - {fileID: 752788996}
-    SpawnPointAmount: 5
-    LevelToAppear: 40
-  - SpawnPoints:
-    - {fileID: 1682871983}
-    - {fileID: 442627683}
-    - {fileID: 1385766745}
-    - {fileID: 1630485301}
-    - {fileID: 1715202739}
-    - {fileID: 1397763932}
-    - {fileID: 1588649235}
-    - {fileID: 1645625359}
-    - {fileID: 752788996}
-    SpawnPointAmount: 3
-    LevelToAppear: 50
-  - SpawnPoints:
-    - {fileID: 1682871983}
-    - {fileID: 442627683}
-    - {fileID: 1385766745}
-    - {fileID: 1630485301}
-    - {fileID: 1715202739}
-    - {fileID: 1397763932}
-    - {fileID: 1588649235}
-    - {fileID: 1645625359}
-    - {fileID: 752788996}
-    SpawnPointAmount: 5
-    LevelToAppear: 51
-  - SpawnPoints:
-    - {fileID: 1682871983}
-    - {fileID: 442627683}
-    - {fileID: 1385766745}
-    - {fileID: 1630485301}
-    - {fileID: 1715202739}
-    - {fileID: 1397763932}
-    - {fileID: 1588649235}
-    - {fileID: 1645625359}
-    - {fileID: 752788996}
-    SpawnPointAmount: 6
-    LevelToAppear: 70
-  - SpawnPoints:
-    - {fileID: 1682871983}
-    - {fileID: 442627683}
-    - {fileID: 1385766745}
-    - {fileID: 1630485301}
-    - {fileID: 1715202739}
-    - {fileID: 1397763932}
-    - {fileID: 1588649235}
-    - {fileID: 1645625359}
-    - {fileID: 752788996}
-    SpawnPointAmount: 7
-    LevelToAppear: 90
-  - SpawnPoints:
-    - {fileID: 1682871983}
-    - {fileID: 442627683}
-    - {fileID: 1385766745}
-    - {fileID: 1630485301}
-    - {fileID: 1715202739}
-    - {fileID: 1397763932}
-    - {fileID: 1588649235}
-    - {fileID: 1645625359}
-    - {fileID: 752788996}
-    SpawnPointAmount: 5
-    LevelToAppear: 100
-  - SpawnPoints:
-    - {fileID: 1682871983}
-    - {fileID: 442627683}
-    - {fileID: 1385766745}
-    - {fileID: 1630485301}
-    - {fileID: 1715202739}
-    - {fileID: 1397763932}
-    - {fileID: 1588649235}
-    - {fileID: 1645625359}
-    - {fileID: 752788996}
-    SpawnPointAmount: 7
-    LevelToAppear: 101
-  - SpawnPoints:
-    - {fileID: 1682871983}
-    - {fileID: 442627683}
-    - {fileID: 1385766745}
-    - {fileID: 1630485301}
-    - {fileID: 1715202739}
-    - {fileID: 1397763932}
-    - {fileID: 1588649235}
-    - {fileID: 1645625359}
-    - {fileID: 752788996}
-    SpawnPointAmount: 8
-    LevelToAppear: 120
-  - SpawnPoints:
-    - {fileID: 1682871983}
-    - {fileID: 442627683}
-    - {fileID: 1385766745}
-    - {fileID: 1630485301}
-    - {fileID: 1715202739}
-    - {fileID: 1397763932}
-    - {fileID: 1588649235}
-    - {fileID: 1645625359}
-    - {fileID: 752788996}
-    SpawnPointAmount: 9
-    LevelToAppear: 140
   spawnPoints:
   - {fileID: 1682871983}
   - {fileID: 442627683}
@@ -2170,22 +2013,22 @@ MonoBehaviour:
   enemies:
   - enemyName: rotating enemy
     levelToAppear: 1
-    enemyChance: 40
+    enemyChance: 100
   - enemyName: two gun enemy
     levelToAppear: 1
     enemyChance: 40
   - enemyName: default enemy
     levelToAppear: 10
-    enemyChance: 50
+    enemyChance: 20
   - enemyName: shotgun enemy
     levelToAppear: 20
-    enemyChance: 40
+    enemyChance: 15
   - enemyName: rotating rare enemy
     levelToAppear: 30
-    enemyChance: 20
+    enemyChance: 10
   - enemyName: rare enemy
     levelToAppear: 40
-    enemyChance: 2
+    enemyChance: 2.5
   boss:
     bossName: rare enemy
     frequency: 50
@@ -2221,7 +2064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68313234c425b3e4795781476a6ea574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfHealth: 4
+  numberOfHealth: 5
   chanceToSpawnHealth: 35
   verticalOffset: 0.15
   healthPercentage: 0.6
@@ -5229,7 +5072,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 30.75, y: -28.7}
+  m_AnchoredPosition: {x: 30.75, y: -28.700012}
   m_SizeDelta: {x: 48.3, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1713397758
@@ -6600,7 +6443,7 @@ PrefabInstance:
       objectReference: {fileID: 1555009050}
     - target: {fileID: 4523558256386118407, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
       propertyPath: powerToBuildUp
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4523558256386118409, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
       propertyPath: m_RootOrder
@@ -6664,7 +6507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
       propertyPath: dashDistance
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
       propertyPath: playerHealth

@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
         public float frequency;
     }
 
-    [System.Serializable]
+    //[System.Serializable]
     public class SpawnMode
     {
         public List<Transform> SpawnPoints;
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         public int LevelToAppear;
     }
 
-    [SerializeField] private List<SpawnMode> spawnPointClass;
+    //[SerializeField] private List<SpawnMode> spawnPointClass;
     [SerializeField] private List<Transform> spawnPoints;
 
     [SerializeField] private List<EnemyType> enemies;
@@ -49,6 +49,9 @@ public class GameManager : MonoBehaviour
     private bool tutorialDone = false;
 
     private bool isGameOver;
+
+
+    private int enemyAmount = 1;
 
     public int CurrentWave { get; private set; } = 0;
     void Awake()
@@ -87,8 +90,10 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            //SkipWave();
             GameObject[] enemiesOnScreen = GameObject.FindGameObjectsWithTag("Enemy");
             Debug.Log(enemiesOnScreen.Length);
+
             if (enemiesOnScreen.Length.Equals(0)) { SkipWave(); }
         }
     }
@@ -103,6 +108,8 @@ public class GameManager : MonoBehaviour
     private void DoNextLevel()
     {
         //Debug.Log("Current Level: " + Level);
+
+
         if (!tutorialDone)
         {
             uIMainGame.DeleteTutorial();
@@ -124,6 +131,9 @@ public class GameManager : MonoBehaviour
         }
 
         CurrentWave++;
+
+        enemyAmount = Mathf.CeilToInt(CurrentWave / 10f);
+
         uIMainGame.UpdateScore();
         uIMainGame.AddLevel();
         AudioManager.instance.Play("next level");
@@ -137,32 +147,36 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SpawnEnemies());
     }
 
-    List<string> ChooseEnemies(List<EnemyType> _enemiesToChooseFrom, BossEnemy _boss)
+    string ChooseEnemy(List<EnemyType> _enemiesToChooseFrom, BossEnemy _boss)
     {
-        List<string> chosenEnemies = new List<string>();
+        string _chosenEnemy = "";
 
-        float randomN = UnityEngine.Random.Range(1f, 100f);
+
+
         for (int i = 0; i < _enemiesToChooseFrom.Count; i++)
         {
+            float randomN = UnityEngine.Random.Range(1f, 100f);
+
+
             if (CurrentWave >= _enemiesToChooseFrom[i].levelToAppear)
             {
                 if (randomN < _enemiesToChooseFrom[i].enemyChance)
                 {
-                    chosenEnemies.Add(_enemiesToChooseFrom[i].enemyName);
+                    _chosenEnemy = _enemiesToChooseFrom[i].enemyName;
                 }
             }
         }
 
-        if (chosenEnemies.Count < 1)
-            chosenEnemies.Add(_enemiesToChooseFrom[0].enemyName);
+        if (string.IsNullOrEmpty(_chosenEnemy))
+            _chosenEnemy = _enemiesToChooseFrom[0].enemyName;
 
         if (CurrentWave % _boss.frequency == 0)
         {
-            chosenEnemies.Clear();
-            chosenEnemies.Add(boss.bossName);
+            _chosenEnemy = boss.bossName;
         }
 
-        return chosenEnemies;
+        //Debug.Log("Chosen Enemies " + chosenEnemies.Count);
+        return _chosenEnemy;
     }
 
     List<Transform> ChooseSpawnPoints(List<SpawnMode> _spawnMode)
@@ -194,27 +208,62 @@ public class GameManager : MonoBehaviour
         return chosenSpawnPoints;
     }
 
+    List<Transform> ChooseSpawnPointsNew(List<Transform> _transforms, int _amount)
+    {
+
+        //Debug.Log(_amount);
+
+        List<Transform> _chosenSpawnPoints = new List<Transform>();
+
+        for (int i = 0; i < _amount; i++)
+        {
+            int _randomSpawnPoint = UnityEngine.Random.Range(0, _transforms.Count - 1);
+
+            _chosenSpawnPoints.Add(_transforms[_randomSpawnPoint]);
+        }
+
+        return _chosenSpawnPoints;
+    }
+
     private IEnumerator SpawnEnemies()
     {
         healthSpawner.SpawnHealth();
 
-        List<Transform> _spawnPoints = ChooseSpawnPoints(spawnPointClass);
-        //string _enemy = ChooseEnemy(enemies, boss);
+        //List<Transform> _spawnPoints = ChooseSpawnPoints(spawnPointClass);
+        ////string _enemy = ChooseEnemy(enemies, boss);
 
 
-        //Debug.Log(enemyLocal.Count);
+        ////Debug.Log(enemyLocal.Count);
 
-        for (int i = 0; i < _spawnPoints.Count;)
+        //for (int i = 0; i < _spawnPoints.Count;)
+        //{
+        //    List<string> _enemies = ChooseEnemies(enemies, boss);
+        //    for (int j = 0; j < Mathf.Min(_enemies.Count, _spawnPoints.Count); j++)
+        //    {
+        //        ObjectPooler.Instance.SpawnFromPool(_enemies[j], _spawnPoints[i].position, Quaternion.identity);
+        //        i++;
+        //        yield return new WaitForSeconds(.3f);
+        //        Time.timeScale = 1;
+        //    }
+        //}
+
+
+
+        List<Transform> _spawnPoints = ChooseSpawnPointsNew(spawnPoints, enemyAmount);
+
+        //List<string> _enemies = ChooseEnemy(enemies, boss, enemyAmount);
+
+        for (int i = 0; i < _spawnPoints.Count; i++)
         {
-            List<string> _enemies = ChooseEnemies(enemies, boss);
-            for (int j = 0; j < Mathf.Min(_enemies.Count, _spawnPoints.Count); j++)
-            {
-                ObjectPooler.Instance.SpawnFromPool(_enemies[j], _spawnPoints[i].position, Quaternion.identity);
-                i++;
-                yield return new WaitForSeconds(.3f);
-                Time.timeScale = 1;
-            }
+            Debug.Log("Spawnpoints " + _spawnPoints.Count);
+
+            string _enemy = ChooseEnemy(enemies, boss);
+
+            ObjectPooler.Instance.SpawnFromPool(_enemy, _spawnPoints[i].position, Quaternion.identity);
+            yield return new WaitForSeconds(.3f);
+            Time.timeScale = 1;
         }
+
 
     }
 
@@ -242,12 +291,12 @@ public class GameManager : MonoBehaviour
         }
 
         Time.timeScale = 0.2f;
+        dl.AddScore(PlayerPrefs.GetString("Name"), EnemyCounter.SessionScore);
         StartCoroutine(EndScreen());
     }
 
     IEnumerator EndScreen()
     {
-        //dl.AddScore(PlayerPrefs.GetString("Name"), EnemyCounter.SessionScore);
         yield return new WaitForSecondsRealtime(2);
         Time.timeScale = 0;
         gameOverScreen.gameObject.SetActive(true);

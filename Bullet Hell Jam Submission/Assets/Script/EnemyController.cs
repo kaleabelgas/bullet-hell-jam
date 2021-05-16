@@ -14,6 +14,9 @@ public class EnemyController : MonoBehaviour, ITakeDamage
     public event Action iHaveDied;
     private UIMainGame UIMainGame;
 
+    private Vector2 lookDir = Vector2.down;
+    private float angle = 90;
+
     private void OnEnable()
     {
         target = GameObject.FindGameObjectWithTag("Player");
@@ -25,9 +28,14 @@ public class EnemyController : MonoBehaviour, ITakeDamage
     private void Update()
     {
 
-        Vector2 lookDir = target.transform.position - transform.position;
-        lookDir.Normalize();
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
+        if(target != null) 
+        {
+            lookDir = target.transform.position - transform.position;
+            lookDir.Normalize();
+            angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
+        }
+        
+        
 
         transform.Translate(Vector2.up * speed * Time.deltaTime);
         transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, angle);
