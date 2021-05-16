@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
+using MyUtils;
 //using static dreamloLeaderBoard;
 
 public class HighScoresDisplayer : MonoBehaviour
@@ -46,7 +48,7 @@ public class HighScoresDisplayer : MonoBehaviour
 
         dl.GetScores();
 
-        highScoreText.text = $"LOCAL HIGH SCORE: {highScore}00";
+        highScoreText.text = $"LOCAL HIGH SCORE: {FormatHelper.FormatNumber($"{highScore}00")}";
         
 
         for (int i = 0; i < top10Names.Length; i++)
@@ -121,11 +123,22 @@ public class HighScoresDisplayer : MonoBehaviour
             {
                 //Debug.Log("yes");
                 string textToDisplay = $"{HighScoresList[i].score}00";
-                if (textToDisplay.Length > 6) 
-                { 
-                    textToDisplay = $"{textToDisplay.Substring(0, 5)}M"; 
-                }
+
+
+                textToDisplay = FormatHelper.FormatNumber(textToDisplay);
+
+                //textToDisplay = string.Format("{0:N0}", double.Parse(textToDisplay));
+
+                //if (textToDisplay.Length > 11) 
+                //{ 
+                //    textToDisplay = $"{textToDisplay.Substring(0, 3)}B"; 
+                //}
+                //else if (textToDisplay.Length > 7)
+                //{
+                //    textToDisplay = $"{textToDisplay.Substring(0, 3)}M";
+                //}
                 top10Scores[i].text = $"{textToDisplay}";
+
 
                 ColorTheScore(top10Scores[i], HighScoresList[i].score);
             }

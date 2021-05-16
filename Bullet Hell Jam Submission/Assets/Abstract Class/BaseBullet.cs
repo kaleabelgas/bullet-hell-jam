@@ -5,7 +5,14 @@ using UnityEngine;
 public abstract class BaseBullet : MonoBehaviour
 {
     [SerializeField] protected int damageAmount;
+
+    protected int _damageAmount;
     public GameObject Owner;
+
+    protected virtual void OnEnable()
+    {
+        _damageAmount = damageAmount;
+    }
 
     public virtual void SetDirection(Vector2 direction, float speed)
     {
@@ -19,7 +26,7 @@ public abstract class BaseBullet : MonoBehaviour
         if (toDamage != null)
         {
             //AudioManager.instance.Play("hit");
-            toDamage.GetDamaged(damageAmount, Owner);
+            toDamage.GetDamaged(_damageAmount, Owner);
             gameObject.SetActive(false);
         }
     }
@@ -33,5 +40,6 @@ public abstract class BaseBullet : MonoBehaviour
     {
         ObjectPooler.Instance.SpawnFromPool("hit effect", transform.position, transform.rotation);
         Owner = gameObject;
+        _damageAmount = damageAmount;
     }
 }

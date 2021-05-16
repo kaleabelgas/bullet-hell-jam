@@ -138,7 +138,7 @@ Rigidbody2D:
   m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &4523558256386118411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,8 +153,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 17
   focusAmount: 0.45
+  dashDistance: 3
+  dashTime: 0.04
+  dashCooldown: 0.4
   gameManager: {fileID: 0}
-  playerHealth: 700
+  playerHealth: 1000
 --- !u!114 &4523558256386118407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2701d6ff070855b4db09ceec661b33e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  power: {fileID: 0}
+  powerToBuildUp: 5
 --- !u!114 &4523558256386118408
 MonoBehaviour:
   m_ObjectHideFlags: 0

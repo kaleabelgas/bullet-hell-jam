@@ -1986,7 +1986,7 @@ Transform:
   - {fileID: 1645625359}
   - {fileID: 752788996}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &659574835
 MonoBehaviour:
@@ -4255,7 +4255,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1414986395
 MonoBehaviour:
@@ -6441,13 +6441,9 @@ PrefabInstance:
       propertyPath: power
       value: 
       objectReference: {fileID: 1555009050}
-    - target: {fileID: 4523558256386118407, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
-      propertyPath: powerToBuildUp
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4523558256386118409, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4523558256386118409, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6490,33 +6486,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
-      propertyPath: dashTime
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
-      propertyPath: dashForce
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 659574835}
-    - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
-      propertyPath: dashCooldown
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
-      propertyPath: dashDistance
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
-      propertyPath: playerHealth
-      value: 700
-      objectReference: {fileID: 0}
-    - target: {fileID: 4523558256386118412, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4523558256386118413, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
       propertyPath: m_Name
       value: Player

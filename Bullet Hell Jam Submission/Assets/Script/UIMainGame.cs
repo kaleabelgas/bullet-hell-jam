@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
+using MyUtils;
 
 public class UIMainGame : MonoBehaviour
 {
@@ -46,7 +47,7 @@ public class UIMainGame : MonoBehaviour
     public void UpdateScore()
     {
         score = EnemyCounter.SessionScore;
-        currentScore.text = $"SCORE: {score}00";
+        currentScore.text = $"SCORE: {FormatHelper.FormatNumber($"{score}00")}";
     }
 
     public void AddLevel()
@@ -91,7 +92,7 @@ public class UIMainGame : MonoBehaviour
 
         }
 
-        highScoreLeft.text = $"{Mathf.Max(highScoreAtStart - score, 0)}00 points to go until HIGH SCORE";
+        highScoreLeft.text = $"{ FormatHelper.FormatNumber($"{Mathf.Max(highScoreAtStart - score, 0)}00")} points to go until HIGH SCORE";
     }
 
     public void GoToMainMenu()

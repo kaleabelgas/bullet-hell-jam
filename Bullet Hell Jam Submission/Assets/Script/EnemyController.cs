@@ -14,7 +14,7 @@ public class EnemyController : MonoBehaviour, ITakeDamage
     public event Action iHaveDied;
     private UIMainGame UIMainGame;
 
-    private Vector2 lookDir = Vector2.down;
+    private Vector2 lookDir = Vector2.up;
     private float angle = 90;
 
     private void OnEnable()

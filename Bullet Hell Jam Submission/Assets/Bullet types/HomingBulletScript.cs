@@ -13,8 +13,9 @@ public class HomingBulletScript : BaseBullet
 
     [SerializeField] private float defaultTimeFollowing = 2;
     
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         timeFollowing = defaultTimeFollowing;
     }
 

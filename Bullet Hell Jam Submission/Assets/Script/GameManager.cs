@@ -20,15 +20,6 @@ public class GameManager : MonoBehaviour
         public string bossName;
         public float frequency;
     }
-
-    //[System.Serializable]
-    public class SpawnMode
-    {
-        public List<Transform> SpawnPoints;
-        public int SpawnPointAmount;
-        public int LevelToAppear;
-    }
-
     //[SerializeField] private List<SpawnMode> spawnPointClass;
     [SerializeField] private List<Transform> spawnPoints;
 
@@ -119,7 +110,7 @@ public class GameManager : MonoBehaviour
 
         if (CurrentWave.Equals(0))
         {
-            Debug.Log("non");
+            //Debug.Log("non");
         }
         else if((CurrentWave % boss.frequency).Equals(0))
         {
@@ -178,36 +169,6 @@ public class GameManager : MonoBehaviour
         //Debug.Log("Chosen Enemies " + chosenEnemies.Count);
         return _chosenEnemy;
     }
-
-    List<Transform> ChooseSpawnPoints(List<SpawnMode> _spawnMode)
-    {
-        // loop through the spawn modes
-        List<Transform> chosenSpawnPoints = new List<Transform>();
-        for(int i = 0; i < _spawnMode.Count; i++)
-        {
-            // check if the spawn mode will engage in that level
-            if(CurrentWave >= _spawnMode[i].LevelToAppear)
-            {
-                chosenSpawnPoints.Clear();
-                levelScore = _spawnMode[i].SpawnPointAmount;
-                // choose spawnpoint depending on spawn mode's spawnpoint amount
-                for (int j = 0; j < _spawnMode[i].SpawnPointAmount; j++)
-                {
-                    //randomize the location of spawnpoints
-                    while (true)
-                    {
-                        int randomSpawn = UnityEngine.Random.Range(0, _spawnMode[i].SpawnPoints.Count);
-                        if (chosenSpawnPoints.Contains(_spawnMode[i].SpawnPoints[randomSpawn]))
-                            continue;
-                        chosenSpawnPoints.Add(_spawnMode[i].SpawnPoints[randomSpawn]);
-                        break;
-                    }
-                }
-            }
-        }
-        return chosenSpawnPoints;
-    }
-
     List<Transform> ChooseSpawnPointsNew(List<Transform> _transforms, int _amount)
     {
 
@@ -292,6 +253,7 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 0.2f;
         dl.AddScore(PlayerPrefs.GetString("Name"), EnemyCounter.SessionScore);
+        Debug.Log("game over");
         StartCoroutine(EndScreen());
     }
 

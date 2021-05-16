@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour, ITakeDamage
 
     bool doDash;
     bool isInvincible;
+    bool hasDied = false;
 
     float angle;
 
@@ -174,13 +175,21 @@ public class PlayerController : MonoBehaviour, ITakeDamage
         //if (Health > playerHealth) 
         //    Health = playerHealth;
         uIMainGame.SetHealthBar(Health);
+
         if (Health <= 0)
+        {
             Die();
+
+        }
     }
 
     public void Die()
     {
         //ObjectPooler.Instance.SpawnFromPool("death effect", transform.position, transform.rotation);
+        if (hasDied) { return; }
+        hasDied = true;
+
+        Debug.Log("die");
         OnPlayerDeath?.Invoke();
         gameObject.SetActive(false);
     }

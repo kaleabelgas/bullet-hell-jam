@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using MyUtils;
 
 public class ProfileSettingsScript : MonoBehaviour
 {
@@ -12,17 +13,31 @@ public class ProfileSettingsScript : MonoBehaviour
 
     private void OnEnable()
     {
-        highScore.text = $"{PlayerPrefs.GetInt(PlayerPrefs.GetString("Name", "AAA") + "score")}00";
-        totalEnemiesKilled.text = $"{PlayerPrefs.GetInt(PlayerPrefs.GetString("Name", "AAA") + "enemieskilled")}";
+        //highScore.text = $"{PlayerPrefs.GetInt(PlayerPrefs.GetString("Name", "AAA") + "score")}00";
+        GetScores(PlayerPrefs.GetString("Name", "AAA"));
+
+        //totalEnemiesKilled.text = $"{PlayerPrefs.GetInt(PlayerPrefs.GetString("Name", "AAA") + "enemieskilled")}";
+
+
         playerName.text = $"{PlayerPrefs.GetString("Name", "AAA")}";
     }
 
     public void SetUsername(string name)
     {
         PlayerPrefs.SetString("Name", name);
-        highScore.text = $"{PlayerPrefs.GetInt(name + "score", 0)}00";
-        totalEnemiesKilled.text = $"{PlayerPrefs.GetInt(name + "enemieskilled", 0)}";
+        GetScores(name);
         //ResetScore();
+    }
+
+    private void GetScores(string _name)
+    {
+        highScore.text = $"{PlayerPrefs.GetInt(_name + "score", 0)}00";
+
+        highScore.text = FormatHelper.FormatNumber(highScore.text);
+
+        totalEnemiesKilled.text = $"{PlayerPrefs.GetInt(_name + "enemieskilled", 0)}";
+
+        totalEnemiesKilled.text = FormatHelper.FormatNumber(totalEnemiesKilled.text);
     }
 
     public void OpenLeaderboardScene()
