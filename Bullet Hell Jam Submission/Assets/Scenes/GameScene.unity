@@ -1532,7 +1532,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: POINT AND CLICK AT THE ENEMY TO SHOOT
+  m_text: GOOD LUCK! DON'T KNOW HOW TO PLAY?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f7050152b4210ec45aee82bc987719c7, type: 2}
   m_sharedMaterial: {fileID: -1604996132676524975, guid: f7050152b4210ec45aee82bc987719c7, type: 2}
@@ -2027,7 +2027,7 @@ MonoBehaviour:
     levelToAppear: 30
     enemyChance: 10
   - enemyName: rare enemy
-    levelToAppear: 40
+    levelToAppear: 50
     enemyChance: 2.5
   boss:
     bossName: rare enemy
@@ -3054,7 +3054,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: USE WASD KEYS TO MOVE AROUND. GOOD LUCK!
+  m_text: VIEW "ABOUT" ON SETTINGS ON THE MAIN MENU
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f7050152b4210ec45aee82bc987719c7, type: 2}
   m_sharedMaterial: {fileID: -1604996132676524975, guid: f7050152b4210ec45aee82bc987719c7, type: 2}
@@ -6507,7 +6507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
       propertyPath: dashDistance
-      value: 3.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
       propertyPath: playerHealth

@@ -70,15 +70,15 @@ public class HighScoresDisplayer : MonoBehaviour
     {
         //Debug.Log(int.Parse(score.text));
 
-        if (_score >= 1500)
+        if (_score >= 5000)
         {
             _text.color = highestColor;
         }
-        else if (_score >= 1000)
+        else if (_score >= 2500)
         {
             _text.color = highColor;
         }
-        else if (_score >= 500)
+        else if (_score >= 1000)
         {
             _text.color = mediumColor;
         }

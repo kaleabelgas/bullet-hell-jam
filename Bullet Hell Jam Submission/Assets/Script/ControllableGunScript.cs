@@ -49,7 +49,9 @@ public class ControllableGunScript : GunScript
 
         foreach (GameObject _enemy in _enemies)
         {
-            _enemy.GetComponent<ITakeDamage>().GetDamaged(1000, gameObject);
+            _enemy.GetComponent<ITakeDamage>().GetDamaged(100, gameObject);
+            ObjectPooler.Instance.SpawnFromPool("hit effect", _enemy.transform.position, _enemy.transform.rotation);
+            AudioManager.instance.Play("enemy ded");
         }
 
         foreach (GameObject _bullet in _bullets)
