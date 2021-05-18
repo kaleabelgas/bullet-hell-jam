@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
         {
             //SkipWave();
             GameObject[] enemiesOnScreen = GameObject.FindGameObjectsWithTag("Enemy");
-            Debug.Log(enemiesOnScreen.Length);
+            //Debug.Log(enemiesOnScreen.Length);
 
             if (enemiesOnScreen.Length.Equals(0)) { SkipWave(); }
         }
@@ -92,13 +92,15 @@ public class GameManager : MonoBehaviour
     private void SkipWave()
     {
         if (isGameOver) { return; }
-        EnemyCounter.AddToScore((int)WaveTimer);
+        EnemyCounter.SessionScore += (int)WaveTimer;
         DoNextLevel();
     }
 
     private void DoNextLevel()
     {
         //Debug.Log("Current Level: " + Level);
+
+        levelScore = (int)(CurrentWave * .1f);
 
 
         if (!tutorialDone)
@@ -114,7 +116,7 @@ public class GameManager : MonoBehaviour
         }
         else if((CurrentWave % boss.frequency).Equals(0))
         {
-            EnemyCounter.SessionScore += 10;
+            EnemyCounter.SessionScore += 10 + levelScore;
         }
         else
         {
@@ -214,14 +216,20 @@ public class GameManager : MonoBehaviour
 
         //List<string> _enemies = ChooseEnemy(enemies, boss, enemyAmount);
 
+        //yield return new WaitForSeconds(.3f);
+
+        WaitForSeconds waitForSecondsSmall = new WaitForSeconds(.001f);
+        WaitForSeconds waitForSecondsBig = new WaitForSeconds(.3f);
+
         for (int i = 0; i < _spawnPoints.Count; i++)
         {
-            Debug.Log("Spawnpoints " + _spawnPoints.Count);
+            //Debug.Log("Spawnpoints " + _spawnPoints.Count);
 
             string _enemy = ChooseEnemy(enemies, boss);
 
             ObjectPooler.Instance.SpawnFromPool(_enemy, _spawnPoints[i].position, Quaternion.identity);
-            yield return new WaitForSeconds(.3f);
+            if (CurrentWave < 150) { yield return waitForSecondsBig; }
+            else { yield return waitForSecondsSmall; }
             Time.timeScale = 1;
         }
 
@@ -253,7 +261,7 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 0.2f;
         dl.AddScore(PlayerPrefs.GetString("Name"), EnemyCounter.SessionScore);
-        Debug.Log("game over");
+        //Debug.Log("game over");
         StartCoroutine(EndScreen());
     }
 

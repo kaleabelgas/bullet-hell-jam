@@ -44,10 +44,14 @@ public class EnemyController : MonoBehaviour, ITakeDamage
 
     public void GetDamaged(int amount, GameObject owner)
     {
+        if (owner == null)
+            return;
         if (owner.CompareTag(gameObject.tag))
             return;
         EnemyHealth -= amount;
         CameraShake.Trauma = 0.4f;
+
+        //Debug.Log("Hit by " + owner.name);
         if (EnemyHealth <= 0)
             Die();
     }

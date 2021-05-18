@@ -5,12 +5,14 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 using TMPro;
+using Feed;
 
 public class DisplaySettingsScript : MonoBehaviour
 {
     private Volume volume;
     private Bloom bloom;
     private ChromaticAberration chromaticAberration;
+    private CursorManager cursorManager;
 
     private Resolution[] resolutions;
 
@@ -20,8 +22,11 @@ public class DisplaySettingsScript : MonoBehaviour
     [SerializeField] Toggle camShakeToggle;
     [SerializeField] Toggle fullscreenToggle;
     [SerializeField] Toggle vsyncToggle;
+
+    [SerializeField] Toggle mouseToggle;
     private void Awake()
     {
+        cursorManager = FindObjectOfType<CursorManager>();
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
 
@@ -57,10 +62,18 @@ public class DisplaySettingsScript : MonoBehaviour
         CAToggle.isOn = PlayerPrefs.GetInt("isChromAberration", 1) > 0;
         camShakeToggle.isOn = PlayerPrefs.GetInt("isCameraShake", 1) > 0;
         fullscreenToggle.isOn = Screen.fullScreen;
+        mouseToggle.isOn = PlayerPrefs.GetInt("ForceSoftware", 0) > 0;
 
+        ToggleMouseType(PlayerPrefs.GetInt("ForceSoftware", 0) > 0);
         ToggleBloom(PlayerPrefs.GetInt("isBloom", 1) > 0);
         ToggleChromaticAberration(PlayerPrefs.GetInt("isChromAberration", 1) > 0);
         ToggleVsync(PlayerPrefs.GetInt("isVsync", 0) > 0);
+    }
+
+    public void ToggleMouseType(bool forceSoftWare)
+    {
+        cursorManager.SetCursorMode(forceSoftWare ? CursorMode.ForceSoftware : CursorMode.Auto);
+        PlayerPrefs.SetInt("ForceSoftware", forceSoftWare ? 1 : 0);
     }
 
     public void ToggleFullScreen(bool value)

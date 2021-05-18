@@ -48,7 +48,7 @@ public class HighScoresDisplayer : MonoBehaviour
 
         dl.GetScores();
 
-        highScoreText.text = $"LOCAL HIGH SCORE: {FormatHelper.FormatNumber($"{highScore}00")}";
+        highScoreText.text = $"LOCAL HIGH SCORE: {FormatHelper.FormatNumber($"{highScore}00", false, false)}";
         
 
         for (int i = 0; i < top10Names.Length; i++)
@@ -125,7 +125,7 @@ public class HighScoresDisplayer : MonoBehaviour
                 string textToDisplay = $"{HighScoresList[i].score}00";
 
 
-                textToDisplay = FormatHelper.FormatNumber(textToDisplay);
+                textToDisplay = FormatHelper.FormatNumber(textToDisplay, false, false);
 
                 //textToDisplay = string.Format("{0:N0}", double.Parse(textToDisplay));
 

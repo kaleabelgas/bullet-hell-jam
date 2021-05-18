@@ -17,6 +17,13 @@ namespace Feed
         void Start()
         {
             SetCursor(_default);
+            SetCursorMode(PlayerPrefs.GetInt("ForceSoftware") > 0 ? CursorMode.ForceSoftware : CursorMode.Auto); 
+        }
+
+        public void SetCursorMode(CursorMode cursorMode)
+        {
+            _cursorMode = cursorMode;
+            SetCursor(_default);
         }
 
         void SetCursor(CursorConfig config)

@@ -30,8 +30,7 @@ public class SpreadShoot : BaseGun
 
                 GameObject bullet = ObjectPooler.Instance.SpawnFromPool(bulletUsed, point, Quaternion.identity);
                 BaseBullet bulletScript = bullet.GetComponent<BaseBullet>();
-                bulletScript.Owner = gameObject;
-                bulletScript.SetDirection(direction, bulletSpeed);
+                bulletScript.SetDirection(direction, bulletSpeed, gameObject);
             }
             bulletTimer = Time.time + attackSpeed;
         }

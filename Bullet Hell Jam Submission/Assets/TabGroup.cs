@@ -44,6 +44,7 @@ public class TabGroup : MonoBehaviour
     public void OnTabSelected(ButtonTab button)
     {
         selectedTab = button;
+        //AudioManager.instance.Play("button");
         ResetTabs();
         button.background.sprite = tabActive;
         int index = button.transform.GetSiblingIndex();

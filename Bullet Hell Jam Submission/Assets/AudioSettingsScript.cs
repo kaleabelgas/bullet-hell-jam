@@ -16,7 +16,7 @@ public class AudioSettingsScript : MonoBehaviour
         master.value = PlayerPrefs.GetFloat("mastervolume", 10);
         music.value = PlayerPrefs.GetFloat("musicvolume", 10);
         sfx.value = PlayerPrefs.GetFloat("sfxvolume", 10);
-        Debug.Log(PlayerPrefs.GetFloat("mastervolume"));
+        //Debug.Log(PlayerPrefs.GetFloat("mastervolume"));
     }
     private void Start()
     {
@@ -30,7 +30,7 @@ public class AudioSettingsScript : MonoBehaviour
         var newValue = Mathf.Max(.001f, volume);
         audioMixer.SetFloat("MasterVolume", Mathf.Log10(Mathf.InverseLerp(0, 10, newValue)) * 20);
         PlayerPrefs.SetFloat("mastervolume", volume);
-        Debug.Log("Used" + volume);
+        //Debug.Log("Used" + volume);
     }
     public void SetMusicVolume(float volume)
     {

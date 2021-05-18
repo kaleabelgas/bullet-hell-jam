@@ -33,8 +33,7 @@ public class ShootTowardsPlayer : BaseGun
             if (bullet == null)
                 return;
             BaseBullet bulletScript = bullet.GetComponent<BaseBullet>();
-            bulletScript.Owner = gameObject;
-            bulletScript.SetDirection(targetPosition.normalized, bulletSpeed);
+            bulletScript.SetDirection(targetPosition.normalized, bulletSpeed, gameObject);
             bulletTimer = Time.time + attackSpeed;
         }
     }

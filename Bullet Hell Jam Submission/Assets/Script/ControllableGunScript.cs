@@ -8,9 +8,11 @@ public class ControllableGunScript : GunScript
     [SerializeField] private Slider power;
 
     [SerializeField] private float powerToBuildUp;
-
-    private bool isShooting;
+    
     private float powerAmount;
+
+    private float delayTimer;
+    private const float delayTimerDefault = .7f;
     protected override void Start()
     {
         base.Start();
@@ -22,10 +24,10 @@ public class ControllableGunScript : GunScript
         if (Input.GetMouseButton(0))
         {
             base.Update();
-            isShooting = true;
+            delayTimer = delayTimerDefault;
         }
         else
-            isShooting = false;
+            delayTimer -= Time.deltaTime;
 
         BuildUpPower();
 
@@ -33,17 +35,17 @@ public class ControllableGunScript : GunScript
     }
     private void BuildUpPower()
     {
-        if (isShooting) { return; }
+        power.value = Mathf.Min(powerAmount, powerToBuildUp);
+        if (delayTimer > 0) { return; }
 
         powerAmount += Time.deltaTime;
-        power.value = Mathf.Min(powerAmount, powerToBuildUp);
 
     }
     private void SpecialAttack()
     {
         if (powerAmount < powerToBuildUp) { return; }
 
-        Debug.Log("Woah");
+        //Debug.Log("Woah");
         GameObject[] _enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject[] _bullets = GameObject.FindGameObjectsWithTag("Bullet");
 
@@ -60,5 +62,6 @@ public class ControllableGunScript : GunScript
         }
 
         powerAmount = 0;
+        delayTimer = delayTimerDefault;
     }
 }

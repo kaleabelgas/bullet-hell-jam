@@ -47,7 +47,7 @@ public class UIMainGame : MonoBehaviour
     public void UpdateScore()
     {
         score = EnemyCounter.SessionScore;
-        currentScore.text = $"SCORE: {FormatHelper.FormatNumber($"{score}00")}";
+        currentScore.text = $"SCORE: {FormatHelper.FormatNumber($"{score}00", false, false)}";
     }
 
     public void AddLevel()

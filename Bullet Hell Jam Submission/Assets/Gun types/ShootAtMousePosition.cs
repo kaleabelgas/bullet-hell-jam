@@ -37,8 +37,7 @@ public class ShootAtMousePosition : BaseGun
             if (bullet == null)
                 return;
             BaseBullet bulletScript = bullet.GetComponent<BaseBullet>();
-            bulletScript.Owner = gameObject;
-            bulletScript.SetDirection(lookDir, bulletSpeed);
+            bulletScript.SetDirection(lookDir, bulletSpeed, gameObject);
             bulletTimer = Time.time + attackSpeed;
             AudioManager.instance.Play("hit");
             //CameraShake.Trauma = 0.35f;

@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  health: 70
+  health: 60
   enemyScore: 4
   offset: 5
   rotationUpdateSpeed: 0.01

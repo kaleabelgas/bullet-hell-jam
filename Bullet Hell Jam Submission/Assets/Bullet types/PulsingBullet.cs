@@ -6,7 +6,7 @@ public class PulsingBullet : BaseBullet
 {
     private Vector2 direction;
     private float speed;
-    public override void SetDirection(Vector2 direction, float speed)
+    public override void SetDirection(Vector2 direction, float speed, GameObject owner)
     {
         this.direction = direction;
         this.speed = speed;

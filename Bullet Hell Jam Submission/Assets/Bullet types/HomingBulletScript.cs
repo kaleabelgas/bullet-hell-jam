@@ -19,7 +19,7 @@ public class HomingBulletScript : BaseBullet
         timeFollowing = defaultTimeFollowing;
     }
 
-    public override void SetDirection(Vector2 direction, float speed)
+    public override void SetDirection(Vector2 direction, float speed, GameObject owner)
     {
         this.speed = speed;
     }

@@ -7,16 +7,17 @@ public abstract class BaseBullet : MonoBehaviour
     [SerializeField] protected int damageAmount;
 
     protected int _damageAmount;
-    public GameObject Owner;
+    private GameObject Owner;
 
     protected virtual void OnEnable()
     {
         _damageAmount = damageAmount;
     }
 
-    public virtual void SetDirection(Vector2 direction, float speed)
+    public virtual void SetDirection(Vector2 direction, float speed, GameObject owner)
     {
-
+        Owner = owner;
+        //Debug.Log($"Setting {Owner.name} to {owner.name}");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -26,6 +27,7 @@ public abstract class BaseBullet : MonoBehaviour
         if (toDamage != null)
         {
             //AudioManager.instance.Play("hit");
+            //Debug.Log(Owner.name + "is shooting");
             toDamage.GetDamaged(_damageAmount, Owner);
             gameObject.SetActive(false);
         }
@@ -39,7 +41,7 @@ public abstract class BaseBullet : MonoBehaviour
     public virtual void OnDisable()
     {
         ObjectPooler.Instance.SpawnFromPool("hit effect", transform.position, transform.rotation);
-        Owner = gameObject;
+        Owner = null;
         _damageAmount = damageAmount;
     }
 }

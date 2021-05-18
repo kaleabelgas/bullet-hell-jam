@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using MyUtils;
 
 public class UIGameOver : MonoBehaviour
 {
@@ -29,10 +30,10 @@ public class UIGameOver : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             StopAllCoroutines();
-            waveReached.text = $"{gameManager.CurrentWave}";
-            enemiesKilled.text = $"{EnemyCounter.EnemiesKilled}";
-            currentScore.text = $"{EnemyCounter.SessionScore}00";
-            highScore.text = $"{myHighScore}00";
+            waveReached.text = FormatHelper.FormatNumber($"{gameManager.CurrentWave}", false, false);
+            enemiesKilled.text = FormatHelper.FormatNumber($"{EnemyCounter.EnemiesKilled}", false, false);
+            currentScore.text = FormatHelper.FormatNumber($"{EnemyCounter.SessionScore}00", false, false);
+            highScore.text = FormatHelper.FormatNumber($"{myHighScore}00", false, false);
         }
     }
 
@@ -71,6 +72,8 @@ public class UIGameOver : MonoBehaviour
             {
                 _text.text += "00";
             }
+
+            _text.text = FormatHelper.FormatNumber(_text.text, false, false);
 
 
 

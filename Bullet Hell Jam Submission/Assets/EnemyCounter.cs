@@ -23,7 +23,7 @@ public static class EnemyCounter
 
     public static void SavePlayerScores()
     {
-        int enemiesKilledSaved = PlayerPrefs.GetInt("enemieskilled");
+        int enemiesKilledSaved = PlayerPrefs.GetInt(PlayerPrefs.GetString("Name", "AAA") + "enemieskilled");
         PlayerPrefs.SetInt(PlayerPrefs.GetString("Name", "AAA") + "enemieskilled", EnemiesKilled + enemiesKilledSaved);
         int _highscore = PlayerPrefs.GetInt(PlayerPrefs.GetString("Name", "AAA") + "score");
         PlayerPrefs.SetInt(PlayerPrefs.GetString("Name", "AAA") + "score", SessionScore > _highscore ? SessionScore : _highscore);

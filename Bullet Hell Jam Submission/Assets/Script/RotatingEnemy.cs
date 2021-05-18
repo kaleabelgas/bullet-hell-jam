@@ -59,8 +59,12 @@ public class RotatingEnemy : MonoBehaviour, ITakeDamage
 
     public void GetDamaged(int amount, GameObject owner)
     {
+        if (owner == null)
+            return;
         if (owner.CompareTag(gameObject.tag))
             return;
+
+        //Debug.Log("hit by" + owner, this);
         EnemyHealth -= amount;
         CameraShake.Trauma = 0.4f;
         if (EnemyHealth <= 0)

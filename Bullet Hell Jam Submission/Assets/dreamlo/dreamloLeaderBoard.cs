@@ -126,7 +126,7 @@ public class dreamloLeaderBoard : MonoBehaviour {
         yield return www.SendWebRequest();
         highScores = www.downloadHandler.text;
 
-		Debug.Log(highScores);
+		//Debug.Log(highScores);
         //Debug.Log(highScores);
 
         //Debug.Log()

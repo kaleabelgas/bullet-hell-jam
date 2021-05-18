@@ -144,7 +144,7 @@ public class PlayerController : MonoBehaviour, ITakeDamage
         while (_dashTime > 0)
         {
             _dashTime -= Time.deltaTime;
-            Debug.Log(_dashCooldown);
+            //Debug.Log(_dashCooldown);
             // add a force based on last direction looked at, with dashForce amount of force, multiplied to Time.deltaTime so that it's constant.
             //playerRB2D.AddForce(lastDirection * dashForce * Time.deltaTime, ForceMode2D.Impulse);
             isInvincible = true;
