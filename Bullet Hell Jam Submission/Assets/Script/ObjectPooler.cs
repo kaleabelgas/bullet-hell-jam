@@ -30,7 +30,7 @@ public class ObjectPooler : MonoBehaviour
     {
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
-        foreach(Pool pool in pools)
+        foreach (Pool pool in pools)
         {
             Queue<GameObject> objectPool = new Queue<GameObject>();
 
@@ -52,7 +52,7 @@ public class ObjectPooler : MonoBehaviour
 
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
 
-        if(objectToSpawn != null)
+        if (objectToSpawn != null && !objectToSpawn.activeInHierarchy)
         {
 
             objectToSpawn.SetActive(true);
@@ -65,6 +65,19 @@ public class ObjectPooler : MonoBehaviour
 
             return objectToSpawn;
         }
-        return null;
+        else
+        {
+            foreach (Pool pool in pools)
+            {
+                if (pool.tag == tag)
+                {
+                    pool.poolSize++;
+                    objectToSpawn = Instantiate(pool.objectPrefab, position, rotation);
+                    poolDictionary[tag].Enqueue(objectToSpawn);
+                    return objectToSpawn;
+                }
+            }
+        }
+        return null;    
     }
 }

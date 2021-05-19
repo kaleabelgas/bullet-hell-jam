@@ -5,12 +5,6 @@ using UnityEngine;
 public class HealthAdder : MonoBehaviour
 {
     [SerializeField] private int damageAmount = -10;
-
-    GameObject Owner;
-    private void OnEnable()
-    {
-        Owner = this.gameObject;
-    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         ITakeDamage toDamage = other.GetComponent<ITakeDamage>();

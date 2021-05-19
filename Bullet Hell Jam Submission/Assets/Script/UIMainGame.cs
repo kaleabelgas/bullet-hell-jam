@@ -34,7 +34,7 @@ public class UIMainGame : MonoBehaviour
         //StartCoroutine(AudioManager.instance.StartPlaylist());
         highScoreAtStart = PlayerPrefs.GetInt(PlayerPrefs.GetString("Name", "AAA") + "score");
         AudioManager.instance.PlayMusic();
-        currentScore.text = $"SCORE: {score}00";
+        currentScore.text = $"SCORE: {score}";
         currentLevel.text = $"WAVE {level}";
         
         volume = FindObjectOfType<Volume>();

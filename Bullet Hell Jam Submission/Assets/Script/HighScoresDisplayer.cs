@@ -33,6 +33,9 @@ public class HighScoresDisplayer : MonoBehaviour
     [ColorUsageAttribute(true, true)]
     [SerializeField] Color lowColor = new Color();
 
+    [ColorUsageAttribute(true, true)]
+    [SerializeField] Color specialColor = new Color();
+
 
 
     [SerializeField] List<string> easterEggNames = new List<string>();
@@ -53,18 +56,18 @@ public class HighScoresDisplayer : MonoBehaviour
 
         for (int i = 0; i < top10Names.Length; i++)
         {
-            top10Names[i].text = $"Fetching...";
+            top10Names[i].text = $"{i + 1}. Fetching...";
         }
 
+        ColorTheScore(highScoreText, highScore);
         foreach (string name in easterEggNames)
         {
 
             if (PlayerPrefs.GetString("Name").Equals(name))
             {
-                highScoreText.color = nameColor;
+                highScoreText.color = specialColor;
             }
         }
-        ColorTheScore(highScoreText, highScore);
         
     }
 
@@ -72,15 +75,15 @@ public class HighScoresDisplayer : MonoBehaviour
     {
         //Debug.Log(int.Parse(score.text));
 
-        if (_score >= 5000)
+        if (_score >= 10000)
         {
             _text.color = highestColor;
         }
-        else if (_score >= 2500)
+        else if (_score >= 5000)
         {
             _text.color = highColor;
         }
-        else if (_score >= 1000)
+        else if (_score >= 2500)
         {
             _text.color = mediumColor;
         }
@@ -101,11 +104,11 @@ public class HighScoresDisplayer : MonoBehaviour
         HighScoresList = dl.ToListHighToLow();
         for (int i = 0; i < top10Names.Length; i++)
         {
-            top10Names[i].text = $"Fetching...";
+            top10Names[i].text = $"{i + 1}. Fetching...";
             if (HighScoresList.Count > i)
             {
                 //Debug.Log("yes");
-                string textToDisplay = $"{HighScoresList[i].playerName}";
+                string textToDisplay = $"{i+1}. {HighScoresList[i].playerName}";
                 if (textToDisplay.Length > 40) { textToDisplay = $"{textToDisplay.Substring(0, 38)}.."; }
                 top10Names[i].text = $"{textToDisplay}";
 

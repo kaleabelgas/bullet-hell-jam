@@ -2107,16 +2107,16 @@ MonoBehaviour:
   pools:
   - tag: hit effect
     objectPrefab: {fileID: 3375661579799012832, guid: 7ef30628ae1bcad478948b5f439172d1, type: 3}
-    poolSize: 20000
+    poolSize: 5000
   - tag: default bullet
     objectPrefab: {fileID: 3646535366457579801, guid: be8d6c258e393104bb6edd880b3b8617, type: 3}
-    poolSize: 10000
+    poolSize: 5000
   - tag: homing bullet
     objectPrefab: {fileID: 3646535366457579801, guid: 7388bfdf8cdd9ae4f8fbe030035336d7, type: 3}
     poolSize: 0
   - tag: death effect
     objectPrefab: {fileID: 3375661579799012832, guid: 8b569566756100f43a652c4972d184c6, type: 3}
-    poolSize: 100
+    poolSize: 500
   - tag: default enemy
     objectPrefab: {fileID: 820460646642010933, guid: eb6e1ed96027c0944830b3a81080c9b4, type: 3}
     poolSize: 50
@@ -2146,7 +2146,7 @@ MonoBehaviour:
     poolSize: 50
   - tag: holey bullet
     objectPrefab: {fileID: 3646535366457579801, guid: d2f087688ad88d24885e9fdf3b7918aa, type: 3}
-    poolSize: 20000
+    poolSize: 10000
   - tag: sharp bullet
     objectPrefab: {fileID: 3646535366457579801, guid: 1a4ab57be4d320a48a5ecd4a41074ee9, type: 3}
     poolSize: 1000
@@ -2213,7 +2213,7 @@ MonoBehaviour:
     enemyChance: 40
   - enemyName: default enemy
     levelToAppear: 10
-    enemyChance: 20
+    enemyChance: 35
   - enemyName: shotgun enemy
     levelToAppear: 20
     enemyChance: 12
@@ -2227,9 +2227,12 @@ MonoBehaviour:
     bossName: rare enemy
     frequency: 50
   timePerLevel: 10
+  allowFastSkip: 0
   uIMainGame: {fileID: 1664965851}
   gameOverScreen: {fileID: 1721254859}
   dl: {fileID: 11400000, guid: 2ae922c7d8b784fc9aac6e923c5a88ab, type: 3}
+  pulseScript: {fileID: 659574836}
+  healthSpawner: {fileID: 659574837}
 --- !u!114 &659574836
 MonoBehaviour:
   m_ObjectHideFlags: 0

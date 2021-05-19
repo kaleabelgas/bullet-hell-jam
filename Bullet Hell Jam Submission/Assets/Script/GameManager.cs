@@ -27,16 +27,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private BossEnemy boss;
 
     [SerializeField] private float timePerLevel = 1;
+    [SerializeField] private bool allowFastSkip = false;
 
     [SerializeField] private UIMainGame uIMainGame;
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private dreamloLeaderBoard dl;
-    PulseScript pulseScript;
+    [SerializeField] PulseScript pulseScript;
+    [SerializeField] private HealthSpawner healthSpawner;
 
     public float WaveTimer { get; private set; }
     private int levelScore = 0;
 
-    private HealthSpawner healthSpawner;
     private bool tutorialDone = false;
 
     private bool isGameOver;
@@ -49,15 +50,11 @@ public class GameManager : MonoBehaviour
     {
         CameraShake.TargetPos = transform.position;
         EnemyCounter.ClearEnemiesKilledCountCurrent();
-        dl = FindObjectOfType<dreamloLeaderBoard>();
+        //dl = FindObjectOfType<dreamloLeaderBoard>();
 
-        healthSpawner = GetComponent<HealthSpawner>();
+        //healthSpawner = GetComponent<HealthSpawner>();
         Time.timeScale = 1;
-        pulseScript = GetComponent<PulseScript>();
-        if (string.IsNullOrEmpty(PlayerPrefs.GetString("Name")))
-        {
-            PlayerPrefs.SetString("Name", "AAA");
-        }
+        //pulseScript = GetComponent<PulseScript>();
         WaveTimer = timePerLevel;
         //StartCoroutine(SpawnEnemies());
     }
@@ -79,9 +76,10 @@ public class GameManager : MonoBehaviour
                 uIMainGame.Pause();
         }
 
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKey(KeyCode.Tab))
         {
-            //SkipWave();
+            if (allowFastSkip) { SkipWave(); }
+            
 
 
             GameObject[] enemiesOnScreen = GameObject.FindGameObjectsWithTag("Enemy");

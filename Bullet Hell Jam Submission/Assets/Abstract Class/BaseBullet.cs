@@ -45,7 +45,8 @@ public abstract class BaseBullet : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        objectPooler.SpawnFromPool("hit effect", transform.position, transform.rotation);
+        if (gameObject.activeInHierarchy) { objectPooler.SpawnFromPool("hit effect", transform.position, transform.rotation); }
+        
         gameObject.SetActive(false);
     }
 

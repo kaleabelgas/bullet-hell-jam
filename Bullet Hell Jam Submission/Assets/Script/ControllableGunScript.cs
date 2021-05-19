@@ -12,20 +12,16 @@ public class ControllableGunScript : GunScript
     private float powerAmount;
 
     private float delayTimer;
-    private const float delayTimerDefault = .7f;
+    private const float delayTimerDefault = .55f;
 
     ObjectPooler objectPooler;
 
     private bool shootToggle = false;
-
-    private void Awake()
-    {
-        objectPooler = ObjectPooler.Instance;
-    }
     protected override void Start()
     {
         base.Start();
 
+        objectPooler = ObjectPooler.Instance;
         power.maxValue = powerToBuildUp;
     }
     protected override void Update()
