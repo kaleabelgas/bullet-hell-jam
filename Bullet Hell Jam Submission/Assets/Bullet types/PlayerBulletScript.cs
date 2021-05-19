@@ -6,7 +6,7 @@ public class PlayerBulletScript : DefaultBulletScript
 {
     private GameManager gm;
 
-    private const float overFive = .25f;
+    private const float overFive = .20f;
 
     protected override void OnEnable()
     {

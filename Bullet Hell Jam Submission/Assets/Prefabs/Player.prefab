@@ -157,6 +157,7 @@ MonoBehaviour:
   dashTime: 0.04
   dashCooldown: 0.4
   gameManager: {fileID: 0}
+  isTesting: 1
   playerHealth: 1000
 --- !u!114 &4523558256386118407
 MonoBehaviour:

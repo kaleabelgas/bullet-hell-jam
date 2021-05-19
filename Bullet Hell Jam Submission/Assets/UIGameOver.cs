@@ -52,7 +52,7 @@ public class UIGameOver : MonoBehaviour
         //Debug.Log(_text.text);
 
         if (_targetscore > 100)
-            _delay = 0.0001f;
+            _delay = 0.000001f;
         else if (_targetscore > 50)
             _delay = 0.001f;
         else if (_targetscore > 20)
@@ -64,8 +64,8 @@ public class UIGameOver : MonoBehaviour
         {
             _currentNumber++;
 
-            if (_targetscore - _currentNumber > 5)
-                _currentNumber += 5;
+            if (_targetscore - _currentNumber > 50)
+                _currentNumber += 50;
 
             _text.text = $"{_currentNumber}";
             if (_isScore)

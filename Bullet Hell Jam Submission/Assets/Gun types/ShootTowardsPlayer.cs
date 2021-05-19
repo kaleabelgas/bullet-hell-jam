@@ -29,11 +29,12 @@ public class ShootTowardsPlayer : BaseGun
 
         if (Time.time >= bulletTimer)
         {
-            GameObject bullet = ObjectPooler.Instance.SpawnFromPool(bulletUsed, firePoint.position, Quaternion.identity);
+            GameObject bullet = objectPooler.SpawnFromPool(bulletUsed, firePoint.position, Quaternion.identity);
             if (bullet == null)
                 return;
             BaseBullet bulletScript = bullet.GetComponent<BaseBullet>();
             bulletScript.SetDirection(targetPosition.normalized, bulletSpeed, gameObject);
+            //Debug.Log(gameObject.tag, bullet);
             bulletTimer = Time.time + attackSpeed;
         }
     }

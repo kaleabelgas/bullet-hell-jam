@@ -17,8 +17,14 @@ public class EnemyController : MonoBehaviour, ITakeDamage
     private Vector2 lookDir = Vector2.up;
     private float angle = 90;
 
+    private ObjectPooler objectPooler;
+    private AudioManager audioManager;
+
     private void OnEnable()
     {
+        audioManager = AudioManager.instance;
+        objectPooler = ObjectPooler.Instance;
+
         target = GameObject.FindGameObjectWithTag("Player");
         EnemyHealth = health;
         UIMainGame = FindObjectOfType<UIMainGame>();
@@ -42,12 +48,8 @@ public class EnemyController : MonoBehaviour, ITakeDamage
         //transform.right = target.position - transform.position;
     }
 
-    public void GetDamaged(int amount, GameObject owner)
+    public void GetDamaged(int amount)
     {
-        if (owner == null)
-            return;
-        if (owner.CompareTag(gameObject.tag))
-            return;
         EnemyHealth -= amount;
         CameraShake.Trauma = 0.4f;
 
@@ -58,8 +60,9 @@ public class EnemyController : MonoBehaviour, ITakeDamage
 
     private void Die()
     {
-        AudioManager.instance.Play("enemy ded");
-        ObjectPooler.Instance.SpawnFromPool("death effect", transform.position, transform.rotation);
+        audioManager.Play("enemy ded");
+        objectPooler.SpawnFromPool("death effect", transform.position, transform.rotation);
+
         CameraShake.Trauma = 0.7f;
         EnemyCounter.AddToScore(enemyScore);
         iHaveDied?.Invoke();

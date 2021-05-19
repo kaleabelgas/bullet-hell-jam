@@ -8,11 +8,20 @@ public class ControllableGunScript : GunScript
     [SerializeField] private Slider power;
 
     [SerializeField] private float powerToBuildUp;
-    
+
     private float powerAmount;
 
     private float delayTimer;
     private const float delayTimerDefault = .7f;
+
+    ObjectPooler objectPooler;
+
+    private bool shootToggle = false;
+
+    private void Awake()
+    {
+        objectPooler = ObjectPooler.Instance;
+    }
     protected override void Start()
     {
         base.Start();
@@ -21,7 +30,9 @@ public class ControllableGunScript : GunScript
     }
     protected override void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetKeyDown(KeyCode.RightAlt)) { shootToggle = !shootToggle; }
+
+        if (Input.GetMouseButton(0) || shootToggle)
         {
             base.Update();
             delayTimer = delayTimerDefault;
@@ -51,8 +62,8 @@ public class ControllableGunScript : GunScript
 
         foreach (GameObject _enemy in _enemies)
         {
-            _enemy.GetComponent<ITakeDamage>().GetDamaged(100, gameObject);
-            ObjectPooler.Instance.SpawnFromPool("hit effect", _enemy.transform.position, _enemy.transform.rotation);
+            _enemy.GetComponent<ITakeDamage>().GetDamaged(120);
+            objectPooler.SpawnFromPool("hit effect", _enemy.transform.position, _enemy.transform.rotation);
             AudioManager.instance.Play("enemy ded");
         }
 

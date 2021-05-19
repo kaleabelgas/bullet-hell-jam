@@ -82,6 +82,8 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             //SkipWave();
+
+
             GameObject[] enemiesOnScreen = GameObject.FindGameObjectsWithTag("Enemy");
             //Debug.Log(enemiesOnScreen.Length);
 
@@ -92,7 +94,7 @@ public class GameManager : MonoBehaviour
     private void SkipWave()
     {
         if (isGameOver) { return; }
-        EnemyCounter.SessionScore += (int)WaveTimer;
+        EnemyCounter.SessionScore += (int)(WaveTimer * CurrentWave * 0.2f);
         DoNextLevel();
     }
 
@@ -192,25 +194,7 @@ public class GameManager : MonoBehaviour
     {
         healthSpawner.SpawnHealth();
 
-        //List<Transform> _spawnPoints = ChooseSpawnPoints(spawnPointClass);
-        ////string _enemy = ChooseEnemy(enemies, boss);
-
-
-        ////Debug.Log(enemyLocal.Count);
-
-        //for (int i = 0; i < _spawnPoints.Count;)
-        //{
-        //    List<string> _enemies = ChooseEnemies(enemies, boss);
-        //    for (int j = 0; j < Mathf.Min(_enemies.Count, _spawnPoints.Count); j++)
-        //    {
-        //        ObjectPooler.Instance.SpawnFromPool(_enemies[j], _spawnPoints[i].position, Quaternion.identity);
-        //        i++;
-        //        yield return new WaitForSeconds(.3f);
-        //        Time.timeScale = 1;
-        //    }
-        //}
-
-
+        bool hasSpawnedFirstEnemy = false;
 
         List<Transform> _spawnPoints = ChooseSpawnPointsNew(spawnPoints, enemyAmount);
 
@@ -218,7 +202,7 @@ public class GameManager : MonoBehaviour
 
         //yield return new WaitForSeconds(.3f);
 
-        WaitForSeconds waitForSecondsSmall = new WaitForSeconds(.001f);
+        WaitForSeconds waitForSecondsSmall = new WaitForSeconds(.05f);
         WaitForSeconds waitForSecondsBig = new WaitForSeconds(.3f);
 
         for (int i = 0; i < _spawnPoints.Count; i++)
@@ -228,8 +212,12 @@ public class GameManager : MonoBehaviour
             string _enemy = ChooseEnemy(enemies, boss);
 
             ObjectPooler.Instance.SpawnFromPool(_enemy, _spawnPoints[i].position, Quaternion.identity);
-            if (CurrentWave < 150) { yield return waitForSecondsBig; }
+
+            if (!hasSpawnedFirstEnemy) { yield return waitForSecondsBig; }
+
             else { yield return waitForSecondsSmall; }
+
+            hasSpawnedFirstEnemy = true;
             Time.timeScale = 1;
         }
 
@@ -241,6 +229,7 @@ public class GameManager : MonoBehaviour
         GameObject[] bulletsInScene = GameObject.FindGameObjectsWithTag("Bullet");
         foreach (GameObject bullet in bulletsInScene)
         {
+            ObjectPooler.Instance.SpawnFromPool("hit effect", bullet.transform.position, bullet.transform.rotation);
             bullet.SetActive(false);
         }
     }

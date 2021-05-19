@@ -15,13 +15,11 @@ public class HealthAdder : MonoBehaviour
     {
         ITakeDamage toDamage = other.GetComponent<ITakeDamage>();
 
-        if (toDamage != null && other.gameObject.CompareTag("Player"))
-        {
-            //AudioManager.instance.Play("hit");
-            toDamage.GetDamaged(damageAmount, Owner);
-            AudioManager.instance.Play("powerup");
-            gameObject.SetActive(false);
-        }
+        if (toDamage == null || !other.gameObject.CompareTag("Player")) { return; }
+        //AudioManager.instance.Play("hit");
+        toDamage.GetDamaged(damageAmount);
+        AudioManager.instance.Play("powerup");
+        gameObject.SetActive(false);
     }
 
     private void OnDisable()

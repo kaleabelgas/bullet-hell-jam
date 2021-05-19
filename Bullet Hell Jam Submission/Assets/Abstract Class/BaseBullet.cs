@@ -7,41 +7,52 @@ public abstract class BaseBullet : MonoBehaviour
     [SerializeField] protected int damageAmount;
 
     protected int _damageAmount;
-    private GameObject Owner;
+    protected GameObject Owner;
+
+    protected ObjectPooler objectPooler;
+
+    private bool hasReset = true;
 
     protected virtual void OnEnable()
     {
         _damageAmount = damageAmount;
+        objectPooler = ObjectPooler.Instance;
     }
 
     public virtual void SetDirection(Vector2 direction, float speed, GameObject owner)
     {
         Owner = owner;
-        //Debug.Log($"Setting {Owner.name} to {owner.name}");
+        if (!hasReset) { Debug.LogError("Bullet Reused! " + gameObject.name); }
+        hasReset = false;
     }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        ITakeDamage toDamage = other.GetComponent<ITakeDamage>();
+        if (Owner == null) { throw new System.Exception("ERROR: HIT WITHOUT OWNER"); }
 
-        if (toDamage != null)
+        ITakeDamage toDamage = other.GetComponent<ITakeDamage>();
+        if (toDamage == null) { return; }
+
+        if (!Owner.CompareTag(other.gameObject.tag))
         {
-            //AudioManager.instance.Play("hit");
-            //Debug.Log(Owner.name + "is shooting");
-            toDamage.GetDamaged(_damageAmount, Owner);
-            gameObject.SetActive(false);
+            objectPooler.SpawnFromPool("hit effect", transform.position, transform.rotation);
+            toDamage.GetDamaged(_damageAmount); ;
         }
+
+
+
+        gameObject.SetActive(false);
     }
 
     private void OnBecameInvisible()
     {
+        objectPooler.SpawnFromPool("hit effect", transform.position, transform.rotation);
         gameObject.SetActive(false);
     }
 
     public virtual void OnDisable()
     {
-        ObjectPooler.Instance.SpawnFromPool("hit effect", transform.position, transform.rotation);
-        Owner = null;
+        //Owner = null;
         _damageAmount = damageAmount;
+        hasReset = true;
     }
 }

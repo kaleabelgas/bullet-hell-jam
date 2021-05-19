@@ -92,7 +92,7 @@ public class UIMainGame : MonoBehaviour
 
         }
 
-        highScoreLeft.text = $"{ FormatHelper.FormatNumber($"{Mathf.Max(highScoreAtStart - score, 0)}00")} points to go until HIGH SCORE";
+        highScoreLeft.text = $"{ FormatHelper.FormatNumber($"{Mathf.Max(highScoreAtStart - score, 0)}00", false, true)} points to go until HIGH SCORE";
     }
 
     public void GoToMainMenu()

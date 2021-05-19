@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour, ITakeDamage
     [SerializeField] private float dashTime;
     [SerializeField] private float dashCooldown;
     [SerializeField] private GameManager gameManager;
+
+    [SerializeField] private bool isTesting = false;
     public int playerHealth;
     private UIMainGame uIMainGame;
 
@@ -34,10 +36,14 @@ public class PlayerController : MonoBehaviour, ITakeDamage
 
     float angle;
 
+    private ObjectPooler objectPooler;
+    private AudioManager audioManager;
+
     public int Health { get; private set; } = 100;
 
     private void Awake()
     {
+
         uIMainGame = FindObjectOfType<UIMainGame>();
         OnPlayerDeath += gameManager.GameOver;
         playerRB2D = GetComponent<Rigidbody2D>();
@@ -48,6 +54,12 @@ public class PlayerController : MonoBehaviour, ITakeDamage
         screenBounds = cam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, cam.transform.position.z));
     }
 
+    private void Start()
+    {
+
+        objectPooler = ObjectPooler.Instance;
+        audioManager = AudioManager.instance;
+    }
 
 
     private void Update()
@@ -159,18 +171,17 @@ public class PlayerController : MonoBehaviour, ITakeDamage
         yield return null;
     }
 
-    public void GetDamaged(int amount, GameObject owner)
+    public void GetDamaged(int amount)
     {
+        if (isTesting) { return; }
         if (isInvincible)
-            return;
-        if (owner.Equals(this.gameObject))
             return;
         Health = Mathf.Min(playerHealth, Health - amount);
         if (amount > 0)
         {
             CameraShake.Trauma = 0.7f;
-            AudioManager.instance.Play("player hit");
-            ObjectPooler.Instance.SpawnFromPool("player hit", transform.position, transform.rotation);
+            audioManager.Play("player hit");
+            objectPooler.SpawnFromPool("player hit", transform.position, transform.rotation);
         }
         //if (Health > playerHealth) 
         //    Health = playerHealth;

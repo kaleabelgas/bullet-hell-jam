@@ -2107,16 +2107,16 @@ MonoBehaviour:
   pools:
   - tag: hit effect
     objectPrefab: {fileID: 3375661579799012832, guid: 7ef30628ae1bcad478948b5f439172d1, type: 3}
-    poolSize: 1000
+    poolSize: 20000
   - tag: default bullet
     objectPrefab: {fileID: 3646535366457579801, guid: be8d6c258e393104bb6edd880b3b8617, type: 3}
-    poolSize: 2000
+    poolSize: 10000
   - tag: homing bullet
     objectPrefab: {fileID: 3646535366457579801, guid: 7388bfdf8cdd9ae4f8fbe030035336d7, type: 3}
     poolSize: 0
   - tag: death effect
     objectPrefab: {fileID: 3375661579799012832, guid: 8b569566756100f43a652c4972d184c6, type: 3}
-    poolSize: 15
+    poolSize: 100
   - tag: default enemy
     objectPrefab: {fileID: 820460646642010933, guid: eb6e1ed96027c0944830b3a81080c9b4, type: 3}
     poolSize: 50
@@ -2146,7 +2146,7 @@ MonoBehaviour:
     poolSize: 50
   - tag: holey bullet
     objectPrefab: {fileID: 3646535366457579801, guid: d2f087688ad88d24885e9fdf3b7918aa, type: 3}
-    poolSize: 2000
+    poolSize: 20000
   - tag: sharp bullet
     objectPrefab: {fileID: 3646535366457579801, guid: 1a4ab57be4d320a48a5ecd4a41074ee9, type: 3}
     poolSize: 1000
@@ -2155,7 +2155,7 @@ MonoBehaviour:
     poolSize: 50
   - tag: rocket bullet
     objectPrefab: {fileID: 3646535366457579801, guid: ef1b40355eb9cd3449a053ba5cf93023, type: 3}
-    poolSize: 500
+    poolSize: 1000
   - tag: player hit
     objectPrefab: {fileID: 3375661579799012832, guid: 1b7bda5652c2ee44db670710d2b29e18, type: 3}
     poolSize: 500
@@ -2216,13 +2216,13 @@ MonoBehaviour:
     enemyChance: 20
   - enemyName: shotgun enemy
     levelToAppear: 20
-    enemyChance: 15
+    enemyChance: 12
   - enemyName: rotating rare enemy
     levelToAppear: 30
-    enemyChance: 10
+    enemyChance: 8
   - enemyName: rare enemy
     levelToAppear: 50
-    enemyChance: 2.5
+    enemyChance: 2
   boss:
     bossName: rare enemy
     frequency: 50
@@ -2258,10 +2258,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68313234c425b3e4795781476a6ea574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfHealth: 5
-  chanceToSpawnHealth: 40
-  verticalOffset: 0.15
-  healthPercentage: 0.6
+  numberOfHealth: 4
+  chanceToSpawnHealth: 35
+  verticalOffset: 0.2
+  healthPercentage: 0.5
 --- !u!1 &752788995
 GameObject:
   m_ObjectHideFlags: 0
@@ -6781,9 +6781,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
+      propertyPath: dashTime
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
+      propertyPath: isTesting
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 659574835}
+    - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
+      propertyPath: dashCooldown
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
+      propertyPath: dashDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523558256386118411, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
+      propertyPath: playerHealth
+      value: 800
+      objectReference: {fileID: 0}
     - target: {fileID: 4523558256386118413, guid: 12f1c35770563c145ae6ee787fcbb47b, type: 3}
       propertyPath: m_Name
       value: Player

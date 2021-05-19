@@ -13,12 +13,15 @@ public class ShootAtMousePosition : BaseGun
 
     private Vector2 mousePosition;
 
-
     private Camera maincam;
+
+    private AudioManager audioManager;
 
     private void Start()
     {
+        audioManager = AudioManager.instance;
         maincam = Camera.main;
+        objectPooler = ObjectPooler.Instance;
     }
     public override void Shoot()
     {
@@ -33,13 +36,13 @@ public class ShootAtMousePosition : BaseGun
 
         if (Time.time >= bulletTimer)
         {
-            GameObject bullet = ObjectPooler.Instance.SpawnFromPool(bulletUsed, firePoint.position, Quaternion.identity);
+            GameObject bullet = objectPooler.SpawnFromPool(bulletUsed, firePoint.position, Quaternion.identity);
             if (bullet == null)
                 return;
             BaseBullet bulletScript = bullet.GetComponent<BaseBullet>();
             bulletScript.SetDirection(lookDir, bulletSpeed, gameObject);
             bulletTimer = Time.time + attackSpeed;
-            AudioManager.instance.Play("hit");
+            audioManager.Play("hit");
             //CameraShake.Trauma = 0.35f;
         }
     }

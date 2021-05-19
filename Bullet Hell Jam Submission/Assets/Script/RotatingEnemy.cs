@@ -17,8 +17,14 @@ public class RotatingEnemy : MonoBehaviour, ITakeDamage
 
     public event Action iHaveDied;
     private UIMainGame UIMainGame;
+
+    private ObjectPooler objectPooler;
+    private AudioManager audioManager;
     private void OnEnable()
     {
+        objectPooler = ObjectPooler.Instance;
+        audioManager = AudioManager.instance;
+
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height/2, Camera.main.transform.position.z));
         EnemyHealth = health;
         StartCoroutine(SpiralEnemy());
@@ -57,14 +63,8 @@ public class RotatingEnemy : MonoBehaviour, ITakeDamage
         }
     }
 
-    public void GetDamaged(int amount, GameObject owner)
+    public void GetDamaged(int amount)
     {
-        if (owner == null)
-            return;
-        if (owner.CompareTag(gameObject.tag))
-            return;
-
-        //Debug.Log("hit by" + owner, this);
         EnemyHealth -= amount;
         CameraShake.Trauma = 0.4f;
         if (EnemyHealth <= 0)
@@ -73,8 +73,8 @@ public class RotatingEnemy : MonoBehaviour, ITakeDamage
 
     private void Die()
     {
-        AudioManager.instance.Play("enemy ded");
-        ObjectPooler.Instance.SpawnFromPool("death effect", transform.position, transform.rotation);
+        audioManager.Play("enemy ded");
+        objectPooler.SpawnFromPool("death effect", transform.position, transform.rotation);
         CameraShake.Trauma = 0.75f;
         EnemyCounter.AddToScore(enemyScore);
         iHaveDied?.Invoke();
